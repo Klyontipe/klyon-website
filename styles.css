@@ -1365,3 +1365,18 @@ body {
     transform: translateY(-3px) scale(1.1);
     box-shadow: var(--shadow-heavy);
 } 
+
+/* Bouton dans la section contact */
+.contact-item .btn-accent {
+    margin-top: 0.5rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    padding: 10px 16px;
+}
+
+.contact-item .btn-accent:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-heavy);
+} 
