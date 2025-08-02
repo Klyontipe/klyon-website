@@ -1,6 +1,6 @@
-# 🚀 Klyon - Site Vitrine
+# Klyon - Site Vitrine
 
-Site vitrine professionnel pour Klyon, microentreprise spécialisée dans les solutions informatiques sur la Côte d'Azur.
+Site vitrine professionnel pour Klyon, microentreprise spécialisée dans les solutions informatiques dans le Sud de la France.
 
 ## 📋 Description
 
@@ -173,4 +173,4 @@ Pour toute question ou modification, contactez Klyon directement.
 
 ---
 
-**Klyon** - Votre partenaire informatique sur la Côte d'Azur 🚀 
+**Klyon** - Votre partenaire informatique dans le Sud de la France 🚀 
