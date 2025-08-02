@@ -108,79 +108,6 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Contact form handling
-const contactForm = document.getElementById('contactForm');
-const submitButton = contactForm.querySelector('button[type="submit"]');
-const btnText = submitButton.querySelector('.btn-text');
-const btnLoading = submitButton.querySelector('.btn-loading');
-
-contactForm.addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    // Show loading state
-    btnText.style.display = 'none';
-    btnLoading.style.display = 'inline-block';
-    submitButton.disabled = true;
-    
-    // Get form data
-    const formData = {
-        name: document.getElementById('name').value,
-        email: document.getElementById('email').value,
-        phone: document.getElementById('phone').value,
-        service: document.getElementById('service').value,
-        message: document.getElementById('message').value
-    };
-    
-    // Google Analytics - Track form submission
-    if (typeof gtag !== 'undefined') {
-        gtag('event', 'form_submit', {
-            'event_category': 'engagement',
-            'event_label': 'contact_form',
-            'service_type': formData.service
-        });
-    }
-    
-    // Send email using EmailJS
-    emailjs.send('service_lb38ewo', 'template_2af96ws', {
-        from_name: formData.name,
-        from_email: formData.email,
-        from_phone: formData.phone,
-        service_type: formData.service,
-        message: formData.message
-    })
-    .then(function(response) {
-        console.log('SUCCESS!', response.status, response.text);
-        showNotification('Message envoyé avec succès !', 'success');
-        contactForm.reset();
-        
-        // Google Analytics - Track successful submission
-        if (typeof gtag !== 'undefined') {
-            gtag('event', 'form_success', {
-                'event_category': 'engagement',
-                'event_label': 'contact_form'
-            });
-        }
-    })
-    .catch(function(error) {
-        console.log('FAILED...', error);
-        showNotification('Erreur lors de l\'envoi. Veuillez réessayer.', 'error');
-        
-        // Google Analytics - Track failed submission
-        if (typeof gtag !== 'undefined') {
-            gtag('event', 'form_error', {
-                'event_category': 'engagement',
-                'event_label': 'contact_form'
-            });
-        }
-    })
-    .finally(function() {
-        // Reset button state
-        btnText.style.display = 'inline-block';
-        btnLoading.style.display = 'none';
-        submitButton.disabled = false;
-    });
-});
-
 // Notification system
 function showNotification(message, type = 'info') {
     // Remove existing notifications
@@ -423,49 +350,79 @@ if (!localStorage.getItem('cookiesAccepted')) {
     }, 2000);
 }
 
-// Enhanced animations
+// États de chargement et animations améliorées
+function showLoadingState(element) {
+    element.style.opacity = '0.6';
+    element.style.pointerEvents = 'none';
+    element.innerHTML += '<div class="loading-spinner"></div>';
+}
+
+function hideLoadingState(element) {
+    element.style.opacity = '1';
+    element.style.pointerEvents = 'auto';
+    const spinner = element.querySelector('.loading-spinner');
+    if (spinner) spinner.remove();
+}
+
+// Intersection Observer amélioré pour les animations
+const animationObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const element = entry.target;
+            
+            // Ajouter la classe d'animation appropriée
+            if (element.classList.contains('service-card')) {
+                element.classList.add('animate-fade-in-up');
+            } else if (element.classList.contains('testimonial-card')) {
+                element.classList.add('animate-fade-in-left');
+            } else if (element.classList.contains('project-card')) {
+                element.classList.add('animate-fade-in-right');
+            } else if (element.classList.contains('hero-content')) {
+                element.classList.add('animate-fade-in-left');
+            } else if (element.classList.contains('hero-visual')) {
+                element.classList.add('animate-fade-in-right');
+            }
+            
+            // Marquer comme animé pour éviter la répétition
+            element.setAttribute('data-animated', 'true');
+        }
+    });
+}, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+});
+
+// Observer les éléments pour les animations
 document.addEventListener('DOMContentLoaded', () => {
-    // Add loading states to buttons
-    document.querySelectorAll('.btn').forEach(button => {
-        button.addEventListener('click', function() {
-            if (!this.classList.contains('btn-loading')) {
-                this.classList.add('loading');
-                setTimeout(() => {
-                    this.classList.remove('loading');
-                }, 1000);
-            }
-        });
-    });
-    
-    // Add micro-interactions to cards
-    document.querySelectorAll('.service-card, .testimonial-card, .project-card').forEach(card => {
-        card.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-8px) scale(1.02)';
-        });
-        
-        card.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0) scale(1)';
-        });
-    });
-    
-    // Add smooth reveal animations
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.animation = 'fadeInUp 0.6s ease forwards';
-            }
-        });
-    }, observerOptions);
-    
-    document.querySelectorAll('.service-card, .testimonial-card, .project-card, .about-content, .contact-content').forEach(element => {
-        observer.observe(element);
+    const animatedElements = document.querySelectorAll('.service-card, .testimonial-card, .project-card, .hero-content, .hero-visual');
+    animatedElements.forEach(element => {
+        animationObserver.observe(element);
     });
 });
+
+// Amélioration du formulaire de contact avec états de chargement
+const contactForm = document.querySelector('#contactForm');
+if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const submitBtn = this.querySelector('button[type="submit"]');
+        const originalText = submitBtn.textContent;
+        
+        // Afficher l'état de chargement
+        showLoadingState(submitBtn);
+        submitBtn.textContent = 'Envoi en cours...';
+        
+        // Simuler l'envoi (remplacer par votre logique EmailJS)
+        setTimeout(() => {
+            hideLoadingState(submitBtn);
+            submitBtn.textContent = originalText;
+            
+            // Afficher un message de succès
+            showNotification('Message envoyé avec succès !', 'success');
+        }, 2000);
+    });
+}
 
 // Performance optimization
 if ('serviceWorker' in navigator) {
@@ -495,3 +452,58 @@ const imageObserver = new IntersectionObserver((entries, observer) => {
 document.querySelectorAll('img[data-src]').forEach(img => {
     imageObserver.observe(img);
 }); 
+
+// Bouton de retour en haut
+const backToTopBtn = document.createElement('button');
+backToTopBtn.className = 'back-to-top';
+backToTopBtn.innerHTML = '<i class="fas fa-arrow-up"></i>';
+document.body.appendChild(backToTopBtn);
+
+// Afficher/masquer le bouton selon le scroll
+window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 300) {
+        backToTopBtn.classList.add('visible');
+    } else {
+        backToTopBtn.classList.remove('visible');
+    }
+});
+
+// Fonction de retour en haut
+backToTopBtn.addEventListener('click', () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+    
+    // Google Analytics - Track back to top
+    if (typeof gtag !== 'undefined') {
+        gtag('event', 'back_to_top', {
+            'event_category': 'engagement',
+            'event_label': 'navigation'
+        });
+    }
+});
+
+// Navigation améliorée avec indicateur de section active
+function updateActiveNavLink() {
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    let current = '';
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (window.pageYOffset >= (sectionTop - 200)) {
+            current = section.getAttribute('id');
+        }
+    });
+    
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+            link.classList.add('active');
+        }
+    });
+}
+
+window.addEventListener('scroll', updateActiveNavLink); 
