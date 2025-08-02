@@ -344,4 +344,154 @@ console.log('🚀 Klyon website loaded successfully!');
 console.log('📊 Google Analytics tracking enabled');
 console.log('📧 EmailJS contact form ready');
 console.log('🌙 Dark mode toggle ready');
-console.log('💼 Projects gallery ready'); 
+console.log('💼 Projects gallery ready');
+
+// Back to top functionality
+const backToTop = document.getElementById('backToTop');
+const progressBar = document.getElementById('progressBar');
+
+window.addEventListener('scroll', () => {
+    const scrolled = window.pageYOffset;
+    const height = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = (scrolled / height) * 100;
+    
+    // Update progress bar
+    progressBar.style.width = progress + '%';
+    
+    // Show/hide back to top button
+    if (scrolled > 300) {
+        backToTop.classList.add('show');
+    } else {
+        backToTop.classList.remove('show');
+    }
+});
+
+backToTop.addEventListener('click', () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+    
+    // Google Analytics - Track back to top clicks
+    if (typeof gtag !== 'undefined') {
+        gtag('event', 'back_to_top_click', {
+            'event_category': 'engagement',
+            'event_label': 'navigation'
+        });
+    }
+});
+
+// Cookie consent
+const cookieConsent = document.getElementById('cookieConsent');
+
+function acceptCookies() {
+    localStorage.setItem('cookiesAccepted', 'true');
+    cookieConsent.style.transform = 'translateY(100%)';
+    setTimeout(() => {
+        cookieConsent.style.display = 'none';
+    }, 300);
+    
+    // Google Analytics - Track cookie acceptance
+    if (typeof gtag !== 'undefined') {
+        gtag('event', 'cookie_accept', {
+            'event_category': 'engagement',
+            'event_label': 'cookie_consent'
+        });
+    }
+}
+
+function declineCookies() {
+    localStorage.setItem('cookiesAccepted', 'false');
+    cookieConsent.style.transform = 'translateY(100%)';
+    setTimeout(() => {
+        cookieConsent.style.display = 'none';
+    }, 300);
+    
+    // Google Analytics - Track cookie decline
+    if (typeof gtag !== 'undefined') {
+        gtag('event', 'cookie_decline', {
+            'event_category': 'engagement',
+            'event_label': 'cookie_consent'
+        });
+    }
+}
+
+// Show cookie consent if not already accepted
+if (!localStorage.getItem('cookiesAccepted')) {
+    setTimeout(() => {
+        cookieConsent.classList.add('show');
+    }, 2000);
+}
+
+// Enhanced animations
+document.addEventListener('DOMContentLoaded', () => {
+    // Add loading states to buttons
+    document.querySelectorAll('.btn').forEach(button => {
+        button.addEventListener('click', function() {
+            if (!this.classList.contains('btn-loading')) {
+                this.classList.add('loading');
+                setTimeout(() => {
+                    this.classList.remove('loading');
+                }, 1000);
+            }
+        });
+    });
+    
+    // Add micro-interactions to cards
+    document.querySelectorAll('.service-card, .testimonial-card, .project-card').forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-8px) scale(1.02)';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0) scale(1)';
+        });
+    });
+    
+    // Add smooth reveal animations
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.animation = 'fadeInUp 0.6s ease forwards';
+            }
+        });
+    }, observerOptions);
+    
+    document.querySelectorAll('.service-card, .testimonial-card, .project-card, .about-content, .contact-content').forEach(element => {
+        observer.observe(element);
+    });
+});
+
+// Performance optimization
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+            .then(registration => {
+                console.log('SW registered: ', registration);
+            })
+            .catch(registrationError => {
+                console.log('SW registration failed: ', registrationError);
+            });
+    });
+}
+
+// Lazy loading for images
+const imageObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const img = entry.target;
+            img.src = img.dataset.src;
+            img.classList.remove('lazy');
+            imageObserver.unobserve(img);
+        }
+    });
+});
+
+document.querySelectorAll('img[data-src]').forEach(img => {
+    imageObserver.observe(img);
+}); 
