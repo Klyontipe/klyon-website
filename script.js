@@ -1,6 +1,41 @@
 // Initialisation EmailJS
 emailjs.init("ZJMuCYNkzxGhqore6");
 
+// Theme toggle functionality
+const themeToggle = document.getElementById('themeToggle');
+const body = document.body;
+const themeIcon = themeToggle.querySelector('i');
+
+// Check for saved theme preference or default to light mode
+const currentTheme = localStorage.getItem('theme') || 'light';
+body.setAttribute('data-theme', currentTheme);
+updateThemeIcon(currentTheme);
+
+themeToggle.addEventListener('click', () => {
+    const currentTheme = body.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    
+    body.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+    updateThemeIcon(newTheme);
+    
+    // Google Analytics - Track theme toggle
+    if (typeof gtag !== 'undefined') {
+        gtag('event', 'theme_toggle', {
+            'event_category': 'engagement',
+            'event_label': newTheme
+        });
+    }
+});
+
+function updateThemeIcon(theme) {
+    if (theme === 'dark') {
+        themeIcon.className = 'fas fa-sun';
+    } else {
+        themeIcon.className = 'fas fa-moon';
+    }
+}
+
 // Mobile navigation toggle
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
@@ -233,6 +268,28 @@ document.querySelectorAll('.service-card').forEach(card => {
     });
 });
 
+// Hover animations for testimonial cards
+document.querySelectorAll('.testimonial-card').forEach(card => {
+    card.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-5px)';
+    });
+    
+    card.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateY(0)';
+    });
+});
+
+// Hover animations for project cards
+document.querySelectorAll('.project-card').forEach(card => {
+    card.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-8px)';
+    });
+    
+    card.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateY(0)';
+    });
+});
+
 // Button hover effects
 document.querySelectorAll('.btn').forEach(button => {
     button.addEventListener('mouseenter', function() {
@@ -272,4 +329,6 @@ if (typeof gtag !== 'undefined') {
 // Console log for site loading confirmation
 console.log('🚀 Klyon website loaded successfully!');
 console.log('📊 Google Analytics tracking enabled');
-console.log('📧 EmailJS contact form ready'); 
+console.log('📧 EmailJS contact form ready');
+console.log('🌙 Dark mode toggle ready');
+console.log('💼 Projects gallery ready'); 
