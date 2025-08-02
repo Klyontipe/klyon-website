@@ -249,6 +249,29 @@ body {
     transform: translateY(-2px);
 }
 
+.btn-accent {
+    background: var(--accent-color);
+    color: white;
+    box-shadow: var(--shadow-medium);
+}
+
+.btn-accent:hover {
+    background: #0891b2;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-heavy);
+}
+
+.calendar-link {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.calendar-link:hover {
+    color: var(--accent-color);
+}
+
 /* Floating Elements */
 .hero-visual {
     position: relative;

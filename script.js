@@ -67,6 +67,19 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
+// Track Calendly clicks
+document.querySelectorAll('a[href*="calendly.com"]').forEach(link => {
+    link.addEventListener('click', function() {
+        // Google Analytics - Track Calendly clicks
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'calendly_click', {
+                'event_category': 'engagement',
+                'event_label': 'appointment_booking'
+            });
+        }
+    });
+});
+
 // Intersection Observer for scroll animations
 const observerOptions = {
     threshold: 0.1,
