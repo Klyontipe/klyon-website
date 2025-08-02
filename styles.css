@@ -272,6 +272,17 @@ body {
     color: var(--accent-color);
 }
 
+.linkedin-link {
+    color: #0077b5;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.linkedin-link:hover {
+    color: #005885;
+}
+
 /* Floating Elements */
 .hero-visual {
     position: relative;
