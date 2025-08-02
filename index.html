@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Klyon - Solutions Informatiques Professionnelles</title>
+    <meta name="description" content="Klyon, votre partenaire informatique sur la Côte d'Azur. Support, développement sur-mesure et solutions IA.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="minilogo.jpg">
+    <link rel="shortcut icon" type="image/jpeg" href="minilogo.jpg">
+    <link rel="apple-touch-icon" href="minilogo.jpg">
+    
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- EmailJS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="logo.jpg" alt="Klyon Logo" class="logo-img">
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#accueil" class="nav-link">Accueil</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#services" class="nav-link">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#apropos" class="nav-link">À propos</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contact" class="nav-link">Contact</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Section Accueil -->
+    <section id="accueil" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span class="gradient-text">Klyon</span>
+                    <br>Solutions Informatiques
+                </h1>
+                <p class="hero-subtitle">
+                    Votre partenaire informatique sur la Côte d'Azur. 
+                    De la maintenance à l'intelligence artificielle, 
+                    nous accompagnons votre transformation digitale.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#services" class="btn btn-primary">Découvrir nos services</a>
+                    <a href="#contact" class="btn btn-secondary">Nous contacter</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="floating-elements">
+                    <div class="element element-1">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <div class="element element-2">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="element element-3">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Services -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Nos Services</h2>
+                <p class="section-subtitle">Des solutions complètes pour tous vos besoins informatiques</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card" data-aos="fade-up">
+                    <div class="service-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>Support Informatique</h3>
+                    <p>Installation, réparation et maintenance de vos équipements informatiques. Intervention sur site et à distance.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Installation PC et logiciels</li>
+                        <li><i class="fas fa-check"></i> Réparation matériel</li>
+                        <li><i class="fas fa-check"></i> Maintenance préventive</li>
+                        <li><i class="fas fa-check"></i> Support Office 365</li>
+                    </ul>
+                </div>
+
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Développement Sur-Mesure</h3>
+                    <p>Création de programmes et applications adaptés à vos besoins spécifiques. Solutions Full-Stack et automatisation.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Programmes Python & Flask</li>
+                        <li><i class="fas fa-check"></i> Sites web professionnels</li>
+                        <li><i class="fas fa-check"></i> Automatisation de processus</li>
+                        <li><i class="fas fa-check"></i> Solutions Full-Stack</li>
+                    </ul>
+                </div>
+
+                <div class="service-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="service-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Intelligence Artificielle</h3>
+                    <p>Intégration d'IA et d'automatisation pour optimiser vos processus et améliorer votre productivité.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Intégration ChatGPT</li>
+                        <li><i class="fas fa-check"></i> IA locale</li>
+                        <li><i class="fas fa-check"></i> Automatisation avancée</li>
+                        <li><i class="fas fa-check"></i> Conseils IA</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section À propos -->
+    <section id="apropos" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text" data-aos="fade-right">
+                    <h2 class="section-title">À propos de Klyon</h2>
+                    <p class="about-description">
+                        Je suis Lorenzo Fortini, entrepreneur passionné par la technologie et l'innovation. 
+                        Développeur Full-Stack avec plusieurs années d'expérience, je combine expertise 
+                        technique et vision entrepreneuriale pour accompagner entreprises et particuliers 
+                        dans leur transformation digitale sur la Côte d'Azur.
+                    </p>
+                    <div class="about-features">
+                        <div class="feature">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h4>Zone d'intervention</h4>
+                                <p>Bouches-du-Rhône et environs</p>
+                            </div>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <h4>Flexibilité</h4>
+                                <p>Intervention sur site ou à distance selon vos besoins</p>
+                            </div>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-users"></i>
+                            <div>
+                                <h4>Clientèle</h4>
+                                <p>Entreprises, particuliers, associations, collectivités</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image" data-aos="fade-left">
+                    <img src="photopro.jpg" alt="Lorenzo Fortini - Fondateur de Klyon" class="profile-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Contact -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Contactez-nous</h2>
+                <p class="section-subtitle">Prêt à transformer votre informatique ? Parlons-en !</p>
+            </div>
+            
+            <div class="contact-content">
+                <div class="contact-info" data-aos="fade-right">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p><a href="mailto:klyonme@gmail.com">klyonme@gmail.com</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Téléphone</h4>
+                            <p><a href="tel:+33766980342">07 66 98 03 42</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Zone d'intervention</h4>
+                            <p>Bouches-du-Rhône et travail à distance</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form" data-aos="fade-left">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" placeholder="Votre nom" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" placeholder="Votre email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" id="phone" name="phone" placeholder="Votre téléphone">
+                        </div>
+                        <div class="form-group">
+                            <select id="service" name="service" required>
+                                <option value="">Sélectionnez un service</option>
+                                <option value="support">Support Informatique</option>
+                                <option value="developpement">Développement Sur-Mesure</option>
+                                <option value="ia">Intelligence Artificielle</option>
+                                <option value="autre">Autre</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" placeholder="Votre message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <span class="btn-text">Envoyer le message</span>
+                            <span class="btn-loading" style="display: none;">
+                                <i class="fas fa-spinner fa-spin"></i> Envoi en cours...
+                            </span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Klyon</h3>
+                    <p>Votre partenaire informatique sur la Côte d'Azur</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#services">Support Informatique</a></li>
+                        <li><a href="#services">Développement Sur-Mesure</a></li>
+                        <li><a href="#services">Intelligence Artificielle</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="mailto:klyonme@gmail.com">klyonme@gmail.com</a></li>
+                        <li><a href="tel:+33766980342">07 66 98 03 42</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Klyon. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 
