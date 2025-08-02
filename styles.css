@@ -238,26 +238,100 @@ body {
 }
 
 .element-1 {
-    top: 20%;
-    left: 20%;
+    top: 15%;
+    left: 15%;
     animation-delay: 0s;
 }
 
 .element-2 {
-    top: 60%;
-    right: 20%;
+    top: 65%;
+    right: 15%;
     animation-delay: 2s;
 }
 
 .element-3 {
-    bottom: 20%;
-    left: 50%;
+    bottom: 25%;
+    left: 45%;
     animation-delay: 4s;
 }
 
+.element-4 {
+    top: 8%;
+    right: 8%;
+    animation-delay: 1s;
+    width: 60px;
+    height: 60px;
+}
+
+.element-4 i {
+    font-size: 1.5rem;
+}
+
+.element-5 {
+    top: 45%;
+    left: 8%;
+    animation-delay: 3s;
+    width: 70px;
+    height: 70px;
+}
+
+.element-5 i {
+    font-size: 1.8rem;
+}
+
+.element-6 {
+    bottom: 35%;
+    right: 25%;
+    animation-delay: 5s;
+    width: 65px;
+    height: 65px;
+}
+
+.element-6 i {
+    font-size: 1.6rem;
+}
+
+.element-7 {
+    top: 75%;
+    left: 25%;
+    animation-delay: 1.5s;
+    width: 55px;
+    height: 55px;
+}
+
+.element-7 i {
+    font-size: 1.3rem;
+}
+
+.element-8 {
+    top: 12%;
+    left: 55%;
+    animation-delay: 2.5s;
+    width: 75px;
+    height: 75px;
+}
+
+.element-8 i {
+    font-size: 1.9rem;
+}
+
+.element-9 {
+    bottom: 8%;
+    right: 8%;
+    animation-delay: 3.5s;
+    width: 50px;
+    height: 50px;
+}
+
+.element-9 i {
+    font-size: 1.2rem;
+}
+
 @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-20px); }
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    25% { transform: translateY(-15px) rotate(2deg); }
+    50% { transform: translateY(-25px) rotate(0deg); }
+    75% { transform: translateY(-15px) rotate(-2deg); }
 }
 
 /* Sections générales */
@@ -630,8 +704,101 @@ body {
         font-size: 2rem;
     }
 
+    /* Icônes visibles sur mobile avec taille réduite */
     .floating-elements {
-        display: none;
+        display: block;
+        height: 200px;
+        margin-top: 2rem;
+    }
+
+    .element {
+        width: 50px;
+        height: 50px;
+    }
+
+    .element i {
+        font-size: 1.2rem;
+    }
+
+    .element-1 {
+        top: 10%;
+        left: 10%;
+    }
+
+    .element-2 {
+        top: 60%;
+        right: 10%;
+    }
+
+    .element-3 {
+        bottom: 20%;
+        left: 40%;
+    }
+
+    .element-4 {
+        top: 5%;
+        right: 5%;
+        width: 40px;
+        height: 40px;
+    }
+
+    .element-4 i {
+        font-size: 1rem;
+    }
+
+    .element-5 {
+        top: 40%;
+        left: 5%;
+        width: 45px;
+        height: 45px;
+    }
+
+    .element-5 i {
+        font-size: 1.3rem;
+    }
+
+    .element-6 {
+        bottom: 30%;
+        right: 20%;
+        width: 42px;
+        height: 42px;
+    }
+
+    .element-6 i {
+        font-size: 1.1rem;
+    }
+
+    .element-7 {
+        top: 70%;
+        left: 20%;
+        width: 38px;
+        height: 38px;
+    }
+
+    .element-7 i {
+        font-size: 0.9rem;
+    }
+
+    .element-8 {
+        top: 8%;
+        left: 50%;
+        width: 48px;
+        height: 48px;
+    }
+
+    .element-8 i {
+        font-size: 1.4rem;
+    }
+
+    .element-9 {
+        bottom: 5%;
+        right: 5%;
+        width: 35px;
+        height: 35px;
+    }
+
+    .element-9 i {
+        font-size: 0.8rem;
     }
 
     .profile-image {
@@ -673,6 +840,70 @@ body {
     .profile-image {
         width: 200px;
         height: 280px;
+    }
+
+    /* Encore plus petites icônes sur très petit écran */
+    .element {
+        width: 40px;
+        height: 40px;
+    }
+
+    .element i {
+        font-size: 1rem;
+    }
+
+    .element-4 {
+        width: 30px;
+        height: 30px;
+    }
+
+    .element-4 i {
+        font-size: 0.8rem;
+    }
+
+    .element-5 {
+        width: 35px;
+        height: 35px;
+    }
+
+    .element-5 i {
+        font-size: 1rem;
+    }
+
+    .element-6 {
+        width: 32px;
+        height: 32px;
+    }
+
+    .element-6 i {
+        font-size: 0.9rem;
+    }
+
+    .element-7 {
+        width: 28px;
+        height: 28px;
+    }
+
+    .element-7 i {
+        font-size: 0.7rem;
+    }
+
+    .element-8 {
+        width: 38px;
+        height: 38px;
+    }
+
+    .element-8 i {
+        font-size: 1.1rem;
+    }
+
+    .element-9 {
+        width: 25px;
+        height: 25px;
+    }
+
+    .element-9 i {
+        font-size: 0.6rem;
     }
 }
 
