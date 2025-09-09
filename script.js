@@ -67,18 +67,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Track Calendly clicks
-document.querySelectorAll('a[href*="calendly.com"]').forEach(link => {
-    link.addEventListener('click', function() {
-        // Google Analytics - Track Calendly clicks
-        if (typeof gtag !== 'undefined') {
-            gtag('event', 'calendly_click', {
-                'event_category': 'engagement',
-                'event_label': 'appointment_booking'
-            });
-        }
-    });
-});
+// Track Calendly clicks - Supprimé car plus de liens Calendly
 
 // Intersection Observer for scroll animations
 const observerOptions = {
@@ -273,6 +262,34 @@ console.log('📧 EmailJS contact form ready');
 console.log('🌙 Dark mode toggle ready');
 console.log('💼 Projects gallery ready');
 
+// Test de la configuration EmailJS
+console.log('🔧 Configuration EmailJS:');
+console.log('- Service ID: service_lb38ewo');
+console.log('- Template ID: template_2af96ws');
+console.log('- User ID: ZJMuCYNkzxGhqore6');
+console.log('- Email de destination: klyonme@gmail.com');
+
+// Fonction de test EmailJS (à appeler depuis la console)
+window.testEmailJS = function() {
+    console.log('🧪 Test EmailJS en cours...');
+    emailjs.send('service_lb38ewo', 'template_2af96ws', {
+        from_name: 'Test Klyon',
+        from_email: 'test@klyon.fr',
+        from_phone: '07 66 98 03 42',
+        service_type: 'Test',
+        message: 'Ceci est un test du formulaire de contact Klyon',
+        to_email: 'klyonme@gmail.com'
+    })
+    .then(function(response) {
+        console.log('✅ Test EmailJS réussi!', response);
+        alert('Test EmailJS réussi! Vérifiez votre boîte mail.');
+    })
+    .catch(function(error) {
+        console.log('❌ Test EmailJS échoué:', error);
+        alert('Test EmailJS échoué. Vérifiez la console pour plus de détails.');
+    });
+};
+
 // Back to top functionality
 const backToTop = document.getElementById('backToTop');
 const progressBar = document.getElementById('progressBar');
@@ -400,27 +417,94 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// Amélioration du formulaire de contact avec états de chargement
+// Formulaire de contact avec EmailJS
 const contactForm = document.querySelector('#contactForm');
 if (contactForm) {
     contactForm.addEventListener('submit', function(e) {
         e.preventDefault();
         
         const submitBtn = this.querySelector('button[type="submit"]');
-        const originalText = submitBtn.textContent;
+        const btnText = submitBtn.querySelector('.btn-text');
+        const btnLoading = submitBtn.querySelector('.btn-loading');
         
         // Afficher l'état de chargement
-        showLoadingState(submitBtn);
-        submitBtn.textContent = 'Envoi en cours...';
+        btnText.style.display = 'none';
+        btnLoading.style.display = 'inline-block';
+        submitBtn.disabled = true;
         
-        // Simuler l'envoi (remplacer par votre logique EmailJS)
-        setTimeout(() => {
-            hideLoadingState(submitBtn);
-            submitBtn.textContent = originalText;
-            
-            // Afficher un message de succès
+        // Récupérer les données du formulaire
+        const formData = {
+            name: document.getElementById('name').value,
+            email: document.getElementById('email').value,
+            phone: document.getElementById('phone').value,
+            service: document.getElementById('service').value,
+            message: document.getElementById('message').value
+        };
+        
+        // Google Analytics - Track form submission
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'form_submit', {
+                'event_category': 'engagement',
+                'event_label': 'contact_form',
+                'service_type': formData.service
+            });
+        }
+        
+        // Log des données pour débogage
+        console.log('📧 Envoi EmailJS avec les données:', {
+            service_id: 'service_lb38ewo',
+            template_id: 'template_2af96ws',
+            user_id: 'ZJMuCYNkzxGhqore6',
+            data: {
+                from_name: formData.name,
+                from_email: formData.email,
+                from_phone: formData.phone,
+                service_type: formData.service,
+                message: formData.message,
+                to_email: 'klyonme@gmail.com' // Email de destination
+            }
+        });
+        
+        // Envoyer l'email via EmailJS
+        emailjs.send('service_lb38ewo', 'template_2af96ws', {
+            from_name: formData.name,
+            from_email: formData.email,
+            from_phone: formData.phone,
+            service_type: formData.service,
+            message: formData.message,
+            to_email: 'klyonme@gmail.com'
+        })
+        .then(function(response) {
+            console.log('SUCCESS!', response.status, response.text);
             showNotification('Message envoyé avec succès !', 'success');
-        }, 2000);
+            contactForm.reset();
+            
+            // Google Analytics - Track successful submission
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'form_success', {
+                    'event_category': 'engagement',
+                    'event_label': 'contact_form'
+                });
+            }
+        })
+        .catch(function(error) {
+            console.log('FAILED...', error);
+            showNotification('Erreur lors de l\'envoi. Veuillez réessayer.', 'error');
+            
+            // Google Analytics - Track failed submission
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'form_error', {
+                    'event_category': 'engagement',
+                    'event_label': 'contact_form'
+                });
+            }
+        })
+        .finally(function() {
+            // Réinitialiser l'état du bouton
+            btnText.style.display = 'inline-block';
+            btnLoading.style.display = 'none';
+            submitBtn.disabled = false;
+        });
     });
 }
 
