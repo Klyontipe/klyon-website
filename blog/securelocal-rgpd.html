@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SecureLocal RGPD : Infrastructure locale sécurisée - Klyon</title>
+    <meta name="description" content="Guide technique complet pour créer une infrastructure locale RGPD-compliant avec Docker, reverse proxy et monitoring.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="../minilogo.jpg">
+    
+    <link rel="stylesheet" href="../styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        .blog-article {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            line-height: 1.8;
+        }
+        
+        .blog-article h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .blog-article .meta {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--border-color);
+            color: var(--text-secondary);
+        }
+        
+        .blog-article .meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .back-link:hover {
+            color: var(--accent-color);
+            transform: translateX(-5px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="../index.html">
+                    <img src="../logo.jpg" alt="Klyon Logo" class="logo-img">
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="../index.html#accueil" class="nav-link">Accueil</a>
+                </li>
+                <li class="nav-item">
+                    <a href="../index.html#services" class="nav-link">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a href="../index.html#competences" class="nav-link">Compétences</a>
+                </li>
+                <li class="nav-item">
+                    <a href="../index.html#apropos" class="nav-link">À propos</a>
+                </li>
+                <li class="nav-item">
+                    <a href="../index.html#projets" class="nav-link">Projets</a>
+                </li>
+                <li class="nav-item">
+                    <a href="../index.html#blog" class="nav-link">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a href="../index.html#contact" class="nav-link">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="blog-article">
+        <a href="../index.html#blog" class="back-link">
+            <i class="fas fa-arrow-left"></i> Retour au blog
+        </a>
+        
+        <h1>SecureLocal RGPD : Infrastructure locale sécurisée</h1>
+        
+        <div class="meta">
+            <span><i class="fas fa-calendar"></i> 15 Septembre 2024</span>
+            <span><i class="fas fa-clock"></i> 8 min de lecture</span>
+            <span><i class="fas fa-tag"></i> Infrastructure</span>
+        </div>
+        
+        <p>Comment j'ai créé une infrastructure locale complète et RGPD-compliant pour une entreprise du secteur médical. Docker, reverse proxy, monitoring et sécurité renforcée.</p>
+        
+        <h2>Le défi : Conformité RGPD locale</h2>
+        
+        <p><strong>Client :</strong> Cabinet médical (Marseille)</p>
+        <p><strong>Problème :</strong> Données patients sensibles, obligation de conformité RGPD</p>
+        <p><strong>Contrainte :</strong> Infrastructure 100% locale, aucun cloud externe</p>
+        
+        <h2>Architecture de la solution</h2>
+        
+        <p>L'infrastructure SecureLocal se compose de plusieurs composants :</p>
+        
+        <ul>
+            <li><strong>Reverse Proxy</strong> : Nginx avec SSL/TLS</li>
+            <li><strong>Applications</strong> : Docker containers</li>
+            <li><strong>Base de données</strong> : PostgreSQL chiffrée</li>
+            <li><strong>Monitoring</strong> : Prometheus + Grafana</li>
+            <li><strong>Sauvegarde</strong> : Scripts automatisés</li>
+        </ul>
+        
+        <!-- Paywall Overlay -->
+        <div id="paywall-overlay" class="paywall-overlay">
+            <div class="paywall-content">
+                <div class="paywall-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>Article Premium</h3>
+                <p>Cet article contient des configurations Docker complètes, des scripts de sécurité et des techniques de monitoring avancées.</p>
+                
+                <div class="paywall-benefits">
+                    <h4>Ce que vous découvrirez :</h4>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Configuration Docker Compose complète</li>
+                        <li><i class="fas fa-check"></i> Scripts de sécurité et chiffrement</li>
+                        <li><i class="fas fa-check"></i> Monitoring avec Prometheus/Grafana</li>
+                        <li><i class="fas fa-check"></i> Sauvegarde automatisée</li>
+                        <li><i class="fas fa-check"></i> Conformité RGPD technique</li>
+                        <li><i class="fas fa-check"></i> Reverse proxy sécurisé</li>
+                    </ul>
+                </div>
+                
+                <div class="paywall-cta">
+                    <a href="../index.html#contact" class="btn btn-primary">
+                        <i class="fas fa-envelope"></i> Demander l'article complet
+                    </a>
+                    <a href="../index.html#competences" class="btn btn-secondary">
+                        <i class="fas fa-code"></i> Voir mes compétences
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Premium Content (Blurred) -->
+        <div id="premium-content" class="premium-content">
+        
+        <h2>1. Configuration Docker Compose</h2>
+        
+        <div class="code-block">
+            <pre><code>version: '3.8'
+
+services:
+  nginx:
+    image: nginx:alpine
+    container_name: securelocal-nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/ssl:/etc/nginx/ssl
+      - ./logs/nginx:/var/log/nginx
+    depends_on:
+      - app
+    restart: unless-stopped
+
+  app:
+    build: ./app
+    container_name: securelocal-app
+    environment:
+      - DATABASE_URL=postgresql://user:pass@postgres:5432/securelocal
+      - REDIS_URL=redis://redis:6379
+    volumes:
+      - ./app:/app
+      - ./data/uploads:/app/uploads
+    depends_on:
+      - postgres
+      - redis
+    restart: unless-stopped
+
+  postgres:
+    image: postgres:15-alpine
+    container_name: securelocal-postgres
+    environment:
+      - POSTGRES_DB=securelocal
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=secure_password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./postgres/init.sql:/docker-entrypoint-initdb.d/init.sql
+    restart: unless-stopped
+
+  redis:
+    image: redis:7-alpine
+    container_name: securelocal-redis
+    command: redis-server --requirepass secure_redis_password
+    volumes:
+      - redis_data:/data
+    restart: unless-stopped
+
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: securelocal-prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus_data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+    restart: unless-stopped
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: securelocal-grafana
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=secure_grafana_password
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./monitoring/grafana/dashboards:/etc/grafana/provisioning/dashboards
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+  redis_data:
+  prometheus_data:
+  grafana_data:</code></pre>
+        </div>
+        
+        <h2>2. Configuration Nginx sécurisé</h2>
+        
+        <div class="code-block">
+            <pre><code># nginx/nginx.conf
+events {
+    worker_connections 1024;
+}
+
+http {
+    include       /etc/nginx/mime.types;
+    default_type  application/octet-stream;
+    
+    # Logging
+    log_format main '$remote_addr - $remote_user [$time_local] "$request" '
+                    '$status $body_bytes_sent "$http_referer" '
+                    '"$http_user_agent" "$http_x_forwarded_for"';
+    
+    access_log /var/log/nginx/access.log main;
+    error_log /var/log/nginx/error.log;
+    
+    # Security headers
+    add_header X-Frame-Options DENY;
+    add_header X-Content-Type-Options nosniff;
+    add_header X-XSS-Protection "1; mode=block";
+    add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
+    add_header Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'";
+    
+    # Rate limiting
+    limit_req_zone $binary_remote_addr zone=api:10m rate=10r/s;
+    limit_req_zone $binary_remote_addr zone=login:10m rate=1r/s;
+    
+    # SSL Configuration
+    ssl_protocols TLSv1.2 TLSv1.3;
+    ssl_ciphers ECDHE-RSA-AES256-GCM-SHA512:DHE-RSA-AES256-GCM-SHA512:ECDHE-RSA-AES256-GCM-SHA384;
+    ssl_prefer_server_ciphers off;
+    ssl_session_cache shared:SSL:10m;
+    ssl_session_timeout 10m;
+    
+    # Upstream
+    upstream app {
+        server app:8000;
+    }
+    
+    # HTTP to HTTPS redirect
+    server {
+        listen 80;
+        server_name securelocal.local;
+        return 301 https://$server_name$request_uri;
+    }
+    
+    # HTTPS server
+    server {
+        listen 443 ssl http2;
+        server_name securelocal.local;
+        
+        ssl_certificate /etc/nginx/ssl/cert.pem;
+        ssl_certificate_key /etc/nginx/ssl/key.pem;
+        
+        # Security
+        limit_req zone=api burst=20 nodelay;
+        
+        location / {
+            proxy_pass http://app;
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;
+        }
+        
+        location /login {
+            limit_req zone=login burst=5 nodelay;
+            proxy_pass http://app;
+        }
+        
+        # Static files
+        location /static/ {
+            alias /app/static/;
+            expires 1y;
+            add_header Cache-Control "public, immutable";
+        }
+    }
+}</code></pre>
+        </div>
+        
+        <h2>3. Scripts de sécurité</h2>
+        
+        <div class="code-block">
+            <pre><code>#!/bin/bash
+# scripts/security-setup.sh
+
+# Configuration du pare-feu
+ufw --force enable
+ufw default deny incoming
+ufw default allow outgoing
+ufw allow ssh
+ufw allow 80/tcp
+ufw allow 443/tcp
+ufw allow 3000/tcp  # Grafana
+ufw allow 9090/tcp  # Prometheus
+
+# Configuration des logs
+echo "local0.*    /var/log/securelocal.log" >> /etc/rsyslog.conf
+systemctl restart rsyslog
+
+# Configuration de fail2ban
+cat > /etc/fail2ban/jail.local << EOF
+[DEFAULT]
+bantime = 3600
+findtime = 600
+maxretry = 3
+
+[sshd]
+enabled = true
+port = ssh
+logpath = /var/log/auth.log
+
+[nginx-http-auth]
+enabled = true
+port = http,https
+logpath = /var/log/nginx/error.log
+
+[nginx-limit-req]
+enabled = true
+port = http,https
+logpath = /var/log/nginx/error.log
+maxretry = 10
+EOF
+
+systemctl enable fail2ban
+systemctl start fail2ban
+
+# Configuration de l'audit
+auditctl -w /etc/passwd -p wa -k identity
+auditctl -w /etc/group -p wa -k identity
+auditctl -w /etc/shadow -p wa -k identity
+auditctl -w /var/log/securelocal.log -p wa -k securelocal
+
+echo "Configuration de sécurité terminée"</code></pre>
+        </div>
+        
+        <h2>4. Chiffrement des données</h2>
+        
+        <div class="code-block">
+            <pre><code># scripts/encrypt-data.sh
+#!/bin/bash
+
+# Génération des clés de chiffrement
+openssl rand -base64 32 > /etc/securelocal/encryption.key
+chmod 600 /etc/securelocal/encryption.key
+
+# Chiffrement des volumes Docker
+docker volume create securelocal_postgres_encrypted
+docker run --rm -v securelocal_postgres_encrypted:/data -v /etc/securelocal/encryption.key:/key \
+    alpine sh -c "apk add --no-cache cryptsetup && \
+    echo 'secure_password' | cryptsetup luksFormat /dev/loop0 && \
+    echo 'secure_password' | cryptsetup luksOpen /dev/loop0 encrypted_volume"
+
+# Script de chiffrement des sauvegardes
+encrypt_backup() {
+    local file=$1
+    local encrypted_file="${file}.enc"
+    
+    openssl enc -aes-256-cbc -salt -in "$file" -out "$encrypted_file" \
+        -pass file:/etc/securelocal/encryption.key
+    
+    rm "$file"
+    echo "Backup chiffré: $encrypted_file"
+}
+
+# Chiffrement automatique des exports de base de données
+export_db() {
+    local timestamp=$(date +%Y%m%d_%H%M%S)
+    local backup_file="/backups/securelocal_${timestamp}.sql"
+    
+    docker exec securelocal-postgres pg_dump -U user securelocal > "$backup_file"
+    encrypt_backup "$backup_file"
+}
+
+export_db</code></pre>
+        </div>
+        
+        <h2>5. Monitoring avec Prometheus</h2>
+        
+        <div class="code-block">
+            <pre><code># monitoring/prometheus.yml
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+rule_files:
+  - "alert_rules.yml"
+
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets:
+          - alertmanager:9093
+
+scrape_configs:
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+
+  - job_name: 'nginx'
+    static_configs:
+      - targets: ['nginx:9113']
+
+  - job_name: 'postgres'
+    static_configs:
+      - targets: ['postgres:9187']
+
+  - job_name: 'node'
+    static_configs:
+      - targets: ['node-exporter:9100']
+
+  - job_name: 'securelocal-app'
+    static_configs:
+      - targets: ['app:8000']
+    metrics_path: '/metrics'
+    scrape_interval: 30s</code></pre>
+        </div>
+        
+        <h2>6. Dashboard Grafana</h2>
+        
+        <div class="code-block">
+            <pre><code># monitoring/grafana/dashboards/securelocal.json
+{
+  "dashboard": {
+    "title": "SecureLocal Infrastructure",
+    "panels": [
+      {
+        "title": "CPU Usage",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "100 - (avg(irate(node_cpu_seconds_total{mode=\"idle\"}[5m])) * 100)",
+            "legendFormat": "CPU Usage %"
+          }
+        ]
+      },
+      {
+        "title": "Memory Usage",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "100 - ((node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes) * 100)",
+            "legendFormat": "Memory Usage %"
+          }
+        ]
+      },
+      {
+        "title": "Database Connections",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "pg_stat_database_numbackends",
+            "legendFormat": "Active Connections"
+          }
+        ]
+      },
+      {
+        "title": "HTTP Requests",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "rate(nginx_http_requests_total[5m])",
+            "legendFormat": "Requests/sec"
+          }
+        ]
+      }
+    ]
+  }
+}</code></pre>
+        </div>
+        
+        <h2>7. Scripts de sauvegarde automatisés</h2>
+        
+        <div class="code-block">
+            <pre><code>#!/bin/bash
+# scripts/backup.sh
+
+BACKUP_DIR="/backups"
+DATE=$(date +%Y%m%d_%H%M%S)
+RETENTION_DAYS=30
+
+# Création du répertoire de sauvegarde
+mkdir -p "$BACKUP_DIR"
+
+# Sauvegarde de la base de données
+echo "Sauvegarde de la base de données..."
+docker exec securelocal-postgres pg_dump -U user securelocal | gzip > "$BACKUP_DIR/postgres_${DATE}.sql.gz"
+
+# Sauvegarde des fichiers de l'application
+echo "Sauvegarde des fichiers de l'application..."
+tar -czf "$BACKUP_DIR/app_files_${DATE}.tar.gz" /app/uploads /app/static
+
+# Sauvegarde des configurations
+echo "Sauvegarde des configurations..."
+tar -czf "$BACKUP_DIR/config_${DATE}.tar.gz" /etc/nginx /etc/securelocal
+
+# Chiffrement des sauvegardes
+for file in "$BACKUP_DIR"/*_${DATE}.*; do
+    if [[ -f "$file" ]]; then
+        openssl enc -aes-256-cbc -salt -in "$file" -out "${file}.enc" \
+            -pass file:/etc/securelocal/encryption.key
+        rm "$file"
+    fi
+done
+
+# Nettoyage des anciennes sauvegardes
+find "$BACKUP_DIR" -name "*.enc" -mtime +$RETENTION_DAYS -delete
+
+# Envoi d'alerte en cas d'échec
+if [ $? -eq 0 ]; then
+    echo "Sauvegarde réussie: $DATE"
+else
+    echo "ERREUR: Échec de la sauvegarde" | mail -s "Alerte SecureLocal" admin@securelocal.local
+fi</code></pre>
+        </div>
+        
+        <h2>8. Conformité RGPD technique</h2>
+        
+        <div class="code-block">
+            <pre><code># scripts/rgpd-compliance.sh
+#!/bin/bash
+
+# Audit des accès aux données personnelles
+audit_data_access() {
+    echo "=== Audit des accès aux données personnelles ==="
+    
+    # Logs d'accès à la base de données
+    docker logs securelocal-postgres 2>&1 | grep -E "(SELECT|INSERT|UPDATE|DELETE)" | \
+        grep -E "(patient|client|user)" > /var/log/securelocal/data_access.log
+    
+    # Logs d'accès aux fichiers
+    find /app/uploads -type f -exec stat -c "%n %x %U %G" {} \; | \
+        grep -E "(patient|client)" >> /var/log/securelocal/data_access.log
+    
+    echo "Audit terminé. Voir /var/log/securelocal/data_access.log"
+}
+
+# Suppression des données personnelles (droit à l'oubli)
+delete_personal_data() {
+    local user_id=$1
+    
+    if [ -z "$user_id" ]; then
+        echo "Usage: delete_personal_data <user_id>"
+        return 1
+    fi
+    
+    echo "Suppression des données personnelles pour l'utilisateur: $user_id"
+    
+    # Suppression de la base de données
+    docker exec securelocal-postgres psql -U user -d securelocal -c \
+        "DELETE FROM patients WHERE id = $user_id;"
+    
+    # Suppression des fichiers
+    find /app/uploads -name "*${user_id}*" -delete
+    
+    # Log de la suppression
+    echo "$(date): Suppression des données pour l'utilisateur $user_id" >> /var/log/securelocal/deletions.log
+    
+    echo "Données supprimées avec succès"
+}
+
+# Export des données personnelles (droit à la portabilité)
+export_personal_data() {
+    local user_id=$1
+    local export_file="/exports/user_${user_id}_$(date +%Y%m%d).json"
+    
+    if [ -z "$user_id" ]; then
+        echo "Usage: export_personal_data <user_id>"
+        return 1
+    fi
+    
+    echo "Export des données personnelles pour l'utilisateur: $user_id"
+    
+    # Export JSON des données
+    docker exec securelocal-postgres psql -U user -d securelocal -t -c \
+        "SELECT json_agg(row_to_json(t)) FROM (SELECT * FROM patients WHERE id = $user_id) t;" > "$export_file"
+    
+    # Chiffrement de l'export
+    openssl enc -aes-256-cbc -salt -in "$export_file" -out "${export_file}.enc" \
+        -pass file:/etc/securelocal/encryption.key
+    
+    rm "$export_file"
+    echo "Export chiffré créé: ${export_file}.enc"
+}
+
+# Vérification de la conformité
+check_compliance() {
+    echo "=== Vérification de la conformité RGPD ==="
+    
+    # Vérification du chiffrement
+    if [ -f "/etc/securelocal/encryption.key" ]; then
+        echo "✓ Chiffrement des données configuré"
+    else
+        echo "✗ Chiffrement des données manquant"
+    fi
+    
+    # Vérification des logs
+    if [ -d "/var/log/securelocal" ]; then
+        echo "✓ Système de logs configuré"
+    else
+        echo "✗ Système de logs manquant"
+    fi
+    
+    # Vérification des sauvegardes
+    if [ -d "/backups" ] && [ "$(ls -A /backups)" ]; then
+        echo "✓ Système de sauvegarde opérationnel"
+    else
+        echo "✗ Système de sauvegarde manquant"
+    fi
+    
+    # Vérification du pare-feu
+    if ufw status | grep -q "Status: active"; then
+        echo "✓ Pare-feu actif"
+    else
+        echo "✗ Pare-feu inactif"
+    fi
+}
+
+# Exécution des vérifications
+check_compliance</code></pre>
+        </div>
+        
+        <h2>Résultats obtenus</h2>
+        
+        <ul>
+            <li>🔒 <strong>Conformité RGPD</strong> : Infrastructure 100% locale et sécurisée</li>
+            <li>📊 <strong>Monitoring complet</strong> : Surveillance en temps réel de tous les composants</li>
+            <li>💾 <strong>Sauvegardes chiffrées</strong> : Rétention de 30 jours avec chiffrement AES-256</li>
+            <li>🛡️ <strong>Sécurité renforcée</strong> : Pare-feu, fail2ban, audit logs</li>
+            <li>⚡ <strong>Performance optimisée</strong> : Reverse proxy avec cache et compression</li>
+        </ul>
+        
+        <h2>Points techniques importants</h2>
+        
+        <ol>
+            <li><strong>Chiffrement</strong> : Toutes les données sensibles sont chiffrées</li>
+            <li><strong>Audit</strong> : Traçabilité complète des accès aux données</li>
+            <li><strong>Isolation</strong> : Chaque service dans son propre container</li>
+            <li><strong>Monitoring</strong> : Alertes automatiques en cas de problème</li>
+            <li><strong>Conformité</strong> : Scripts pour respecter les droits RGPD</li>
+        </ol>
+        
+        <div class="cta-section">
+            <h3>🚀 Besoin d'une infrastructure sécurisée ?</h3>
+            <p>Chaque entreprise a ses besoins spécifiques en matière de sécurité et de conformité. Contactez-moi pour une solution sur-mesure.</p>
+            <a href="../index.html#contact" class="btn">Discuter de votre projet</a>
+        </div>
+        </div> <!-- End premium-content -->
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Klyon</h3>
+                    <p>Votre partenaire informatique dans le Sud de la France</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="../index.html#services">Support Informatique</a></li>
+                        <li><a href="../index.html#services">Développement Sur-Mesure</a></li>
+                        <li><a href="../index.html#services">Intelligence Artificielle</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="mailto:klyonme@gmail.com">klyonme@gmail.com</a></li>
+                        <li><a href="tel:+33766980342">07 66 98 03 42</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Klyon. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+    
+    <!-- Paywall Styles -->
+    <style>
+        .paywall-overlay {
+            position: relative;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+            color: white;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            animation: pulse 2s infinite;
+        }
+        
+        .paywall-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .paywall-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: bounce 2s infinite;
+        }
+        
+        .paywall-benefits {
+            background: rgba(255,255,255,0.1);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            text-align: left;
+        }
+        
+        .paywall-benefits ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .paywall-benefits li {
+            display: flex;
+            align-items: center;
+            margin: 0.8rem 0;
+            color: rgba(255,255,255,0.9);
+        }
+        
+        .paywall-benefits i {
+            color: #4ade80;
+            margin-right: 0.8rem;
+            font-size: 1.2rem;
+        }
+        
+        .paywall-cta {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+        
+        .btn-primary, .btn-secondary {
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .btn-primary {
+            background: white;
+            color: #667eea;
+        }
+        
+        .btn-secondary {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+        
+        .btn-primary:hover, .btn-secondary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        
+        .premium-content {
+            filter: blur(8px);
+            pointer-events: none;
+            user-select: none;
+            position: relative;
+        }
+        
+        .premium-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(102,126,234,0.1), rgba(118,75,162,0.1));
+            z-index: 1;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+        
+        @media (max-width: 768px) {
+            .paywall-cta {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn-primary, .btn-secondary {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+    
+    <!-- Paywall Protection Script -->
+    <script>
+        // Protection contre l'inspection
+        (function() {
+            'use strict';
+            
+            // Détection des DevTools
+            let devtools = {open: false, orientation: null};
+            const threshold = 160;
+            
+            setInterval(function() {
+                if (window.outerHeight - window.innerHeight > threshold || 
+                    window.outerWidth - window.innerWidth > threshold) {
+                    if (!devtools.open) {
+                        devtools.open = true;
+                        console.clear();
+                        console.log('%c🚫 Accès refusé', 'color: #ff0000; font-size: 20px; font-weight: bold;');
+                        console.log('%cLe contenu premium est protégé', 'color: #ff0000; font-size: 14px;');
+                        console.log('%cContactez-moi pour accéder à l\'article complet', 'color: #ff0000; font-size: 12px;');
+                    }
+                } else {
+                    devtools.open = false;
+                }
+            }, 500);
+            
+            // Blocage des interactions sur le contenu premium
+            const premiumContent = document.getElementById('premium-content');
+            if (premiumContent) {
+                // Bloquer la sélection
+                premiumContent.addEventListener('selectstart', function(e) {
+                    e.preventDefault();
+                    return false;
+                });
+                
+                // Bloquer le clic droit
+                premiumContent.addEventListener('contextmenu', function(e) {
+                    e.preventDefault();
+                    return false;
+                });
+                
+                // Bloquer les raccourcis clavier
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'F12' || 
+                        (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J')) ||
+                        (e.ctrlKey && e.key === 'U')) {
+                        e.preventDefault();
+                        console.log('%c🚫 Accès refusé - Contenu protégé', 'color: #ff0000; font-size: 16px; font-weight: bold;');
+                        return false;
+                    }
+                });
+                
+                // Bloquer la copie
+                premiumContent.addEventListener('copy', function(e) {
+                    e.preventDefault();
+                    return false;
+                });
+            }
+            
+            // Animation du paywall
+            const paywallOverlay = document.getElementById('paywall-overlay');
+            if (paywallOverlay) {
+                setInterval(function() {
+                    paywallOverlay.style.boxShadow = '0 20px 40px rgba(102,126,234,0.3)';
+                    setTimeout(function() {
+                        paywallOverlay.style.boxShadow = '0 20px 40px rgba(0,0,0,0.1)';
+                    }, 1000);
+                }, 3000);
+            }
+            
+            // Tracking des clics sur les boutons
+            document.addEventListener('click', function(e) {
+                if (e.target.closest('.paywall-cta a')) {
+                    // Google Analytics tracking (si disponible)
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'paywall_click', {
+                            'event_category': 'engagement',
+                            'event_label': 'securelocal_article'
+                        });
+                    }
+                }
+            });
+        })();
+    </script>
+</body>
+</html>

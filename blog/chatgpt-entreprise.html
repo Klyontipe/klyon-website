@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatGPT en entreprise : 5 cas d'usage concrets - Klyon</title>
+    <meta name="description" content="Découvrez comment intégrer ChatGPT dans votre entreprise avec 5 cas d'usage concrets basés sur mes expériences avec des entreprises marseillaises.">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="keywords" content="ChatGPT, entreprise, IA, automatisation, service client, Python, webhooks, intégration">
+    <meta name="author" content="Lorenzo Fortini - Klyon">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="ChatGPT en entreprise : 5 cas d'usage concrets">
+    <meta property="og:description" content="Guide pratique pour intégrer ChatGPT dans votre entreprise avec des exemples concrets.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://klyon.fr/blog/chatgpt-entreprise.html">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="../minilogo.jpg">
+    
+    <link rel="stylesheet" href="../styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css">
+    
+    <style>
+        .blog-article {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            line-height: 1.8;
+        }
+        
+        .blog-article h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .blog-article .meta {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--border-color);
+            color: var(--text-secondary);
+        }
+        
+        .blog-article .meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .blog-article h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin: 2rem 0 1rem 0;
+            padding-left: 1rem;
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .blog-article h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin: 1.5rem 0 0.8rem 0;
+        }
+        
+        .blog-article p {
+            margin-bottom: 1.2rem;
+            color: var(--text-secondary);
+        }
+        
+        .blog-article ul, .blog-article ol {
+            margin-bottom: 1.2rem;
+            padding-left: 2rem;
+        }
+        
+        .blog-article li {
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+        }
+        
+        .code-block {
+            background: var(--background-light);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            overflow-x: auto;
+        }
+        
+        .code-block pre {
+            margin: 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+        }
+        
+        .highlight-box {
+            background: rgba(37, 99, 235, 0.1);
+            border-left: 4px solid var(--primary-color);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .back-link:hover {
+            color: var(--accent-color);
+            transform: translateX(-5px);
+        }
+        
+        .cta-section {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 3rem 0;
+            text-align: center;
+        }
+        
+        .cta-section h3 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+        
+        .cta-section p {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 1.5rem;
+        }
+        
+        .cta-section .btn {
+            background: white;
+            color: var(--primary-color);
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .cta-section .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        
+        /* PAYWALL STYLES */
+        .paywall-overlay {
+            position: relative;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.95) 0%, rgba(6, 182, 212, 0.95) 100%);
+            border-radius: 15px;
+            padding: 3rem;
+            margin: 2rem 0;
+            color: white;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .paywall-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .paywall-header h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: white;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .paywall-header p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .paywall-benefits {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .paywall-benefits h4 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: white;
+        }
+        
+        .paywall-benefits ul {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+        }
+        
+        .paywall-benefits li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1rem;
+        }
+        
+        .paywall-benefits li:last-child {
+            border-bottom: none;
+        }
+        
+        .paywall-cta {
+            margin: 2rem 0;
+        }
+        
+        .paywall-cta h4 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: white;
+        }
+        
+        .paywall-cta p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .paywall-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .paywall-buttons .btn {
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .paywall-buttons .btn-primary {
+            background: white;
+            color: var(--primary-color);
+            border: 2px solid white;
+        }
+        
+        .paywall-buttons .btn-primary:hover {
+            background: transparent;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        
+        .paywall-buttons .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+        }
+        
+        .paywall-buttons .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        
+        .paywall-note {
+            margin-top: 2rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .paywall-note small {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+        }
+        
+        .premium-content {
+            filter: blur(8px);
+            pointer-events: none;
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .premium-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(6, 182, 212, 0.1) 100%);
+            z-index: 1;
+        }
+        
+        /* Protection anti-inspection */
+        .premium-content * {
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        
+        /* Animation de pulsation pour attirer l'attention */
+        @keyframes paywall-pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
+        
+        .paywall-overlay {
+            animation: paywall-pulse 3s infinite;
+        }
+        
+        /* Responsive pour le paywall */
+        @media (max-width: 768px) {
+            .paywall-overlay {
+                padding: 2rem 1rem;
+                margin: 1rem 0;
+            }
+            
+            .paywall-header h3 {
+                font-size: 1.6rem;
+            }
+            
+            .paywall-benefits {
+                padding: 1.5rem;
+            }
+            
+            .paywall-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .paywall-buttons .btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="../index.html">
+                    <img src="../logo.jpg" alt="Klyon Logo" class="logo-img">
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="../index.html#accueil" class="nav-link">Accueil</a>
+                </li>
+                <li class="nav-item">
+                    <a href="../index.html#services" class="nav-link">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a href="../index.html#competences" class="nav-link">Compétences</a>
+                </li>
+                <li class="nav-item">
+                    <a href="../index.html#apropos" class="nav-link">À propos</a>
+                </li>
+                <li class="nav-item">
+                    <a href="../index.html#projets" class="nav-link">Projets</a>
+                </li>
+                <li class="nav-item">
+                    <a href="../index.html#blog" class="nav-link">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a href="../index.html#contact" class="nav-link">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="blog-article">
+        <a href="../index.html#blog" class="back-link">
+            <i class="fas fa-arrow-left"></i> Retour au blog
+        </a>
+        
+        <h1>ChatGPT en entreprise : 5 cas d'usage concrets</h1>
+        
+        <div class="meta">
+            <span><i class="fas fa-calendar"></i> 18 Septembre 2024</span>
+            <span><i class="fas fa-clock"></i> 8 min de lecture</span>
+            <span><i class="fas fa-tag"></i> IA & Automatisation</span>
+        </div>
+        
+        <p>Depuis plusieurs mois, j'accompagne des entreprises marseillaises dans l'intégration de ChatGPT et autres modèles d'IA. Voici 5 cas d'usage concrets que j'ai mis en place avec des résultats mesurables.</p>
+        
+        <h2>1. Service client automatisé avec réponses personnalisées</h2>
+        
+        <p><strong>Client :</strong> E-commerce de vêtements (Marseille)</p>
+        <p><strong>Problème :</strong> 200+ emails clients par jour, temps de réponse de 24-48h</p>
+        <p><strong>Solution :</strong> Intégration ChatGPT via API avec base de données produits</p>
+        
+        <div class="code-block">
+            <pre><code># Exemple d'intégration ChatGPT pour service client
+import openai
+import json
+
+def generate_customer_response(customer_message, product_data):
+    prompt = f"""
+    Vous êtes un assistant client pour une boutique de vêtements.
+    Base de données produits: {json.dumps(product_data)}
+    
+    Message client: {customer_message}
+    
+    Répondez de manière professionnelle et proposez des solutions.
+    """
+    
+    response = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo",
+        messages=[{"role": "user", "content": prompt}],
+        max_tokens=200
+    )
+    
+    return response.choices[0].message.content</code></pre>
+        </div>
+        
+        <p><strong>Résultats :</strong></p>
+        <ul>
+            <li>⚡ Temps de réponse réduit à 2-4h</li>
+            <li>📈 85% des questions résolues automatiquement</li>
+            <li>😊 Satisfaction client améliorée de 40%</li>
+        </ul>
+        
+        <h2>2. Génération automatique de descriptions produits</h2>
+        
+        <p><strong>Client :</strong> Marketplace B2B (Aix-en-Provence)</p>
+        <p><strong>Problème :</strong> 5000+ produits à décrire, coût de 15€ par description</p>
+        <p><strong>Solution :</strong> Pipeline automatisé avec ChatGPT + validation humaine</p>
+        
+        <div class="highlight-box">
+            <strong>💡 Astuce technique :</strong> J'utilise des prompts structurés avec des templates pour garantir la cohérence des descriptions générées.
+        </div>
+        
+        <p><strong>Résultats :</strong></p>
+        <ul>
+            <li>💰 Économie de 60 000€ sur 6 mois</li>
+            <li>⏱️ 95% de temps gagné sur la rédaction</li>
+            <li>📊 Qualité équivalente aux descriptions manuelles</li>
+        </ul>
+        
+        <!-- PAYWALL START -->
+        <div id="paywall-overlay" class="paywall-overlay">
+            <div class="paywall-content">
+                <div class="paywall-header">
+                    <h3>🔒 Article Premium</h3>
+                    <p>Cet article contient des informations exclusives et du code source détaillé</p>
+                </div>
+                
+                <div class="paywall-benefits">
+                    <h4>Ce que vous découvrirez dans la suite :</h4>
+                    <ul>
+                        <li>✅ <strong>3 cas d'usage supplémentaires</strong> avec code complet</li>
+                        <li>✅ <strong>Méthodologie en 4 étapes</strong> pour démarrer</li>
+                        <li>✅ <strong>Calcul ROI détaillé</strong> avec exemples concrets</li>
+                        <li>✅ <strong>Points d'attention</strong> et bonnes pratiques</li>
+                        <li>✅ <strong>Template de prompts</strong> prêts à utiliser</li>
+                    </ul>
+                </div>
+                
+                <div class="paywall-cta">
+                    <h4>💡 Intéressé par la suite ?</h4>
+                    <p>Contactez-moi pour recevoir l'article complet gratuitement et discuter de votre projet d'automatisation.</p>
+                    
+                    <div class="paywall-buttons">
+                        <a href="../index.html#contact" class="btn btn-primary">
+                            <i class="fas fa-envelope"></i> Demander l'article complet
+                        </a>
+                        <a href="../index.html#competences" class="btn btn-secondary">
+                            <i class="fas fa-code"></i> Voir mes compétences
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="paywall-note">
+                    <small>📧 Réponse sous 24h • Article gratuit • Aucun engagement</small>
+                </div>
+            </div>
+        </div>
+        
+        <div id="premium-content" class="premium-content">
+            <h2>3. Analyse de sentiment des avis clients</h2>
+            
+            <p><strong>Client :</strong> Restaurant gastronomique (Cassis)</p>
+            <p><strong>Problème :</strong> Impossible de traiter 100+ avis Google/TripAdvisor par semaine</p>
+            <p><strong>Solution :</strong> Script Python + ChatGPT pour analyse automatique</p>
+            
+            <div class="code-block">
+                <pre><code># Analyse de sentiment avec ChatGPT
+def analyze_review_sentiment(review_text):
+    prompt = f"""
+    Analysez le sentiment de cet avis client sur un restaurant:
+    "{review_text}"
+    
+    Répondez au format JSON:
+    {{
+        "sentiment": "positif/neutre/négatif",
+        "score": 1-10,
+        "points_cles": ["point1", "point2"],
+        "action_recommandee": "suggestion"
+    }}
+    """
+    
+    response = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo",
+        messages=[{"role": "user", "content": prompt}],
+        temperature=0.3
+    )
+    
+    return json.loads(response.choices[0].message.content)</code></pre>
+            </div>
+            
+            <p><strong>Résultats :</strong></p>
+            <ul>
+                <li>📊 Tableau de bord temps réel des avis</li>
+                <li>🎯 Identification rapide des problèmes</li>
+                <li>📈 Amélioration de la note Google de 4.2 à 4.6</li>
+            </ul>
+            
+            <h2>4. Chatbot interne pour la documentation</h2>
+            
+            <p><strong>Client :</strong> Cabinet comptable (Marseille 8ème)</p>
+            <p><strong>Problème :</strong> 50+ procédures internes, formation des nouveaux salariés difficile</p>
+            <p><strong>Solution :</strong> Chatbot connecté à la base documentaire</p>
+            
+            <p>Le chatbot permet aux employés de poser des questions en langage naturel sur les procédures comptables, la fiscalité, etc.</p>
+            
+            <p><strong>Résultats :</strong></p>
+            <ul>
+                <li>📚 80% de réduction des questions répétitives</li>
+                <li>⏰ Formation des nouveaux réduite de 2 semaines à 3 jours</li>
+                <li>🎯 Réponses précises dans 90% des cas</li>
+            </ul>
+            
+            <h2>5. Génération de contenu marketing</h2>
+            
+            <p><strong>Client :</strong> Agence immobilière (La Ciotat)</p>
+            <p><strong>Problème :</strong> Création de 20+ annonces immobilières par semaine</p>
+            <p><strong>Solution :</strong> Template automatisé avec ChatGPT</p>
+            
+            <div class="code-block">
+                <pre><code># Génération d'annonces immobilières
+def generate_property_ad(property_data):
+    prompt = f"""
+    Créez une annonce immobilière attractive pour:
+    - Type: {property_data['type']}
+    - Surface: {property_data['surface']}m²
+    - Prix: {property_data['price']}€
+    - Localisation: {property_data['location']}
+    - Caractéristiques: {property_data['features']}
+    
+    Style: Professionnel, attractif, 150 mots max
+    """
+    
+    response = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo",
+        messages=[{"role": "user", "content": prompt}],
+        temperature=0.7
+    )
+    
+    return response.choices[0].message.content</code></pre>
+            </div>
+            
+            <p><strong>Résultats :</strong></p>
+            <ul>
+                <li>✍️ 90% de temps gagné sur la rédaction</li>
+                <li>📈 Qualité des annonces améliorée</li>
+                <li>🎯 Personnalisation selon le type de bien</li>
+            </ul>
+            
+            <h2>Comment démarrer avec ChatGPT en entreprise ?</h2>
+            
+            <p>Voici ma méthodologie en 4 étapes :</p>
+            
+            <ol>
+                <li><strong>Audit des processus :</strong> Identifier les tâches répétitives</li>
+                <li><strong>Prototypage rapide :</strong> Tester sur un cas d'usage simple</li>
+                <li><strong>Intégration technique :</strong> API, webhooks, base de données</li>
+                <li><strong>Formation des équipes :</strong> Accompagnement au changement</li>
+            </ol>
+            
+            <div class="highlight-box">
+                <strong>⚠️ Points d'attention :</strong> Toujours valider les réponses générées, surtout pour des domaines sensibles comme la comptabilité ou la médecine.
+            </div>
+            
+            <h2>Coûts et ROI</h2>
+            
+            <p>L'investissement typique pour une intégration ChatGPT :</p>
+            <ul>
+                <li>💻 Développement : 2 000€ - 5 000€</li>
+                <li>🔧 Maintenance : 200€/mois</li>
+                <li>⚡ Consommation API : 50€ - 200€/mois</li>
+            </ul>
+            
+            <p>Le ROI est généralement atteint en 3-6 mois grâce aux gains de productivité.</p>
+        </div>
+        <!-- PAYWALL END -->
+        
+        <div class="cta-section">
+            <h3>🚀 Prêt à automatiser votre entreprise ?</h3>
+            <p>Chaque entreprise a ses spécificités. Contactez-moi pour une analyse personnalisée de vos processus et identifier les opportunités d'automatisation avec l'IA.</p>
+            <a href="../index.html#contact" class="btn">Discuter de votre projet</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Klyon</h3>
+                    <p>Votre partenaire informatique dans le Sud de la France</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="../index.html#services">Support Informatique</a></li>
+                        <li><a href="../index.html#services">Développement Sur-Mesure</a></li>
+                        <li><a href="../index.html#services">Intelligence Artificielle</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="mailto:klyonme@gmail.com">klyonme@gmail.com</a></li>
+                        <li><a href="tel:+33766980342">07 66 98 03 42</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Klyon. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+    
+    <script>
+        // Protection anti-inspection et paywall
+        (function() {
+            'use strict';
+            
+            // Détection de l'ouverture des outils de développement
+            let devtools = {
+                open: false,
+                orientation: null
+            };
+            
+            const threshold = 160;
+            
+            setInterval(function() {
+                if (window.outerHeight - window.innerHeight > threshold || 
+                    window.outerWidth - window.innerWidth > threshold) {
+                    if (!devtools.open) {
+                        devtools.open = true;
+                        console.clear();
+                        console.log('%c🔒 Accès refusé', 'color: #ff0000; font-size: 50px; font-weight: bold;');
+                        console.log('%cCet article contient du contenu premium protégé.', 'color: #ff0000; font-size: 20px;');
+                        console.log('%cContactez l\'auteur pour accéder au contenu complet.', 'color: #ff0000; font-size: 16px;');
+                        
+                        // Rediriger vers le paywall
+                        document.getElementById('paywall-overlay').scrollIntoView({ behavior: 'smooth' });
+                    }
+                } else {
+                    devtools.open = false;
+                }
+            }, 500);
+            
+            // Protection contre la sélection de texte
+            document.addEventListener('selectstart', function(e) {
+                if (e.target.closest('.premium-content')) {
+                    e.preventDefault();
+                    return false;
+                }
+            });
+            
+            // Protection contre le clic droit
+            document.addEventListener('contextmenu', function(e) {
+                if (e.target.closest('.premium-content')) {
+                    e.preventDefault();
+                    return false;
+                }
+            });
+            
+            // Protection contre les raccourcis clavier
+            document.addEventListener('keydown', function(e) {
+                // F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U
+                if (e.keyCode === 123 || 
+                    (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74)) ||
+                    (e.ctrlKey && e.keyCode === 85)) {
+                    e.preventDefault();
+                    console.clear();
+                    console.log('%c🔒 Accès refusé', 'color: #ff0000; font-size: 50px; font-weight: bold;');
+                    return false;
+                }
+            });
+            
+            // Protection contre la copie
+            document.addEventListener('copy', function(e) {
+                if (e.target.closest('.premium-content')) {
+                    e.preventDefault();
+                    e.clipboardData.setData('text/plain', 'Contenu premium - Contactez l\'auteur pour accéder au contenu complet.');
+                    return false;
+                }
+            });
+            
+            // Détection de la réduction de la fenêtre (tentative de contournement)
+            let windowHeight = window.innerHeight;
+            let windowWidth = window.innerWidth;
+            
+            setInterval(function() {
+                if (window.innerHeight < windowHeight * 0.8 || window.innerWidth < windowWidth * 0.8) {
+                    console.clear();
+                    console.log('%c🔒 Détection de manipulation', 'color: #ff0000; font-size: 30px; font-weight: bold;');
+                }
+            }, 1000);
+            
+            // Animation du paywall
+            const paywallOverlay = document.getElementById('paywall-overlay');
+            if (paywallOverlay) {
+                // Effet de brillance
+                setInterval(function() {
+                    paywallOverlay.style.boxShadow = '0 20px 40px rgba(0,0,0,0.3), 0 0 20px rgba(37, 99, 235, 0.5)';
+                    setTimeout(function() {
+                        paywallOverlay.style.boxShadow = '0 20px 40px rgba(0,0,0,0.3)';
+                    }, 1000);
+                }, 3000);
+            }
+            
+            // Tracking des interactions avec le paywall
+            const paywallButtons = document.querySelectorAll('.paywall-buttons .btn');
+            paywallButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Google Analytics tracking si disponible
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'paywall_click', {
+                            'event_category': 'engagement',
+                            'event_label': this.textContent.trim()
+                        });
+                    }
+                });
+            });
+            
+            // Message de bienvenue dans la console
+            console.log('%c🚀 Bienvenue sur le site de Klyon !', 'color: #2563eb; font-size: 20px; font-weight: bold;');
+            console.log('%c💡 Intéressé par l\'automatisation ? Contactez-moi !', 'color: #06b6d4; font-size: 16px;');
+            
+        })();
+    </script>
+</body>
+</html>

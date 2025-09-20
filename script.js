@@ -272,6 +272,11 @@ console.log('- Email de destination: klyonme@gmail.com');
 // Fonction de test EmailJS (à appeler depuis la console)
 window.testEmailJS = function() {
     console.log('🧪 Test EmailJS en cours...');
+    console.log('📋 Configuration actuelle:');
+    console.log('- Service ID: service_lb38ewo');
+    console.log('- Template ID: template_2af96ws');
+    console.log('- User ID: ZJMuCYNkzxGhqore6');
+    
     emailjs.send('service_lb38ewo', 'template_2af96ws', {
         from_name: 'Test Klyon',
         from_email: 'test@klyon.fr',
@@ -282,11 +287,37 @@ window.testEmailJS = function() {
     })
     .then(function(response) {
         console.log('✅ Test EmailJS réussi!', response);
-        alert('Test EmailJS réussi! Vérifiez votre boîte mail.');
+        console.log('📧 Status:', response.status);
+        console.log('📧 Text:', response.text);
+        alert('Test EmailJS réussi! Vérifiez votre boîte mail (et le dossier spam).');
     })
     .catch(function(error) {
         console.log('❌ Test EmailJS échoué:', error);
+        console.log('🔍 Détails de l\'erreur:', {
+            status: error.status,
+            text: error.text,
+            message: error.message
+        });
         alert('Test EmailJS échoué. Vérifiez la console pour plus de détails.');
+    });
+};
+
+// Fonction de test alternative avec configuration différente
+window.testEmailJSAlternative = function() {
+    console.log('🧪 Test EmailJS alternatif en cours...');
+    
+    // Test avec un template plus simple
+    emailjs.send('service_lb38ewo', 'template_2af96ws', {
+        from_name: 'Test Simple',
+        message: 'Test simple du formulaire'
+    })
+    .then(function(response) {
+        console.log('✅ Test alternatif réussi!', response);
+        alert('Test alternatif réussi!');
+    })
+    .catch(function(error) {
+        console.log('❌ Test alternatif échoué:', error);
+        alert('Test alternatif échoué: ' + error.text);
     });
 };
 
@@ -411,10 +442,218 @@ const animationObserver = new IntersectionObserver((entries) => {
 
 // Observer les éléments pour les animations
 document.addEventListener('DOMContentLoaded', () => {
-    const animatedElements = document.querySelectorAll('.service-card, .testimonial-card, .project-card, .hero-content, .hero-visual');
+    const animatedElements = document.querySelectorAll('.service-card, .testimonial-card, .project-card, .hero-content, .hero-visual, .competence-category, .competence-item, .positioning-item');
     animatedElements.forEach(element => {
         animationObserver.observe(element);
     });
+});
+
+// Animations spéciales pour la section compétences
+const competenceObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const element = entry.target;
+            
+            if (element.classList.contains('competence-category')) {
+                element.style.opacity = '1';
+                element.style.transform = 'translateY(0)';
+                
+                // Animation en cascade pour les items de compétences
+                const competenceItems = element.querySelectorAll('.competence-item');
+                competenceItems.forEach((item, index) => {
+                    setTimeout(() => {
+                        item.style.opacity = '1';
+                        item.style.transform = 'translateY(0)';
+                        item.classList.add('animate-competence-item');
+                    }, index * 100);
+                });
+            }
+            
+            if (element.classList.contains('positioning-item')) {
+                element.style.opacity = '1';
+                element.style.transform = 'translateY(0) scale(1)';
+                element.classList.add('animate-positioning-item');
+            }
+        }
+    });
+}, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+});
+
+// Observer les éléments de compétences
+document.addEventListener('DOMContentLoaded', () => {
+    const competenceCategories = document.querySelectorAll('.competence-category');
+    const positioningItems = document.querySelectorAll('.positioning-item');
+    
+    competenceCategories.forEach(category => {
+        // Initialiser l'état des catégories
+        category.style.opacity = '0';
+        category.style.transform = 'translateY(30px)';
+        category.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+        
+        // Initialiser l'état des items
+        const items = category.querySelectorAll('.competence-item');
+        items.forEach(item => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(20px)';
+            item.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+        });
+        
+        competenceObserver.observe(category);
+    });
+    
+    positioningItems.forEach(item => {
+        item.style.opacity = '0';
+        item.style.transform = 'translateY(30px) scale(0.95)';
+        item.style.transition = 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+        competenceObserver.observe(item);
+    });
+});
+
+// Effets de survol avancés pour les compétences
+document.addEventListener('DOMContentLoaded', () => {
+    const competenceItems = document.querySelectorAll('.competence-item');
+    
+    competenceItems.forEach(item => {
+        item.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-8px) scale(1.02)';
+            this.style.boxShadow = '0 15px 35px rgba(37, 99, 235, 0.15)';
+            
+            // Animation des icônes
+            const icon = this.querySelector('.competence-icon');
+            if (icon) {
+                icon.style.transform = 'scale(1.2) rotate(-10deg)';
+            }
+            
+            // Animation des tech-tags
+            const techTags = this.querySelectorAll('.tech-tag');
+            techTags.forEach((tag, index) => {
+                setTimeout(() => {
+                    tag.style.transform = 'translateY(-3px) scale(1.05)';
+                }, index * 50);
+            });
+        });
+        
+        item.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0) scale(1)';
+            this.style.boxShadow = '';
+            
+            const icon = this.querySelector('.competence-icon');
+            if (icon) {
+                icon.style.transform = 'scale(1) rotate(0deg)';
+            }
+            
+            const techTags = this.querySelectorAll('.tech-tag');
+            techTags.forEach(tag => {
+                tag.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    });
+    
+    // Effets spéciaux pour les catégories
+    const competenceCategories = document.querySelectorAll('.competence-category');
+    
+    competenceCategories.forEach(category => {
+        category.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-12px)';
+            
+            // Animation de l'icône de catégorie
+            const categoryIcon = this.querySelector('.category-icon');
+            if (categoryIcon) {
+                categoryIcon.style.transform = 'scale(1.15) rotate(8deg)';
+                categoryIcon.style.boxShadow = '0 10px 25px rgba(37, 99, 235, 0.3)';
+            }
+        });
+        
+        category.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0)';
+            
+            const categoryIcon = this.querySelector('.category-icon');
+            if (categoryIcon) {
+                categoryIcon.style.transform = 'scale(1) rotate(0deg)';
+                categoryIcon.style.boxShadow = '';
+            }
+        });
+    });
+});
+
+// Animation de compteur pour les tech-tags
+function animateTechTags() {
+    const techTags = document.querySelectorAll('.tech-tag');
+    
+    techTags.forEach((tag, index) => {
+        tag.style.opacity = '0';
+        tag.style.transform = 'translateY(20px) scale(0.8)';
+        
+        setTimeout(() => {
+            tag.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+            tag.style.opacity = '1';
+            tag.style.transform = 'translateY(0) scale(1)';
+        }, index * 100);
+    });
+}
+
+// Animation de pulsation pour les icônes importantes
+function addPulseAnimation() {
+    const importantIcons = document.querySelectorAll('.competence-icon');
+    
+    importantIcons.forEach((icon, index) => {
+        if (index % 3 === 0) { // Tous les 3 éléments
+            icon.style.animation = 'pulse 2s infinite';
+            icon.style.animationDelay = `${index * 0.5}s`;
+        }
+    });
+}
+
+// Effet de parallaxe pour la section compétences
+window.addEventListener('scroll', () => {
+    const scrolled = window.pageYOffset;
+    const competencesSection = document.querySelector('.competences');
+    
+    if (competencesSection) {
+        const rect = competencesSection.getBoundingClientRect();
+        const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+        
+        if (isVisible) {
+            const competenceCategories = competencesSection.querySelectorAll('.competence-category');
+            competenceCategories.forEach((category, index) => {
+                const speed = 0.1 + (index * 0.05);
+                category.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        }
+    }
+});
+
+// Animation de typewriter pour le titre de positionnement
+function typewriterEffect(element, text, speed = 100) {
+    let i = 0;
+    element.innerHTML = '';
+    
+    function type() {
+        if (i < text.length) {
+            element.innerHTML += text.charAt(i);
+            i++;
+            setTimeout(type, speed);
+        }
+    }
+    
+    type();
+}
+
+// Initialiser les animations au chargement
+document.addEventListener('DOMContentLoaded', () => {
+    // Délai pour laisser le temps au CSS de se charger
+    setTimeout(() => {
+        addPulseAnimation();
+        
+        // Animation de typewriter pour le titre de positionnement
+        const positioningTitle = document.querySelector('.positioning-content h3');
+        if (positioningTitle) {
+            const originalText = positioningTitle.textContent;
+            typewriterEffect(positioningTitle, originalText, 80);
+        }
+    }, 1000);
 });
 
 // Formulaire de contact avec EmailJS

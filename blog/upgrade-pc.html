@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upgrade PC : HDD vers SSD - Guide technique - Klyon</title>
+    <meta name="description" content="Guide technique complet pour migrer d'un disque dur vers SSD. Clonage, optimisation et amélioration des performances.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="../minilogo.jpg">
+    
+    <link rel="stylesheet" href="../styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        .blog-article {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            line-height: 1.8;
+        }
+        
+        .blog-article h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .blog-article .meta {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--border-color);
+            color: var(--text-secondary);
+        }
+        
+        .blog-article .meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .back-link:hover {
+            color: var(--accent-color);
+            transform: translateX(-5px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="../index.html">
+                    <img src="../logo.jpg" alt="Klyon Logo" class="logo-img">
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="../index.html#accueil" class="nav-link">Accueil</a>
+                </li>
+                <li class="nav-item">
+                    <a href="../index.html#services" class="nav-link">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a href="../index.html#competences" class="nav-link">Compétences</a>
+                </li>
+                <li class="nav-item">
+                    <a href="../index.html#apropos" class="nav-link">À propos</a>
+                </li>
+                <li class="nav-item">
+                    <a href="../index.html#projets" class="nav-link">Projets</a>
+                </li>
+                <li class="nav-item">
+                    <a href="../index.html#blog" class="nav-link">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a href="../index.html#contact" class="nav-link">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="blog-article">
+        <a href="../index.html#blog" class="back-link">
+            <i class="fas fa-arrow-left"></i> Retour au blog
+        </a>
+        
+        <h1>Upgrade PC : HDD vers SSD</h1>
+        
+        <div class="meta">
+            <span><i class="fas fa-calendar"></i> 5 Septembre 2024</span>
+            <span><i class="fas fa-clock"></i> 10 min de lecture</span>
+            <span><i class="fas fa-tag"></i> Hardware</span>
+        </div>
+        
+        <p>Guide technique complet pour migrer d'un disque dur vers SSD. Clonage sécurisé, optimisation des performances et amélioration de l'expérience utilisateur.</p>
+        
+        <h2>Le projet : Amélioration des performances</h2>
+        
+        <p><strong>Client :</strong> Cabinet d'avocats (Marseille)</p>
+        <p><strong>Problème :</strong> PC lents, temps de démarrage de 3-4 minutes</p>
+        <p><strong>Objectif :</strong> Migration vers SSD sans perte de données</p>
+        
+        <h2>Analyse de la situation</h2>
+        
+        <p>Avant la migration, j'ai analysé les postes de travail :</p>
+        
+        <ul>
+            <li><strong>Configuration :</strong> Intel i5, 8GB RAM, HDD 1TB 5400 RPM</li>
+            <li><strong>Temps de démarrage :</strong> 3 minutes 45 secondes</li>
+            <li><strong>Ouverture Word :</strong> 15-20 secondes</li>
+            <li><strong>Espace utilisé :</strong> 650GB sur 1TB</li>
+        </ul>
+        
+        <h2>Choix du matériel</h2>
+        
+        <p>Pour cette migration, j'ai sélectionné :</p>
+        
+        <ul>
+            <li><strong>SSD Samsung 970 EVO Plus 1TB</strong> : NVMe M.2 pour performances maximales</li>
+            <li><strong>Boîtier externe USB 3.0</strong> : Pour le clonage et sauvegarde</li>
+            <li><strong>Câble SATA vers USB</strong> : Solution de secours</li>
+        </ul>
+        
+        <!-- Paywall Overlay -->
+        <div id="paywall-overlay" class="paywall-overlay">
+            <div class="paywall-content">
+                <div class="paywall-icon">
+                    <i class="fas fa-hdd"></i>
+                </div>
+                <h3>Article Premium</h3>
+                <p>Cet article contient des techniques avancées de clonage, des scripts d'optimisation et des procédures de migration sécurisées.</p>
+                
+                <div class="paywall-benefits">
+                    <h4>Ce que vous découvrirez :</h4>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Techniques de clonage avancées</li>
+                        <li><i class="fas fa-check"></i> Scripts d'optimisation Windows</li>
+                        <li><i class="fas fa-check"></i> Procédures de migration sécurisées</li>
+                        <li><i class="fas fa-check"></i> Optimisation des performances SSD</li>
+                        <li><i class="fas fa-check"></i> Gestion des partitions et UEFI</li>
+                        <li><i class="fas fa-check"></i> Tests de performance et validation</li>
+                    </ul>
+                </div>
+                
+                <div class="paywall-cta">
+                    <a href="../index.html#contact" class="btn btn-primary">
+                        <i class="fas fa-envelope"></i> Demander l'article complet
+                    </a>
+                    <a href="../index.html#competences" class="btn btn-secondary">
+                        <i class="fas fa-code"></i> Voir mes compétences
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Premium Content (Blurred) -->
+        <div id="premium-content" class="premium-content">
+        
+        <h2>1. Préparation de la migration</h2>
+        
+        <h3>Vérification de la compatibilité</h3>
+        
+        <div class="code-block">
+            <pre><code># Script PowerShell pour vérifier la compatibilité
+# check-compatibility.ps1
+
+Write-Host "=== Vérification de la compatibilité SSD ===" -ForegroundColor Green
+
+# Vérifier le type de disque actuel
+$disk = Get-Disk | Where-Object {$_.Number -eq 0}
+Write-Host "Type de disque actuel: $($disk.BusType)" -ForegroundColor Yellow
+
+# Vérifier l'espace utilisé
+$partition = Get-Partition | Where-Object {$_.DiskNumber -eq 0 -and $_.Type -eq "Basic"}
+$usedSpace = (Get-WmiObject -Class Win32_LogicalDisk | Where-Object {$_.DeviceID -eq "C:"}).Size - (Get-WmiObject -Class Win32_LogicalDisk | Where-Object {$_.DeviceID -eq "C:"}).FreeSpace
+$usedSpaceGB = [math]::Round($usedSpace / 1GB, 2)
+Write-Host "Espace utilisé: $usedSpaceGB GB" -ForegroundColor Yellow
+
+# Vérifier la version de Windows
+$osVersion = (Get-WmiObject -Class Win32_OperatingSystem).Version
+Write-Host "Version Windows: $osVersion" -ForegroundColor Yellow
+
+# Vérifier le mode de démarrage (UEFI/Legacy)
+$firmware = Get-WmiObject -Class Win32_ComputerSystem | Select-Object -ExpandProperty BootupState
+Write-Host "Mode de démarrage: $firmware" -ForegroundColor Yellow
+
+# Vérifier les slots M.2 disponibles
+$m2Slots = Get-WmiObject -Class Win32_PnPEntity | Where-Object {$_.Name -like "*M.2*"}
+if ($m2Slots) {
+    Write-Host "Slots M.2 disponibles: $($m2Slots.Count)" -ForegroundColor Green
+} else {
+    Write-Host "Aucun slot M.2 détecté" -ForegroundColor Red
+}
+
+Write-Host "=== Vérification terminée ===" -ForegroundColor Green</code></pre>
+        </div>
+        
+        <h3>Sauvegarde préventive</h3>
+        
+        <div class="code-block">
+            <pre><code># Script de sauvegarde complète
+# backup-before-migration.ps1
+
+$backupPath = "D:\Backup_Pre_Migration_$(Get-Date -Format 'yyyyMMdd_HHmm')"
+$excludeFolders = @("$env:TEMP", "$env:TMP", "C:\Windows\Temp", "C:\$Recycle.Bin")
+
+Write-Host "=== Sauvegarde préventive ===" -ForegroundColor Green
+Write-Host "Dossier de destination: $backupPath" -ForegroundColor Yellow
+
+# Créer le dossier de sauvegarde
+New-Item -ItemType Directory -Path $backupPath -Force
+
+# Sauvegarder les profils utilisateurs
+$users = Get-ChildItem "C:\Users" -Directory | Where-Object {$_.Name -notin @("Public", "Default", "All Users")}
+foreach ($user in $users) {
+    Write-Host "Sauvegarde du profil: $($user.Name)" -ForegroundColor Yellow
+    $userBackupPath = Join-Path $backupPath "Users\$($user.Name)"
+    New-Item -ItemType Directory -Path $userBackupPath -Force
+    
+    # Exclure les dossiers temporaires
+    $excludePattern = $excludeFolders -join "|"
+    robocopy "C:\Users\$($user.Name)" $userBackupPath /E /XD $excludeFolders /R:3 /W:10
+}
+
+# Sauvegarder les données système importantes
+$systemBackupPath = Join-Path $backupPath "System"
+New-Item -ItemType Directory -Path $systemBackupPath -Force
+
+# Sauvegarder la base de registre
+reg export "HKEY_CURRENT_USER" "$systemBackupPath\HKCU.reg" /y
+reg export "HKEY_LOCAL_MACHINE\SOFTWARE" "$systemBackupPath\HKLM_Software.reg" /y
+
+# Sauvegarder les drivers
+pnputil /export-driver * "$systemBackupPath\Drivers"
+
+Write-Host "=== Sauvegarde terminée ===" -ForegroundColor Green</code></pre>
+        </div>
+        
+        <h2>2. Processus de clonage</h2>
+        
+        <h3>Clonage avec Clonezilla</h3>
+        
+        <div class="code-block">
+            <pre><code># Script de clonage automatisé
+# clone-disk.sh
+
+#!/bin/bash
+
+# Configuration
+SOURCE_DISK="/dev/sda"
+TARGET_DISK="/dev/sdb"
+LOG_FILE="/var/log/clone-$(date +%Y%m%d_%H%M%S).log"
+
+echo "=== Début du clonage ===" | tee -a $LOG_FILE
+echo "Source: $SOURCE_DISK" | tee -a $LOG_FILE
+echo "Cible: $TARGET_DISK" | tee -a $LOG_FILE
+
+# Vérifier que les disques sont connectés
+if [ ! -b "$SOURCE_DISK" ]; then
+    echo "ERREUR: Disque source $SOURCE_DISK non trouvé" | tee -a $LOG_FILE
+    exit 1
+fi
+
+if [ ! -b "$TARGET_DISK" ]; then
+    echo "ERREUR: Disque cible $TARGET_DISK non trouvé" | tee -a $LOG_FILE
+    exit 1
+fi
+
+# Afficher les informations des disques
+echo "=== Informations des disques ===" | tee -a $LOG_FILE
+fdisk -l $SOURCE_DISK | tee -a $LOG_FILE
+fdisk -l $TARGET_DISK | tee -a $LOG_FILE
+
+# Cloner le disque secteur par secteur
+echo "=== Début du clonage secteur par secteur ===" | tee -a $LOG_FILE
+dd if=$SOURCE_DISK of=$TARGET_DISK bs=4M status=progress 2>&1 | tee -a $LOG_FILE
+
+# Vérifier l'intégrité
+echo "=== Vérification de l'intégrité ===" | tee -a $LOG_FILE
+md5sum $SOURCE_DISK > /tmp/source_md5
+dd if=$TARGET_DISK bs=4M count=$(($(stat -c%s $SOURCE_DISK) / 4194304)) | md5sum > /tmp/target_md5
+
+if diff /tmp/source_md5 /tmp/target_md5; then
+    echo "SUCCÈS: Clonage vérifié avec succès" | tee -a $LOG_FILE
+else
+    echo "ERREUR: Échec de la vérification du clonage" | tee -a $LOG_FILE
+    exit 1
+fi
+
+# Redimensionner les partitions si nécessaire
+echo "=== Redimensionnement des partitions ===" | tee -a $LOG_FILE
+parted $TARGET_DISK resizepart 1 100%
+
+# Étendre le système de fichiers
+echo "=== Extension du système de fichiers ===" | tee -a $LOG_FILE
+resize2fs ${TARGET_DISK}1
+
+echo "=== Clonage terminé avec succès ===" | tee -a $LOG_FILE</code></pre>
+        </div>
+        
+        <h3>Clonage avec ddrescue (alternative)</h3>
+        
+        <div class="code-block">
+            <pre><code># Script de clonage avec ddrescue pour disques défaillants
+# clone-with-ddrescue.sh
+
+#!/bin/bash
+
+SOURCE_DISK="/dev/sda"
+TARGET_DISK="/dev/sdb"
+MAP_FILE="/tmp/clone.map"
+LOG_FILE="/var/log/ddrescue-$(date +%Y%m%d_%H%M%S).log"
+
+echo "=== Clonage avec ddrescue ===" | tee -a $LOG_FILE
+
+# Première passe - copie des secteurs faciles
+ddrescue -f -n $SOURCE_DISK $TARGET_DISK $MAP_FILE 2>&1 | tee -a $LOG_FILE
+
+# Deuxième passe - tentative de récupération des secteurs difficiles
+ddrescue -f -r3 $SOURCE_DISK $TARGET_DISK $MAP_FILE 2>&1 | tee -a $LOG_FILE
+
+# Vérification finale
+ddrescue -f -t $SOURCE_DISK $TARGET_DISK $MAP_FILE 2>&1 | tee -a $LOG_FILE
+
+echo "=== Clonage avec ddrescue terminé ===" | tee -a $LOG_FILE</code></pre>
+        </div>
+        
+        <h2>3. Optimisation post-migration</h2>
+        
+        <h3>Script d'optimisation Windows</h3>
+        
+        <div class="code-block">
+            <pre><code># Script d'optimisation Windows pour SSD
+# optimize-ssd.ps1
+
+Write-Host "=== Optimisation Windows pour SSD ===" -ForegroundColor Green
+
+# Désactiver la défragmentation automatique
+Write-Host "Désactivation de la défragmentation automatique..." -ForegroundColor Yellow
+Disable-ScheduledTask -TaskName "ScheduledDefrag" -ErrorAction SilentlyContinue
+
+# Activer TRIM
+Write-Host "Activation de TRIM..." -ForegroundColor Yellow
+fsutil behavior set DisableDeleteNotify 0
+
+# Désactiver l'indexation sur les SSD
+Write-Host "Désactivation de l'indexation..." -ForegroundColor Yellow
+$ssdDrives = Get-WmiObject -Class Win32_LogicalDisk | Where-Object {$_.DriveType -eq 3 -and $_.MediaType -eq 12}
+foreach ($drive in $ssdDrives) {
+    $indexService = Get-WmiObject -Class Win32_Service | Where-Object {$_.Name -eq "WSearch"}
+    if ($indexService) {
+        $indexService.ChangeStartMode("Disabled")
+        $indexService.StopService()
+    }
+}
+
+# Optimiser les paramètres de cache
+Write-Host "Optimisation des paramètres de cache..." -ForegroundColor Yellow
+Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" -Name "LargeSystemCache" -Value 0
+Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters" -Name "EnablePrefetcher" -Value 0
+Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters" -Name "EnableSuperfetch" -Value 0
+
+# Désactiver l'hibernation (optionnel)
+Write-Host "Désactivation de l'hibernation..." -ForegroundColor Yellow
+powercfg -h off
+
+# Optimiser les paramètres d'alimentation
+Write-Host "Optimisation des paramètres d'alimentation..." -ForegroundColor Yellow
+powercfg -setacvalueindex SCHEME_CURRENT 0012ee47-9041-4b5d-9b77-535fba8b1442 6738e2c4-e8a5-4a42-b16a-e040e769756e 1
+powercfg -setactive SCHEME_CURRENT
+
+# Nettoyer les fichiers temporaires
+Write-Host "Nettoyage des fichiers temporaires..." -ForegroundColor Yellow
+Get-ChildItem -Path $env:TEMP -Recurse -Force | Remove-Item -Recurse -Force -ErrorAction SilentlyContinue
+Get-ChildItem -Path "C:\Windows\Temp" -Recurse -Force | Remove-Item -Recurse -Force -ErrorAction SilentlyContinue
+
+# Optimiser le registre
+Write-Host "Optimisation du registre..." -ForegroundColor Yellow
+reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "Start_ShowMyComputer" /t REG_DWORD /d 1 /f
+reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "Start_ShowMyGames" /t REG_DWORD /d 0 /f
+reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "Start_ShowMyMusic" /t REG_DWORD /d 0 /f
+reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "Start_ShowMyPics" /t REG_DWORD /d 0 /f
+
+Write-Host "=== Optimisation terminée ===" -ForegroundColor Green</code></pre>
+        </div>
+        
+        <h2>4. Tests de performance</h2>
+        
+        <h3>Script de benchmark</h3>
+        
+        <div class="code-block">
+            <pre><code># Script de test de performance
+# benchmark-ssd.ps1
+
+Write-Host "=== Test de performance SSD ===" -ForegroundColor Green
+
+# Test de vitesse de lecture/écriture
+$testFile = "C:\temp\speedtest.tmp"
+$testSize = 1GB
+$iterations = 3
+
+Write-Host "Test de vitesse d'écriture..." -ForegroundColor Yellow
+$writeTimes = @()
+for ($i = 1; $i -le $iterations; $i++) {
+    $startTime = Get-Date
+    $null = New-Object byte[] $testSize | Out-File -FilePath $testFile -Encoding Byte
+    $endTime = Get-Date
+    $writeTime = ($endTime - $startTime).TotalSeconds
+    $writeTimes += $writeTime
+    Write-Host "Test $i : $([math]::Round($writeTime, 2)) secondes" -ForegroundColor Cyan
+}
+
+$avgWriteTime = ($writeTimes | Measure-Object -Average).Average
+$writeSpeed = [math]::Round(($testSize / 1MB) / $avgWriteTime, 2)
+Write-Host "Vitesse d'écriture moyenne: $writeSpeed MB/s" -ForegroundColor Green
+
+Write-Host "Test de vitesse de lecture..." -ForegroundColor Yellow
+$readTimes = @()
+for ($i = 1; $i -le $iterations; $i++) {
+    $startTime = Get-Date
+    $null = Get-Content -Path $testFile -Encoding Byte
+    $endTime = Get-Date
+    $readTime = ($endTime - $startTime).TotalSeconds
+    $readTimes += $readTime
+    Write-Host "Test $i : $([math]::Round($readTime, 2)) secondes" -ForegroundColor Cyan
+}
+
+$avgReadTime = ($readTimes | Measure-Object -Average).Average
+$readSpeed = [math]::Round(($testSize / 1MB) / $avgReadTime, 2)
+Write-Host "Vitesse de lecture moyenne: $readSpeed MB/s" -ForegroundColor Green
+
+# Test de temps de démarrage
+Write-Host "Test de temps de démarrage..." -ForegroundColor Yellow
+$bootTime = (Get-WmiObject -Class Win32_OperatingSystem).LastBootUpTime
+$currentTime = Get-DmiObject -Class Win32_OperatingSystem).LocalDateTime
+$uptime = $currentTime - $bootTime
+Write-Host "Temps de démarrage: $([math]::Round($uptime.TotalMinutes, 2)) minutes" -ForegroundColor Cyan
+
+# Nettoyage
+Remove-Item $testFile -Force -ErrorAction SilentlyContinue
+
+Write-Host "=== Tests terminés ===" -ForegroundColor Green</code></pre>
+        </div>
+        
+        <h2>5. Résultats obtenus</h2>
+        
+        <h3>Avant la migration</h3>
+        <ul>
+            <li>⏱️ <strong>Temps de démarrage :</strong> 3 minutes 45 secondes</li>
+            <li>📁 <strong>Ouverture Word :</strong> 15-20 secondes</li>
+            <li>🌐 <strong>Chargement navigateur :</strong> 8-10 secondes</li>
+            <li>💾 <strong>Vitesse de lecture :</strong> ~120 MB/s</li>
+        </ul>
+        
+        <h3>Après la migration</h3>
+        <ul>
+            <li>⚡ <strong>Temps de démarrage :</strong> 25-30 secondes (7x plus rapide)</li>
+            <li>📁 <strong>Ouverture Word :</strong> 2-3 secondes (6x plus rapide)</li>
+            <li>🌐 <strong>Chargement navigateur :</strong> 1-2 secondes (5x plus rapide)</li>
+            <li>💾 <strong>Vitesse de lecture :</strong> ~3500 MB/s (29x plus rapide)</li>
+        </ul>
+        
+        <h2>6. Maintenance et surveillance</h2>
+        
+        <div class="code-block">
+            <pre><code># Script de maintenance SSD
+# ssd-maintenance.ps1
+
+Write-Host "=== Maintenance SSD ===" -ForegroundColor Green
+
+# Vérifier l'état de santé du SSD
+$ssdHealth = Get-PhysicalDisk | Where-Object {$_.MediaType -eq "SSD"}
+foreach ($disk in $ssdHealth) {
+    Write-Host "SSD: $($disk.FriendlyName)" -ForegroundColor Yellow
+    Write-Host "État de santé: $($disk.HealthStatus)" -ForegroundColor Cyan
+    Write-Host "Utilisation: $($disk.Usage)" -ForegroundColor Cyan
+}
+
+# Vérifier l'espace libre
+$drives = Get-WmiObject -Class Win32_LogicalDisk | Where-Object {$_.DriveType -eq 3}
+foreach ($drive in $drives) {
+    $freeSpacePercent = [math]::Round(($drive.FreeSpace / $drive.Size) * 100, 2)
+    Write-Host "Disque $($drive.DeviceID) : $freeSpacePercent% libre" -ForegroundColor Cyan
+    
+    if ($freeSpacePercent -lt 10) {
+        Write-Host "ATTENTION: Espace libre faible sur $($drive.DeviceID)" -ForegroundColor Red
+    }
+}
+
+# Optimiser le SSD
+Write-Host "Optimisation du SSD..." -ForegroundColor Yellow
+Optimize-Volume -DriveLetter C -ReTrim -Verbose
+
+# Nettoyer les fichiers temporaires
+Write-Host "Nettoyage des fichiers temporaires..." -ForegroundColor Yellow
+Get-ChildItem -Path $env:TEMP -Recurse -Force | Remove-Item -Recurse -Force -ErrorAction SilentlyContinue
+
+Write-Host "=== Maintenance terminée ===" -ForegroundColor Green</code></pre>
+        </div>
+        
+        <h2>Points techniques importants</h2>
+        
+        <ol>
+            <li><strong>Sauvegarde complète</strong> : Toujours faire une sauvegarde avant migration</li>
+            <li><strong>Vérification de compatibilité</strong> : S'assurer que le SSD est compatible</li>
+            <li><strong>Clonage sectoriel</strong> : Utiliser dd ou Clonezilla pour un clonage exact</li>
+            <li><strong>Optimisation post-migration</strong> : Désactiver la défragmentation, activer TRIM</li>
+            <li><strong>Tests de performance</strong> : Valider les améliorations obtenues</li>
+        </ol>
+        
+        <div class="cta-section">
+            <h3>🚀 Besoin d'optimiser vos postes de travail ?</h3>
+            <p>Chaque configuration a ses spécificités. Contactez-moi pour une migration SSD sur-mesure et sécurisée.</p>
+            <a href="../index.html#contact" class="btn">Discuter de votre projet</a>
+        </div>
+        </div> <!-- End premium-content -->
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Klyon</h3>
+                    <p>Votre partenaire informatique dans le Sud de la France</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="../index.html#services">Support Informatique</a></li>
+                        <li><a href="../index.html#services">Développement Sur-Mesure</a></li>
+                        <li><a href="../index.html#services">Intelligence Artificielle</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="mailto:klyonme@gmail.com">klyonme@gmail.com</a></li>
+                        <li><a href="tel:+33766980342">07 66 98 03 42</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Klyon. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+    
+    <!-- Paywall Styles -->
+    <style>
+        .paywall-overlay {
+            position: relative;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+            color: white;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            animation: pulse 2s infinite;
+        }
+        
+        .paywall-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .paywall-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: bounce 2s infinite;
+        }
+        
+        .paywall-benefits {
+            background: rgba(255,255,255,0.1);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            text-align: left;
+        }
+        
+        .paywall-benefits ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .paywall-benefits li {
+            display: flex;
+            align-items: center;
+            margin: 0.8rem 0;
+            color: rgba(255,255,255,0.9);
+        }
+        
+        .paywall-benefits i {
+            color: #4ade80;
+            margin-right: 0.8rem;
+            font-size: 1.2rem;
+        }
+        
+        .paywall-cta {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+        
+        .btn-primary, .btn-secondary {
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .btn-primary {
+            background: white;
+            color: #667eea;
+        }
+        
+        .btn-secondary {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+        
+        .btn-primary:hover, .btn-secondary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        
+        .premium-content {
+            filter: blur(8px);
+            pointer-events: none;
+            user-select: none;
+            position: relative;
+        }
+        
+        .premium-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(102,126,234,0.1), rgba(118,75,162,0.1));
+            z-index: 1;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+        
+        @media (max-width: 768px) {
+            .paywall-cta {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn-primary, .btn-secondary {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+    
+    <!-- Paywall Protection Script -->
+    <script>
+        // Protection contre l'inspection
+        (function() {
+            'use strict';
+            
+            // Détection des DevTools
+            let devtools = {open: false, orientation: null};
+            const threshold = 160;
+            
+            setInterval(function() {
+                if (window.outerHeight - window.innerHeight > threshold || 
+                    window.outerWidth - window.innerWidth > threshold) {
+                    if (!devtools.open) {
+                        devtools.open = true;
+                        console.clear();
+                        console.log('%c🚫 Accès refusé', 'color: #ff0000; font-size: 20px; font-weight: bold;');
+                        console.log('%cLe contenu premium est protégé', 'color: #ff0000; font-size: 14px;');
+                        console.log('%cContactez-moi pour accéder à l\'article complet', 'color: #ff0000; font-size: 12px;');
+                    }
+                } else {
+                    devtools.open = false;
+                }
+            }, 500);
+            
+            // Blocage des interactions sur le contenu premium
+            const premiumContent = document.getElementById('premium-content');
+            if (premiumContent) {
+                // Bloquer la sélection
+                premiumContent.addEventListener('selectstart', function(e) {
+                    e.preventDefault();
+                    return false;
+                });
+                
+                // Bloquer le clic droit
+                premiumContent.addEventListener('contextmenu', function(e) {
+                    e.preventDefault();
+                    return false;
+                });
+                
+                // Bloquer les raccourcis clavier
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'F12' || 
+                        (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J')) ||
+                        (e.ctrlKey && e.key === 'U')) {
+                        e.preventDefault();
+                        console.log('%c🚫 Accès refusé - Contenu protégé', 'color: #ff0000; font-size: 16px; font-weight: bold;');
+                        return false;
+                    }
+                });
+                
+                // Bloquer la copie
+                premiumContent.addEventListener('copy', function(e) {
+                    e.preventDefault();
+                    return false;
+                });
+            }
+            
+            // Animation du paywall
+            const paywallOverlay = document.getElementById('paywall-overlay');
+            if (paywallOverlay) {
+                setInterval(function() {
+                    paywallOverlay.style.boxShadow = '0 20px 40px rgba(102,126,234,0.3)';
+                    setTimeout(function() {
+                        paywallOverlay.style.boxShadow = '0 20px 40px rgba(0,0,0,0.1)';
+                    }, 1000);
+                }, 3000);
+            }
+            
+            // Tracking des clics sur les boutons
+            document.addEventListener('click', function(e) {
+                if (e.target.closest('.paywall-cta a')) {
+                    // Google Analytics tracking (si disponible)
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'paywall_click', {
+                            'event_category': 'engagement',
+                            'event_label': 'upgrade_pc_article'
+                        });
+                    }
+                }
+            });
+        })();
+    </script>
+</body>
+</html>
