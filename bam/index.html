@@ -7,9 +7,9 @@
     <meta name="description" content="Contact rapide pour Lorenzo Fortini - Klyon">
     
     <!-- Favicon -->
-    <link rel="icon" type="image/jpeg" href="minilogo.jpg">
+    <link rel="icon" type="image/jpeg" href="../minilogo.jpg">
     
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -157,15 +157,6 @@
             transform: translateY(-2px);
         }
         
-        .whatsapp-btn {
-            background: #25d366;
-            color: white;
-        }
-        
-        .whatsapp-btn:hover {
-            background: #1da851;
-            transform: translateY(-2px);
-        }
         
         .add-contact-btn {
             background: #3b82f6;
@@ -184,6 +175,16 @@
         
         .email-btn:hover {
             background: #7c3aed;
+            transform: translateY(-2px);
+        }
+        
+        .share-btn {
+            background: #f59e0b;
+            color: white;
+        }
+        
+        .share-btn:hover {
+            background: #d97706;
             transform: translateY(-2px);
         }
         
@@ -229,28 +230,6 @@
             }
         }
         
-        .floating-action {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            width: 60px;
-            height: 60px;
-            background: #667eea;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.5rem;
-            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            z-index: 1000;
-        }
-        
-        .floating-action:hover {
-            transform: scale(1.1);
-        }
         
         @media (max-width: 480px) {
             .bam-container {
@@ -264,21 +243,13 @@
             .quick-actions {
                 grid-template-columns: 1fr;
             }
-            
-            .floating-action {
-                bottom: 1rem;
-                right: 1rem;
-                width: 50px;
-                height: 50px;
-                font-size: 1.2rem;
-            }
         }
     </style>
 </head>
 <body>
     <div class="bam-container">
         <div class="bam-card">
-            <img src="photopro.jpg" alt="Lorenzo Fortini" class="profile-photo pulse">
+            <img src="../photopro.jpg" alt="Lorenzo Fortini" class="profile-photo pulse">
             
             <h1 class="name">Lorenzo Fortini</h1>
             <p class="title">Développeur & Consultant IT</p>
@@ -309,11 +280,6 @@
                     Appeler
                 </button>
                 
-                <button class="action-btn whatsapp-btn" onclick="openWhatsApp()">
-                    <i class="fab fa-whatsapp"></i>
-                    WhatsApp
-                </button>
-                
                 <button class="action-btn add-contact-btn" onclick="addToContacts()">
                     <i class="fas fa-user-plus"></i>
                     Ajouter
@@ -323,26 +289,24 @@
                     <i class="fas fa-envelope"></i>
                     Email
                 </button>
+                
+                <button class="action-btn share-btn" onclick="shareContact()">
+                    <i class="fas fa-share-alt"></i>
+                    Partager
+                </button>
             </div>
             
             <div class="social-links">
                 <a href="https://linkedin.com/in/lorenzo-fortini" class="social-link" target="_blank">
                     <i class="fab fa-linkedin"></i>
                 </a>
-                <a href="https://github.com/lorenzo-fortini" class="social-link" target="_blank">
-                    <i class="fab fa-github"></i>
-                </a>
-                <a href="index.html" class="social-link">
+                <a href="../index.html" class="social-link">
                     <i class="fas fa-globe"></i>
                 </a>
             </div>
         </div>
     </div>
     
-    <!-- Floating action button -->
-    <div class="floating-action" onclick="shareContact()">
-        <i class="fas fa-share-alt"></i>
-    </div>
     
     <script>
         // Fonction pour appeler
@@ -355,11 +319,6 @@
             window.location.href = 'mailto:klyonme@gmail.com?subject=Contact depuis la fiche BAM';
         }
         
-        // Fonction pour ouvrir WhatsApp
-        function openWhatsApp() {
-            const message = encodeURIComponent('Salut Lorenzo ! Je t\'ai trouvé via ta fiche BAM 🚀');
-            window.open(`https://wa.me/33766980342?text=${message}`, '_blank');
-        }
         
         // Fonction pour ajouter aux contacts
         function addToContacts() {
