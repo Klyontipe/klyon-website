@@ -302,7 +302,7 @@
             </div>
             
             <div class="social-links">
-                <a href="https://linkedin.com/in/lorenzo-fortini" class="social-link" target="_blank">
+                <a href="https://www.linkedin.com/in/zl3/" class="social-link" target="_blank">
                     <i class="fab fa-linkedin"></i>
                 </a>
                 <a href="../index.html" class="social-link">
@@ -327,8 +327,15 @@
         
         // Fonction pour ajouter aux contacts
         function addToContacts() {
-            if (navigator.vcard) {
-                // Pour les appareils qui supportent vCard
+            // Essayer d'ouvrir l'application Contacts native
+            if (navigator.userAgent.match(/iPhone|iPad|iPod/i)) {
+                // iOS - Essayer d'ouvrir l'app Contacts
+                window.location.href = 'contacts://add?name=Lorenzo%20Fortini&phone=+33766980342&email=klyonme@gmail.com';
+            } else if (navigator.userAgent.match(/Android/i)) {
+                // Android - Essayer d'ouvrir l'app Contacts
+                window.location.href = 'content://contacts/people/';
+            } else {
+                // Fallback : télécharger le vCard
                 const vcard = `BEGIN:VCARD
 VERSION:3.0
 FN:Lorenzo Fortini
@@ -346,25 +353,6 @@ END:VCARD`;
                 link.download = 'Lorenzo_Fortini.vcf';
                 link.click();
                 URL.revokeObjectURL(url);
-            } else {
-                // Fallback : copier les infos dans le presse-papier
-                const contactInfo = `Lorenzo Fortini
-Téléphone: 07 66 98 03 42
-Email: klyonme@gmail.com
-Site: https://klyon.fr`;
-                
-                navigator.clipboard.writeText(contactInfo).then(() => {
-                    alert('Informations de contact copiées ! Vous pouvez maintenant les coller dans votre application de contacts.');
-                }).catch(() => {
-                    // Fallback pour les navigateurs plus anciens
-                    const textArea = document.createElement('textarea');
-                    textArea.value = contactInfo;
-                    document.body.appendChild(textArea);
-                    textArea.select();
-                    document.execCommand('copy');
-                    document.body.removeChild(textArea);
-                    alert('Informations de contact copiées !');
-                });
             }
         }
         
