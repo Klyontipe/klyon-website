@@ -34,6 +34,57 @@
     --shadow-heavy: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
 }
 
+/* Dark mode styles for headings */
+[data-theme="dark"] h1,
+[data-theme="dark"] h2,
+[data-theme="dark"] h3,
+[data-theme="dark"] h4,
+[data-theme="dark"] h5,
+[data-theme="dark"] h6 {
+    color: var(--text-primary) !important;
+}
+
+[data-theme="dark"] .service-card h3,
+[data-theme="dark"] .author-info h4,
+[data-theme="dark"] .project-content h3,
+[data-theme="dark"] .project-tech h4,
+[data-theme="dark"] .project-results h4,
+[data-theme="dark"] .feature h4,
+[data-theme="dark"] .category-header h3,
+[data-theme="dark"] .competence-item h4,
+[data-theme="dark"] .positioning-item h4,
+[data-theme="dark"] .contact-item h4,
+[data-theme="dark"] .footer-section h3,
+[data-theme="dark"] .footer-section h4,
+[data-theme="dark"] .blog-content h3 {
+    color: var(--text-primary) !important;
+}
+
+/* Dark mode for blog titles and meta */
+[data-theme="dark"] .blog-card h3,
+[data-theme="dark"] .blog-card .blog-excerpt,
+[data-theme="dark"] .blog-card .blog-meta,
+[data-theme="dark"] .blog-card .blog-meta span {
+    color: var(--text-primary) !important;
+}
+
+[data-theme="dark"] .blog-card .blog-excerpt {
+    color: var(--text-secondary) !important;
+}
+
+/* Dark mode for section titles */
+[data-theme="dark"] .section-title,
+[data-theme="dark"] .hero-title,
+[data-theme="dark"] .hero-subtitle,
+[data-theme="dark"] .about-title,
+[data-theme="dark"] .services-title,
+[data-theme="dark"] .competences-title,
+[data-theme="dark"] .projects-title,
+[data-theme="dark"] .blog-title,
+[data-theme="dark"] .contact-title {
+    color: var(--text-primary) !important;
+}
+
 body {
     font-family: 'Inter', sans-serif;
     line-height: 1.6;
@@ -77,12 +128,16 @@ body {
 .nav-logo {
     display: flex;
     align-items: center;
+    min-width: 150px;
+    flex-shrink: 0;
 }
 
 .logo-img {
     height: 60px;
     width: auto;
     object-fit: contain;
+    transition: all 0.3s ease;
+    max-width: 200px;
 }
 
 .nav-logo h2 {
@@ -1417,6 +1472,20 @@ body {
         display: flex;
     }
 
+    .nav-container {
+        padding: 0 15px;
+    }
+
+    .nav-logo {
+        min-width: 120px;
+        flex-shrink: 0;
+    }
+
+    .logo-img {
+        height: 50px;
+        max-width: 130px;
+    }
+
     .nav-menu {
         position: fixed;
         left: -100%;
@@ -1606,6 +1675,7 @@ body {
 
     .logo-img {
         height: 45px;
+        max-width: 150px;
     }
 }
 
@@ -1613,6 +1683,15 @@ body {
     .hero {
         padding-top: 100px;
         min-height: 85vh;
+    }
+    
+    .logo-img {
+        height: 40px;
+        max-width: 120px;
+    }
+    
+    .nav-logo {
+        min-width: 120px;
     }
     
     .hero-container {
