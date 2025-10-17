@@ -1,6 +1,7 @@
 import { Helmet } from 'react-helmet-async'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
+import { Link } from 'react-router-dom'
 import { 
   Wrench, 
   Code, 

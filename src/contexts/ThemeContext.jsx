@@ -12,12 +12,6 @@ export const useTheme = () => {
 
 export const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState(() => {
-    // Vérifier le localStorage d'abord
-    const savedTheme = localStorage.getItem('theme')
-    if (savedTheme) {
-      return savedTheme
-    }
-    
     // Par défaut, démarrer en mode sombre
     return 'dark'
   })
