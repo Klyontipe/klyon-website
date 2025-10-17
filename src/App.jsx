@@ -20,10 +20,11 @@ function RouteRedirect() {
   const [searchParams] = useSearchParams()
   
   useEffect(() => {
-    const route = searchParams.get('route')
-    if (route) {
+    const route = searchParams.get('/')
+    if (route && route !== '') {
       // Nettoyer l'URL et naviguer vers la route
-      navigate(`/${route}`, { replace: true })
+      const cleanRoute = route.replace(/~and~/g, '&')
+      navigate(`/${cleanRoute}`, { replace: true })
     }
   }, [searchParams, navigate])
   
