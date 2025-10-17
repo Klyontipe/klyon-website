@@ -50,7 +50,7 @@ const Header = () => {
             <motion.img
               src={theme === 'dark' ? '/logowhite.png' : '/logo.jpg'}
               alt="Klyon Logo"
-              className="h-36 w-auto lg:h-40"
+              className={`h-36 w-auto lg:h-40 ${theme === 'dark' ? 'max-w-[200px]' : ''}`}
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.2 }}
             />

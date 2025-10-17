@@ -18,12 +18,8 @@ export const ThemeProvider = ({ children }) => {
       return savedTheme
     }
     
-    // Sinon, vérifier les préférences système
-    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      return 'dark'
-    }
-    
-    return 'light'
+    // Par défaut, démarrer en mode sombre
+    return 'dark'
   })
 
   useEffect(() => {

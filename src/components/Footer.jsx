@@ -50,7 +50,7 @@ const Footer = () => {
               <img 
                 src={theme === 'dark' ? '/logowhite.png' : '/logo.jpg'} 
                 alt="Klyon Logo" 
-                className="h-36 w-auto lg:h-40" 
+                className={`h-36 w-auto lg:h-40 ${theme === 'dark' ? 'max-w-[200px]' : ''}`} 
               />
             </Link>
             <p className="text-gray-300 mb-6 leading-relaxed">
