@@ -1,5 +1,6 @@
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useNavigate, useSearchParams } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
+import { useEffect } from 'react'
 import { ThemeProvider } from './contexts/ThemeContext'
 import { ContactProvider } from './contexts/ContactContext'
 import Layout from './components/Layout'
@@ -13,6 +14,22 @@ import BlogPost from './pages/BlogPost'
 import Bam from './pages/Bam'
 import NotFound from './pages/NotFound'
 
+// Composant pour gérer les redirections depuis les paramètres URL
+function RouteRedirect() {
+  const navigate = useNavigate()
+  const [searchParams] = useSearchParams()
+  
+  useEffect(() => {
+    const route = searchParams.get('route')
+    if (route) {
+      // Nettoyer l'URL et naviguer vers la route
+      navigate(`/${route}`, { replace: true })
+    }
+  }, [searchParams, navigate])
+  
+  return <Home />
+}
+
 function App() {
   return (
     <ThemeProvider>
@@ -24,7 +41,7 @@ function App() {
         
         <Routes>
           <Route path="/" element={<Layout />}>
-            <Route index element={<Home />} />
+            <Route index element={<RouteRedirect />} />
             <Route path="services" element={<Services />} />
             <Route path="competences" element={<Competences />} />
             <Route path="projets" element={<Projets />} />
