@@ -12,7 +12,15 @@ import {
   Puzzle,
   Users,
   CheckCircle,
-  TrendingUp
+  TrendingUp,
+  Smartphone,
+  Shield,
+  Globe,
+  Terminal,
+  Zap,
+  BookOpen,
+  Target,
+  Layers
 } from 'lucide-react'
 import { useTheme } from '../contexts/ThemeContext'
 import { useMemo, useState } from 'react'
@@ -42,16 +50,31 @@ const Competences = () => {
   const competences = [
     {
       icon: Code,
-      title: 'Développement',
-      description: 'Maîtrise des technologies modernes de développement',
+      title: 'Développement Web',
+      description: 'Solutions web modernes et performantes',
       skills: [
         { name: 'React/Next.js', level: 95 },
+        { name: 'JavaScript/TypeScript', level: 95 },
+        { name: 'HTML/CSS', level: 95 },
         { name: 'Node.js/Express', level: 90 },
-        { name: 'Python/Django', level: 85 },
+        { name: 'Python/Flask', level: 85 },
         { name: 'PHP/Laravel', level: 80 },
-        { name: 'JavaScript/TypeScript', level: 95 }
+        { name: 'REST APIs', level: 90 },
+        { name: 'Tailwind CSS', level: 90 }
       ],
       color: 'primary'
+    },
+    {
+      icon: Smartphone,
+      title: 'Développement Mobile',
+      description: 'Applications mobiles cross-platform',
+      skills: [
+        { name: 'React Native', level: 85 },
+        { name: 'Mobile UI/UX', level: 80 },
+        { name: 'App Store Deployment', level: 75 },
+        { name: 'Cross-platform', level: 85 }
+      ],
+      color: 'blue'
     },
     {
       icon: Database,
@@ -60,9 +83,10 @@ const Competences = () => {
       skills: [
         { name: 'PostgreSQL', level: 90 },
         { name: 'MySQL', level: 85 },
+        { name: 'SQL', level: 90 },
         { name: 'MongoDB', level: 80 },
         { name: 'Redis', level: 75 },
-        { name: 'Elasticsearch', level: 70 }
+        { name: 'Optimisation requêtes', level: 85 }
       ],
       color: 'accent'
     },
@@ -71,26 +95,66 @@ const Competences = () => {
       title: 'Intelligence Artificielle',
       description: 'Solutions IA pour automatiser vos processus',
       skills: [
-        { name: 'Machine Learning', level: 80 },
-        { name: 'OpenAI API', level: 85 },
-        { name: 'TensorFlow', level: 75 },
+        { name: 'OpenAI API', level: 90 },
         { name: 'Chatbots', level: 90 },
-        { name: 'NLP', level: 80 }
+        { name: 'Machine Learning', level: 80 },
+        { name: 'NLP', level: 80 },
+        { name: 'TensorFlow', level: 75 },
+        { name: 'Prompt Engineering', level: 90 }
       ],
       color: 'purple'
     },
     {
+      icon: Terminal,
+      title: 'Développement Système',
+      description: 'Programmation système et optimisation',
+      skills: [
+        { name: 'C/C++', level: 85 },
+        { name: 'Linux', level: 90 },
+        { name: 'Algorithmes', level: 85 },
+        { name: 'Optimisation', level: 80 },
+        { name: 'Haskell', level: 70 }
+      ],
+      color: 'orange'
+    },
+    {
       icon: Network,
-      title: 'DevOps & Cloud',
+      title: 'DevOps & Infrastructure',
       description: 'Déploiement et infrastructure moderne',
       skills: [
         { name: 'Docker', level: 85 },
-        { name: 'AWS', level: 80 },
-        { name: 'Git/GitHub', level: 90 },
+        { name: 'Git/GitHub', level: 95 },
         { name: 'CI/CD', level: 85 },
-        { name: 'Linux', level: 90 }
+        { name: 'DNS Configuration', level: 90 },
+        { name: 'GitHub Pages', level: 95 },
+        { name: 'Linux Administration', level: 90 }
       ],
       color: 'green'
+    },
+    {
+      icon: Shield,
+      title: 'Cybersécurité',
+      description: 'Sécurisation et protection des systèmes',
+      skills: [
+        { name: 'CTF Participation', level: 75 },
+        { name: 'Security Best Practices', level: 80 },
+        { name: 'Vulnerability Assessment', level: 70 },
+        { name: 'Secure Coding', level: 85 }
+      ],
+      color: 'red'
+    },
+    {
+      icon: Globe,
+      title: 'Déploiement Web',
+      description: 'Mise en ligne et configuration DNS',
+      skills: [
+        { name: 'DNS Configuration', level: 90 },
+        { name: 'Domain Management', level: 85 },
+        { name: 'SSL/TLS', level: 80 },
+        { name: 'Web Hosting', level: 90 },
+        { name: 'A/TXT Records', level: 90 }
+      ],
+      color: 'indigo'
     }
   ]
 
@@ -104,18 +168,28 @@ const Competences = () => {
   const softSkills = [
     {
       icon: Brain,
-      title: 'Analyse',
-      description: 'Compréhension approfondie des besoins métiers'
+      title: 'Apprentissage Rapide',
+      description: 'Maîtrise de nouvelles technologies en quelques jours selon les besoins'
     },
     {
-      icon: Puzzle,
-      title: 'Polyvalence',
-      description: 'Développement, bases de données, IA, support IT'
+      icon: Target,
+      title: 'Gestion de Projets',
+      description: 'Pilotage de projets complets via micro-entreprise et encadrement d\'équipes'
     },
     {
       icon: Users,
-      title: 'Accompagnement',
-      description: 'Solutions robustes, fonctionnelles, adaptées aux besoins métiers'
+      title: 'Formation & Encadrement',
+      description: 'Formation des équipes IT/IA et encadrement de stagiaires'
+    },
+    {
+      icon: BookOpen,
+      title: 'Pédagogie',
+      description: 'Transfert de compétences et accompagnement technique'
+    },
+    {
+      icon: Zap,
+      title: 'Autonomie',
+      description: 'Capacité d\'apprentissage rapide et résolution de problèmes'
     },
     {
       icon: Star,
@@ -126,15 +200,25 @@ const Competences = () => {
 
   const technologies = [
     { name: 'React', category: 'Frontend', level: 95 },
+    { name: 'React Native', category: 'Mobile', level: 85 },
+    { name: 'JavaScript', category: 'Frontend', level: 95 },
+    { name: 'TypeScript', category: 'Frontend', level: 90 },
     { name: 'Node.js', category: 'Backend', level: 90 },
     { name: 'Python', category: 'Backend', level: 85 },
+    { name: 'Flask', category: 'Backend', level: 85 },
+    { name: 'C/C++', category: 'System', level: 85 },
+    { name: 'Haskell', category: 'Functional', level: 70 },
     { name: 'PostgreSQL', category: 'Database', level: 90 },
-    { name: 'Docker', category: 'DevOps', level: 85 },
-    { name: 'AWS', category: 'Cloud', level: 80 },
-    { name: 'TypeScript', category: 'Frontend', level: 90 },
+    { name: 'MySQL', category: 'Database', level: 85 },
     { name: 'MongoDB', category: 'Database', level: 80 },
+    { name: 'Docker', category: 'DevOps', level: 85 },
     { name: 'Git', category: 'DevOps', level: 95 },
-    { name: 'Linux', category: 'System', level: 90 }
+    { name: 'GitHub', category: 'DevOps', level: 95 },
+    { name: 'Linux', category: 'System', level: 90 },
+    { name: 'DNS', category: 'Infrastructure', level: 90 },
+    { name: 'OpenAI API', category: 'AI', level: 90 },
+    { name: 'TensorFlow', category: 'AI', level: 75 },
+    { name: 'HTML/CSS', category: 'Frontend', level: 95 }
   ]
 
   const containerVariants = {
@@ -167,7 +251,7 @@ const Competences = () => {
       </Helmet>
 
       {/* Hero Section */}
-      <section className={`py-14 lg:py-20 ${theme === 'dark' ? 'bg-gray-900' : 'bg-gray-50'}`}>
+      <section className={`py-8 lg:py-12 ${theme === 'dark' ? 'bg-gray-900' : 'bg-gray-50'}`}>
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -185,38 +269,8 @@ const Competences = () => {
         </div>
       </section>
 
-      {/* Metrics premium */}
-      <section className={`py-8 ${theme === 'dark' ? 'bg-gray-950' : 'bg-white'}`}>
-        <div className="container-custom">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            {[
-              { label: 'Projets livrés', value: '50+', color: 'from-primary-600 to-primary-400' },
-              { label: 'Années d\'expérience', value: '5+', color: 'from-accent-600 to-accent-400' },
-              { label: 'Temps de réponse', value: '24h', color: 'from-purple-600 to-purple-400' },
-            ].map((m, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.05 }}
-                className={`relative overflow-hidden rounded-xl p-[1px] bg-gradient-to-r ${m.color}`}
-              >
-                <div className={`rounded-xl ${theme === 'dark' ? 'bg-gray-900' : 'bg-white'} px-5 py-4 flex items-center justify-between`}>
-                  <div>
-                    <div className={`text-xs uppercase tracking-wider ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}>{m.label}</div>
-                    <div className={`text-xl font-extrabold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>{m.value}</div>
-                  </div>
-                  <div className={`h-10 w-10 rounded-lg bg-gradient-to-br ${m.color} opacity-20`} />
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Technical Skills - Grille cartes + filtres + drawer */}
-      <section className={`py-14 ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'}`}>
+      <section className={`py-16 ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'}`}>
         <div className="container-custom">
           {/* Filtres */}
           <div className="flex flex-wrap gap-2 mb-6">
@@ -235,10 +289,10 @@ const Competences = () => {
             ))}
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {/* Grille cartes compétences */}
             <div className="lg:col-span-2">
-              <motion.div variants={containerVariants} initial="hidden" animate={inView ? 'visible' : 'hidden'} ref={ref} className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <motion.div variants={containerVariants} initial="hidden" animate={inView ? 'visible' : 'hidden'} ref={ref} className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {filteredCompetences.map((competence, index) => (
                   <motion.div key={index} variants={itemVariants} className={`p-4 rounded-xl border cursor-pointer ${theme === 'dark' ? 'bg-gray-900/60 border-gray-700' : 'bg-gray-50 border-gray-200'}`} onClick={() => { setSelectedCompetence(competence); setDrawerOpen(true) }}>
                     <div className="flex items-center justify-between mb-2">
@@ -246,6 +300,10 @@ const Competences = () => {
                         competence.color === 'primary' ? 'bg-primary-100 text-primary-700 dark:bg-primary-900/40 dark:text-primary-300' :
                         competence.color === 'accent' ? 'bg-accent-100 text-accent-700 dark:bg-accent-900/40 dark:text-accent-300' :
                         competence.color === 'purple' ? 'bg-purple-100 text-purple-700 dark:bg-purple-900/40 dark:text-purple-300' :
+                        competence.color === 'blue' ? 'bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300' :
+                        competence.color === 'orange' ? 'bg-orange-100 text-orange-700 dark:bg-orange-900/40 dark:text-orange-300' :
+                        competence.color === 'red' ? 'bg-red-100 text-red-700 dark:bg-red-900/40 dark:text-red-300' :
+                        competence.color === 'indigo' ? 'bg-indigo-100 text-indigo-700 dark:bg-indigo-900/40 dark:text-indigo-300' :
                         'bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-300'
                       }`}>
                         <competence.icon className="h-4 w-4" />
@@ -326,6 +384,10 @@ const Competences = () => {
                       selectedCompetence.color === 'primary' ? 'bg-primary-100 text-primary-700 dark:bg-primary-900/40 dark:text-primary-300' :
                       selectedCompetence.color === 'accent' ? 'bg-accent-100 text-accent-700 dark:bg-accent-900/40 dark:text-accent-300' :
                       selectedCompetence.color === 'purple' ? 'bg-purple-100 text-purple-700 dark:bg-purple-900/40 dark:text-purple-300' :
+                      selectedCompetence.color === 'blue' ? 'bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300' :
+                      selectedCompetence.color === 'orange' ? 'bg-orange-100 text-orange-700 dark:bg-orange-900/40 dark:text-orange-300' :
+                      selectedCompetence.color === 'red' ? 'bg-red-100 text-red-700 dark:bg-red-900/40 dark:text-red-300' :
+                      selectedCompetence.color === 'indigo' ? 'bg-indigo-100 text-indigo-700 dark:bg-indigo-900/40 dark:text-indigo-300' :
                       'bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-300'
                     }`}>
                       <selectedCompetence.icon className="h-4 w-4" />
@@ -365,7 +427,7 @@ const Competences = () => {
       </section>
 
       {/* Soft Skills */}
-      <section className={`py-14 ${theme === 'dark' ? 'bg-gray-900' : 'bg-gray-50'}`}>
+      <section className={`py-16 ${theme === 'dark' ? 'bg-gray-900' : 'bg-gray-50'}`}>
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -382,7 +444,7 @@ const Competences = () => {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {softSkills.map((skill, index) => (
               <motion.div
                 key={index}
@@ -411,7 +473,7 @@ const Competences = () => {
       </section>
 
       {/* Technologies Grid */}
-      <section className={`py-14 ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'}`}>
+      <section className={`py-16 ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'}`}>
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -428,7 +490,7 @@ const Competences = () => {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
             {technologies.map((tech, index) => {
               const tier = getTier(tech.level)
               return (
@@ -454,7 +516,7 @@ const Competences = () => {
       </section>
 
       {/* CTA Section */}
-      <section className={`py-14 ${theme === 'dark' ? 'bg-gray-900' : 'bg-gray-50'}`}>
+      <section className={`py-16 ${theme === 'dark' ? 'bg-gray-900' : 'bg-gray-50'}`}>
         <div className="container-custom text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
