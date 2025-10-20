@@ -56,7 +56,7 @@ const Projets = () => {
       liveUrl: '#',
       githubUrl: '#',
       status: 'completed',
-      year: '2024'
+      year: '2025'
     },
     {
       id: 2,
@@ -147,6 +147,186 @@ const Projets = () => {
       githubUrl: '#',
       status: 'completed',
       year: '2024'
+    },
+    {
+      id: 7,
+      title: 'Formation IA - Création de GPT Personnalisés',
+      description: 'Formation complète pour entreprises sur l\'utilisation avancée de ChatGPT : création de GPT personnalisés, techniques de prompt engineering, intégration API et automatisation des processus métier. Formation pratique avec cas d\'usage réels.',
+      image: '/api/placeholder/600/400',
+      category: 'ai',
+      technologies: ['OpenAI API', 'GPT Builder', 'Prompt Engineering', 'Formation'],
+      features: [
+        'Formation création de GPT personnalisés',
+        'Techniques avancées de prompt engineering',
+        'Intégration API dans les processus métier',
+        'Automatisation complète des tâches répétitives'
+      ],
+      liveUrl: '#',
+      githubUrl: '#',
+      status: 'completed',
+      year: '2025'
+    },
+    {
+      id: 8,
+      title: 'App Mobile React Native - Gestion Stock',
+      description: 'Application mobile cross-platform pour la gestion de stock d\'une PME marseillaise. Interface intuitive, synchronisation temps réel, notifications push et mode hors-ligne. Déploiement sur App Store et Google Play.',
+      image: '/api/placeholder/600/400',
+      category: 'mobile',
+      technologies: ['React Native', 'JavaScript', 'Firebase', 'App Store'],
+      features: [
+        'Interface mobile intuitive et responsive',
+        'Synchronisation temps réel avec le backend',
+        'Notifications push pour les alertes stock',
+        'Mode hors-ligne avec synchronisation différée'
+      ],
+      liveUrl: '#',
+      githubUrl: '#',
+      status: 'completed',
+      year: '2024'
+    },
+    {
+      id: 9,
+      title: 'Participation CTF - Cybersécurité',
+      description: 'Participation active aux compétitions CTF (Capture The Flag) pour développer les compétences en cybersécurité. Résolution de challenges de cryptographie, reverse engineering, web exploitation et forensique numérique.',
+      image: '/api/placeholder/600/400',
+      category: 'infrastructure',
+      technologies: ['Cybersécurité', 'Cryptographie', 'Reverse Engineering', 'Forensique'],
+      features: [
+        'Résolution de challenges de cryptographie',
+        'Reverse engineering d\'applications',
+        'Exploitation de vulnérabilités web',
+        'Analyse forensique de systèmes compromis'
+      ],
+      liveUrl: '#',
+      githubUrl: '#',
+      status: 'completed',
+      year: '2023'
+    },
+    {
+      id: 10,
+      title: 'Outil Système C++ - Optimisation Performance',
+      description: 'Développement d\'un outil système en C++ pour l\'optimisation des performances d\'une application critique. Utilisation d\'algorithmes avancés, gestion mémoire optimisée et parallélisation pour améliorer les performances de 400%.',
+      image: '/api/placeholder/600/400',
+      category: 'web',
+      technologies: ['C++', 'Algorithmes', 'Optimisation', 'Parallélisation'],
+      features: [
+        'Amélioration des performances de 400%',
+        'Algorithmes optimisés pour gros volumes',
+        'Gestion mémoire avancée',
+        'Parallélisation multi-thread'
+      ],
+      liveUrl: '#',
+      githubUrl: '#',
+      status: 'completed',
+      year: '2023'
+    },
+    {
+      id: 11,
+      title: 'Configuration DNS - Migration Domaine',
+      description: 'Migration complète d\'un domaine d\'entreprise avec configuration DNS avancée, enregistrements A/TXT, SSL/TLS et optimisation des performances. Mise en place de la redondance et monitoring des services.',
+      image: '/api/placeholder/600/400',
+      category: 'infrastructure',
+      technologies: ['DNS', 'SSL/TLS', 'Migration', 'Monitoring'],
+      features: [
+        'Migration de domaine sans interruption',
+        'Configuration DNS optimisée',
+        'Certificats SSL/TLS automatiques',
+        'Monitoring et redondance des services'
+      ],
+      liveUrl: '#',
+      githubUrl: '#',
+      status: 'completed',
+      year: '2023'
+    },
+    {
+      id: 12,
+      title: 'Formation Prompt Engineering - Entreprises',
+      description: 'Formation spécialisée sur les techniques de prompt engineering pour optimiser l\'utilisation de ChatGPT en entreprise. Techniques avancées, création de prompts efficaces et intégration dans les workflows métier.',
+      image: '/api/placeholder/600/400',
+      category: 'ai',
+      technologies: ['Prompt Engineering', 'ChatGPT', 'Formation', 'Automatisation'],
+      features: [
+        'Techniques avancées de prompt engineering',
+        'Création de prompts efficaces et reproductibles',
+        'Intégration dans les workflows métier',
+        'Optimisation des résultats IA'
+      ],
+      liveUrl: '#',
+      githubUrl: '#',
+      status: 'completed',
+      year: '2025'
+    },
+    {
+      id: 13,
+      title: 'Système de Monitoring IA - Temps Réel',
+      description: 'Développement d\'un système de monitoring intelligent utilisant l\'IA pour analyser les performances en temps réel. Détection automatique d\'anomalies, alertes prédictives et optimisation continue des ressources serveur.',
+      image: '/api/placeholder/600/400',
+      category: 'ai',
+      technologies: ['Machine Learning', 'Python', 'TensorFlow', 'Monitoring', 'Alertes'],
+      features: [
+        'Détection automatique d\'anomalies en temps réel',
+        'Alertes prédictives avant les pannes',
+        'Optimisation automatique des ressources',
+        'Dashboard interactif avec visualisations IA'
+      ],
+      liveUrl: '#',
+      githubUrl: '#',
+      status: 'completed',
+      year: '2025'
+    },
+    {
+      id: 14,
+      title: 'API Microservices - Architecture Scalable',
+      description: 'Conception et développement d\'une architecture microservices complète avec API Gateway, load balancing et monitoring. Migration d\'une application monolithique vers une architecture distribuée haute performance.',
+      image: '/api/placeholder/600/400',
+      category: 'web',
+      technologies: ['Node.js', 'Docker', 'Kubernetes', 'API Gateway', 'Load Balancing'],
+      features: [
+        'Architecture microservices scalable',
+        'API Gateway avec authentification JWT',
+        'Load balancing automatique',
+        'Monitoring et observabilité complète'
+      ],
+      liveUrl: '#',
+      githubUrl: '#',
+      status: 'completed',
+      year: '2025'
+    },
+    {
+      id: 15,
+      title: 'App Mobile IA - Reconnaissance Vocale',
+      description: 'Application mobile avec reconnaissance vocale avancée utilisant l\'IA. Transcription en temps réel, traduction automatique et commandes vocales pour l\'accessibilité. Déploiement sur iOS et Android.',
+      image: '/api/placeholder/600/400',
+      category: 'mobile',
+      technologies: ['React Native', 'Speech Recognition', 'OpenAI Whisper', 'IA', 'Accessibilité'],
+      features: [
+        'Reconnaissance vocale en temps réel',
+        'Traduction automatique multilingue',
+        'Commandes vocales pour l\'accessibilité',
+        'Interface adaptative selon le contexte'
+      ],
+      liveUrl: '#',
+      githubUrl: '#',
+      status: 'completed',
+      year: '2025'
+    },
+    {
+      id: 16,
+      title: 'Blockchain & Smart Contracts - DeFi',
+      description: 'Développement d\'une plateforme DeFi avec smart contracts sur Ethereum. Système de staking, yield farming et gestion automatisée des liquidités. Interface web3 intégrée avec wallet connect.',
+      image: '/api/placeholder/600/400',
+      category: 'web',
+      technologies: ['Solidity', 'Web3.js', 'Ethereum', 'Smart Contracts', 'DeFi'],
+      features: [
+        'Smart contracts sécurisés et audités',
+        'Système de staking automatisé',
+        'Yield farming avec calculs optimisés',
+        'Interface Web3 avec wallet connect'
+      ],
+      liveUrl: '#',
+      githubUrl: '#',
+      status: 'completed',
+      year: '2025'
     }
   ]
 
@@ -156,7 +336,7 @@ const Projets = () => {
                          projet.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          projet.technologies.some(tech => tech.toLowerCase().includes(searchTerm.toLowerCase()))
     return matchesCategory && matchesSearch
-  })
+  }).sort((a, b) => b.year - a.year)
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -261,7 +441,7 @@ const Projets = () => {
             initial="hidden"
             animate={inView ? "visible" : "hidden"}
             ref={ref}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"
           >
             {filteredProjets.map((projet) => (
               <motion.div
@@ -270,17 +450,31 @@ const Projets = () => {
                 className={`group ${theme === 'dark' ? 'bg-gray-900' : 'bg-white'} rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden`}
                 whileHover={{ y: -5 }}
               >
-                {/* Project Image */}
-                <div className="relative h-48 overflow-hidden">
-                  <div className={`w-full h-full bg-gradient-to-br ${
-                    projet.category === 'web' ? 'from-primary-500 to-primary-600' :
-                    projet.category === 'mobile' ? 'from-accent-500 to-accent-600' :
-                    projet.category === 'ai' ? 'from-purple-500 to-purple-600' :
-                    projet.category === 'database' ? 'from-green-500 to-green-600' :
-                    projet.category === 'infrastructure' ? 'from-blue-500 to-blue-600' :
-                    'from-orange-500 to-orange-600'
-                  } flex items-center justify-center`}>
-                    <div className="text-6xl text-white opacity-80">
+                {/* Project Header with Border */}
+                <div className={`relative h-20 border-l-4 ${
+                  projet.category === 'web' ? 'border-primary-500' :
+                  projet.category === 'mobile' ? 'border-accent-500' :
+                  projet.category === 'ai' ? 'border-purple-500' :
+                  projet.category === 'database' ? 'border-green-500' :
+                  projet.category === 'infrastructure' ? 'border-blue-500' :
+                  'border-orange-500'
+                } bg-gradient-to-r ${
+                  projet.category === 'web' ? 'from-primary-50 to-primary-100 dark:from-primary-900/20 dark:to-primary-800/20' :
+                  projet.category === 'mobile' ? 'from-accent-50 to-accent-100 dark:from-accent-900/20 dark:to-accent-800/20' :
+                  projet.category === 'ai' ? 'from-purple-50 to-purple-100 dark:from-purple-900/20 dark:to-purple-800/20' :
+                  projet.category === 'database' ? 'from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20' :
+                  projet.category === 'infrastructure' ? 'from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20' :
+                  'from-orange-50 to-orange-100 dark:from-orange-900/20 dark:to-orange-800/20'
+                } flex items-center justify-between px-4`}>
+                  <div className="flex items-center space-x-3">
+                    <div className={`text-2xl ${
+                      projet.category === 'web' ? 'text-primary-600' :
+                      projet.category === 'mobile' ? 'text-accent-600' :
+                      projet.category === 'ai' ? 'text-purple-600' :
+                      projet.category === 'database' ? 'text-green-600' :
+                      projet.category === 'infrastructure' ? 'text-blue-600' :
+                      'text-orange-600'
+                    }`}>
                       {projet.category === 'web' ? '🌐' :
                        projet.category === 'mobile' ? '📱' :
                        projet.category === 'ai' ? '🤖' :
@@ -288,42 +482,38 @@ const Projets = () => {
                        projet.category === 'infrastructure' ? '🖥️' :
                        '🔧'}
                     </div>
+                    <div>
+                      <span className={`text-sm font-semibold ${
+                        theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
+                      }`}>
+                        {projet.year}
+                      </span>
+                    </div>
                   </div>
                   
                   {/* Status Badge */}
-                  <div className="absolute top-4 right-4">
-                    <span className={`px-3 py-1 rounded-full text-xs font-semibold ${
-                      projet.status === 'completed' 
-                        ? 'bg-green-500 text-white' 
-                        : 'bg-yellow-500 text-white'
-                    }`}>
-                      {projet.status === 'completed' ? 'Terminé' : 'En cours'}
-                    </span>
-                  </div>
-
-                  {/* Year Badge */}
-                  <div className="absolute top-4 left-4">
-                    <span className={`px-3 py-1 rounded-full text-xs font-semibold ${
-                      theme === 'dark' ? 'bg-gray-800 text-white' : 'bg-white text-gray-900'
-                    }`}>
-                      {projet.year}
-                    </span>
-                  </div>
+                  <span className={`px-2 py-1 rounded-full text-xs font-semibold ${
+                    projet.status === 'completed' 
+                      ? 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300'
+                      : 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300'
+                  }`}>
+                    {projet.status === 'completed' ? 'Terminé' : 'En cours'}
+                  </span>
                 </div>
 
                 {/* Project Content */}
-                <div className="p-6">
-                  <h3 className={`text-xl font-bold mb-3 ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
+                <div className="p-4">
+                  <h3 className={`text-lg font-bold mb-2 ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
                     {projet.title}
                   </h3>
                   
-                  <p className={`text-sm mb-4 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'} leading-relaxed`}>
+                  <p className={`text-xs mb-3 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'} line-clamp-2`}>
                     {projet.description}
                   </p>
 
                   {/* Technologies */}
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {projet.technologies.map((tech, index) => (
+                  <div className="flex flex-wrap gap-1 mb-3">
+                    {projet.technologies.slice(0, 3).map((tech, index) => (
                       <span
                         key={index}
                         className={`px-2 py-1 rounded-lg text-xs font-medium ${
@@ -333,22 +523,26 @@ const Projets = () => {
                         {tech}
                       </span>
                     ))}
+                    {projet.technologies.length > 3 && (
+                      <span className={`px-2 py-1 rounded-lg text-xs font-medium ${
+                        theme === 'dark' ? 'bg-gray-700 text-gray-300' : 'bg-gray-100 text-gray-700'
+                      }`}>
+                        +{projet.technologies.length - 3}
+                      </span>
+                    )}
                   </div>
 
                   {/* Features */}
-                  <div className="mb-6">
-                    <h4 className={`text-sm font-semibold mb-2 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
-                      Fonctionnalités :
-                    </h4>
+                  <div className="mb-4">
                     <ul className="space-y-1">
-                      {projet.features.slice(0, 3).map((feature, index) => (
+                      {projet.features.slice(0, 2).map((feature, index) => (
                         <li key={index} className={`text-xs ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}>
                           • {feature}
                         </li>
                       ))}
-                      {projet.features.length > 3 && (
+                      {projet.features.length > 2 && (
                         <li className={`text-xs ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}>
-                          • +{projet.features.length - 3} autres...
+                          • +{projet.features.length - 2} autres...
                         </li>
                       )}
                     </ul>

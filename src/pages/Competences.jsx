@@ -158,11 +158,29 @@ const Competences = () => {
     }
   ]
 
-  // dériver filtres et résultat après avoir les données
-  filters = ['Tous', ...competences.map(c => c.title)]
+  // Filtres généralistes
+  filters = ['Tous', 'Développement', 'Infrastructure', 'Intelligence Artificielle']
   filteredCompetences = useMemo(() => {
     if (activeFilter === 'Tous') return competences
-    return competences.filter(c => c.title === activeFilter)
+    if (activeFilter === 'Développement') {
+      return competences.filter(c => 
+        c.title === 'Développement Web' || 
+        c.title === 'Développement Mobile' || 
+        c.title === 'Développement Système'
+      )
+    }
+    if (activeFilter === 'Infrastructure') {
+      return competences.filter(c => 
+        c.title === 'DevOps & Infrastructure' || 
+        c.title === 'Déploiement Web' || 
+        c.title === 'Bases de Données' ||
+        c.title === 'Cybersécurité'
+      )
+    }
+    if (activeFilter === 'Intelligence Artificielle') {
+      return competences.filter(c => c.title === 'Intelligence Artificielle')
+    }
+    return competences
   }, [activeFilter])
 
   const softSkills = [
@@ -251,7 +269,7 @@ const Competences = () => {
       </Helmet>
 
       {/* Hero Section */}
-      <section className={`py-8 lg:py-12 ${theme === 'dark' ? 'bg-gray-900' : 'bg-gray-50'}`}>
+      <section className={`py-20 lg:py-32 ${theme === 'dark' ? 'bg-gray-900' : 'bg-gray-50'}`}>
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -260,7 +278,7 @@ const Competences = () => {
             className="text-center max-w-4xl mx-auto"
           >
             <h1 className={`text-3xl md:text-4xl lg:text-5xl font-bold mb-4 ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
-              Nos <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-accent-600">Compétences</span> - 8 CATÉGORIES
+              Nos <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-accent-600">Compétences</span>
             </h1>
             <p className={`text-base md:text-lg ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'} mb-6 leading-relaxed`}>
               Une expertise technique solide et une veille technologique constante pour vous offrir les meilleures solutions
