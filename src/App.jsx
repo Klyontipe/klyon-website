@@ -7,6 +7,7 @@ import Layout from './components/Layout'
 import Home from './pages/Home'
 import Competences from './pages/Competences'
 import Projets from './pages/Projets'
+import Services from './pages/Services'
 import Contact from './pages/Contact'
 import Blog from './pages/Blog'
 import BlogPost from './pages/BlogPost'
@@ -42,7 +43,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<RouteRedirect />} />
-            {/* Route services supprimée */}
+            <Route path="services" element={<Services />} />
             <Route path="competences" element={<Competences />} />
             <Route path="projets" element={<Projets />} />
             <Route path="contact" element={<Contact />} />
