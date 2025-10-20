@@ -6,57 +6,57 @@ import { ArrowRight, Calendar, Clock, Bot, Code, Shield, ShoppingCart, Database,
 const Blog = () => {
   const blogPosts = [
     {
-      slug: 'chatgpt-entreprise',
-      category: 'IA & Automatisation',
+      slug: 'bien-demarrer-avec-chatgpt',
+      category: 'IA & Productivité',
       icon: Bot,
-      title: 'ChatGPT en entreprise : 5 cas d\'usage concrets',
-      excerpt: 'Découvrez comment j\'ai intégré ChatGPT dans des entreprises marseillaises pour automatiser le service client, générer des réponses personnalisées et optimiser les processus métier. Retour d\'expérience avec exemples pratiques.',
-      date: '18 Septembre 2024',
+      title: 'Bien démarrer avec ChatGPT : méthodes et réflexes utiles',
+      excerpt: 'Structurer ses prompts, itérer efficacement et éviter les pièges courants : une méthode simple pour gagner du temps avec l’IA au quotidien.',
+      date: '10 Janvier 2025',
+      readTime: '7 min de lecture'
+    },
+    {
+      slug: 'prompts-metiers',
+      category: 'IA & Métiers',
+      icon: Code,
+      title: 'Prompts métiers: modèles réutilisables pour marketing, RH et support',
+      excerpt: 'Des trames de prompts génériques, adaptables à votre contexte, pour créer du contenu, analyser, synthétiser et améliorer vos process.',
+      date: '03 Janvier 2025',
+      readTime: '9 min de lecture'
+    },
+    {
+      slug: 'assistants-gpt',
+      category: 'Assistants IA',
+      icon: Shield,
+      title: 'Assistants GPT: quand et pourquoi les utiliser',
+      excerpt: 'Cas d’usage types, limites à connaître et bonnes pratiques pour créer des assistants efficaces sans complexité inutile.',
+      date: '18 Décembre 2024',
       readTime: '8 min de lecture'
     },
     {
-      slug: 'autoproposal-python',
-      category: 'Python',
-      icon: Code,
-      title: 'AutoProposal V2 : Automatisation PDF avec Python',
-      excerpt: 'Comment j\'ai développé une solution complète d\'extraction de données PDF pour automatiser la saisie des propales dans un CRM. Code source, techniques d\'OCR et intégration web.',
-      date: '12 Septembre 2024',
-      readTime: '12 min de lecture'
-    },
-    {
-      slug: 'securelocal-rgpd',
-      category: 'Infrastructure',
-      icon: Shield,
-      title: 'SecureLocal : Infrastructure RGPD 100% locale',
-      excerpt: 'Retour d\'expérience sur la création d\'une infrastructure locale complète avec 4 GPU NVIDIA pour une entreprise soucieuse du RGPD. Configuration réseau isolé et sécurité maximale.',
-      date: '5 Septembre 2024',
-      readTime: '10 min de lecture'
-    },
-    {
-      slug: 'shopify-crm-webhooks',
-      category: 'E-commerce',
+      slug: 'automatiser-sans-code',
+      category: 'Automatisation',
       icon: ShoppingCart,
-      title: 'Shopify + CRM : Intégration webhooks réussie',
-      excerpt: 'Guide technique complet de l\'intégration Shopify-CRM que j\'ai développée. Webhooks JSON, synchronisation temps réel et gestion des erreurs. Code Python inclus.',
-      date: '28 Août 2024',
+      title: 'Automatiser sans coder: scénarios pratiques avec IA + no‑code',
+      excerpt: 'Des exemples génériques de workflows combinant IA et outils no‑code pour gagner du temps sans développement lourd.',
+      date: '11 Décembre 2024',
       readTime: '6 min de lecture'
     },
     {
-      slug: 'postgresql-optimisation',
-      category: 'PostgreSQL',
+      slug: 'veille-ia-2025',
+      category: 'Tendances',
       icon: Database,
-      title: 'Optimisation PostgreSQL : De 30s à 0.2s',
-      excerpt: 'Comment j\'ai optimisé un système de reporting lent en réécrivant des requêtes complexes. Techniques d\'indexation, EXPLAIN ANALYZE et bonnes pratiques PostgreSQL.',
-      date: '20 Août 2024',
-      readTime: '15 min de lecture'
+      title: 'Veille IA 2025: tendances utiles à surveiller',
+      excerpt: 'Modèles spécialisés, agents plus fiables, gouvernance des données: panorama accessible des signaux forts à suivre.',
+      date: '04 Décembre 2024',
+      readTime: '5 min de lecture'
     },
     {
-      slug: 'upgrade-pc',
-      category: 'Support IT',
+      slug: 'ethique-et-cadre',
+      category: 'Bonnes pratiques',
       icon: Wrench,
-      title: 'Upgrade PC : HDD vers SSD, résultats concrets',
-      excerpt: 'Retour d\'expérience sur l\'amélioration des performances PC en remplaçant HDD par SSD. Tests de vitesse, installation Windows, et conseils pour les PME marseillaises.',
-      date: '15 Août 2024',
+      title: 'IA responsable: éthique, cadre et bon sens opérationnel',
+      excerpt: 'Principes généraux, transparence et contrôle humain: un rappel pragmatique pour utiliser l’IA en confiance.',
+      date: '27 Novembre 2024',
       readTime: '7 min de lecture'
     }
   ]
