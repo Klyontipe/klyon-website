@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet-async'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-// import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { 
   Wrench, 
   Code, 
@@ -196,15 +196,13 @@ const Services = () => {
                     ))}
                   </ul>
 
-                  <motion.a
-                    href="/contact"
+                  <Link
+                    to="/contact"
                     className={`inline-flex items-center px-6 py-3 rounded-xl font-semibold text-white transition-all duration-200 ${
                       service.color === 'primary' ? 'bg-primary-600 hover:bg-primary-700' :
                       service.color === 'accent' ? 'bg-accent-600 hover:bg-accent-700' :
                       'bg-purple-600 hover:bg-purple-700'
                     }`}
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
                   >
                     <motion.div
                       className="flex items-center"
@@ -214,7 +212,7 @@ const Services = () => {
                       En savoir plus
                       <ArrowRight className="ml-2 h-4 w-4" />
                     </motion.div>
-                  </motion.a>
+                  </Link>
                 </div>
 
                 {/* Visual */}
@@ -312,14 +310,14 @@ const Services = () => {
               Contactez-nous pour discuter de votre projet et obtenir une solution sur mesure
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <motion.a
-                href="/contact"
+              <Link
+                to="/contact"
                 className="px-8 py-4 bg-primary-600 text-white rounded-xl hover:bg-primary-700 transition-colors duration-200 font-semibold"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
               >
-                Demander un devis
-              </motion.a>
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                  Demander un devis
+                </motion.div>
+              </Link>
               <motion.a
                 href="tel:+33766980342"
                 className="px-8 py-4 bg-accent-600 text-white rounded-xl hover:bg-accent-700 transition-colors duration-200 font-semibold"
