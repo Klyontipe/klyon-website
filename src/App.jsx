@@ -5,7 +5,6 @@ import { ThemeProvider } from './contexts/ThemeContext'
 import { ContactProvider } from './contexts/ContactContext'
 import Layout from './components/Layout'
 import Home from './pages/Home'
-import Services from './pages/Services'
 import Competences from './pages/Competences'
 import Projets from './pages/Projets'
 import Contact from './pages/Contact'
@@ -43,7 +42,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<RouteRedirect />} />
-            <Route path="services" element={<Services />} />
+            {/* Route services supprimée */}
             <Route path="competences" element={<Competences />} />
             <Route path="projets" element={<Projets />} />
             <Route path="contact" element={<Contact />} />
