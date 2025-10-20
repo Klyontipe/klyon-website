@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet-async'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { Link } from 'react-router-dom'
+import { NavLink as RouterNavLink } from 'react-router-dom'
 import { 
   Wrench, 
   Code, 
@@ -196,7 +196,7 @@ const Services = () => {
                     ))}
                   </ul>
 
-                  <Link
+                  <RouterNavLink
                     to="/contact"
                     className={`inline-flex items-center px-6 py-3 rounded-xl font-semibold text-white transition-all duration-200 ${
                       service.color === 'primary' ? 'bg-primary-600 hover:bg-primary-700' :
@@ -212,7 +212,7 @@ const Services = () => {
                       En savoir plus
                       <ArrowRight className="ml-2 h-4 w-4" />
                     </motion.div>
-                  </Link>
+                  </RouterNavLink>
                 </div>
 
                 {/* Visual */}
@@ -310,14 +310,14 @@ const Services = () => {
               Contactez-nous pour discuter de votre projet et obtenir une solution sur mesure
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
+              <RouterNavLink
                 to="/contact"
                 className="px-8 py-4 bg-primary-600 text-white rounded-xl hover:bg-primary-700 transition-colors duration-200 font-semibold"
               >
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                   Demander un devis
                 </motion.div>
-              </Link>
+              </RouterNavLink>
               <motion.a
                 href="tel:+33766980342"
                 className="px-8 py-4 bg-accent-600 text-white rounded-xl hover:bg-accent-700 transition-colors duration-200 font-semibold"
