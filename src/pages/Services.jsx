@@ -66,40 +66,18 @@ const Services = () => {
   ]
 
   const additionalServices = [
-    {
-      icon: Database,
-      title: 'Bases de Données',
-      description: 'Conception, optimisation et maintenance de vos bases de données'
-    },
-    {
-      icon: Shield,
-      title: 'Cybersécurité',
-      description: 'Protection de vos données et sécurisation de vos systèmes'
-    },
-    {
-      icon: Smartphone,
-      title: 'Applications Mobiles',
-      description: 'Développement d\'applications iOS et Android sur mesure'
-    },
-    {
-      icon: Cloud,
-      title: 'Solutions Cloud',
-      description: 'Migration et gestion de vos infrastructures cloud'
-    },
-    {
-      icon: Users,
-      title: 'Formation',
-      description: 'Formation de vos équipes aux nouvelles technologies'
-    }
+    { icon: Database, title: 'Bases de Données', description: 'Conception, optimisation et maintenance de vos bases de données' },
+    { icon: Shield, title: 'Cybersécurité', description: 'Protection de vos données et sécurisation de vos systèmes' },
+    { icon: Smartphone, title: 'Applications Mobiles', description: 'Développement d\'applications iOS et Android sur mesure' },
+    { icon: Cloud, title: 'Solutions Cloud', description: 'Migration et gestion de vos infrastructures cloud' },
+    { icon: Users, title: 'Formation', description: 'Formation de vos équipes aux nouvelles technologies' }
   ]
 
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.2
-      }
+      transition: { staggerChildren: 0.2 }
     }
   }
 
@@ -108,10 +86,7 @@ const Services = () => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: {
-        duration: 0.6,
-        ease: 'easeOut'
-      }
+      transition: { duration: 0.6, ease: 'easeOut' }
     }
   }
 
@@ -147,7 +122,7 @@ const Services = () => {
           <motion.div
             variants={containerVariants}
             initial="hidden"
-            animate={inView ? "visible" : "hidden"}
+            animate={inView ? 'visible' : 'hidden'}
             ref={ref}
             className="space-y-16"
           >
@@ -155,9 +130,7 @@ const Services = () => {
               <motion.div
                 key={index}
                 variants={itemVariants}
-                className={`grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center ${
-                  index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''
-                }`}
+                className={`grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center ${index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''}`}
               >
                 {/* Content */}
                 <div className={`${index % 2 === 1 ? 'lg:col-start-2' : ''}`}>
@@ -172,11 +145,11 @@ const Services = () => {
                       'text-purple-600'
                     }`} />
                   </div>
-                  
+
                   <h2 className={`text-3xl md:text-4xl font-bold mb-4 ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
                     {service.title}
                   </h2>
-                  
+
                   <p className={`text-lg ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'} mb-6 leading-relaxed`}>
                     {service.description}
                   </p>
@@ -204,11 +177,7 @@ const Services = () => {
                       'bg-purple-600 hover:bg-purple-700'
                     }`}
                   >
-                    <motion.div
-                      className="flex items-center"
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
+                    <motion.div className="flex items-center" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                       En savoir plus
                       <ArrowRight className="ml-2 h-4 w-4" />
                     </motion.div>
@@ -276,9 +245,7 @@ const Services = () => {
                 whileHover={{ y: -5 }}
               >
                 <div className="flex items-center mb-4">
-                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center mr-4 ${
-                    theme === 'dark' ? 'bg-gray-700' : 'bg-gray-100'
-                  }`}>
+                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center mr-4 ${theme === 'dark' ? 'bg-gray-700' : 'bg-gray-100'}`}>
                     <service.icon className="h-6 w-6 text-primary-600" />
                   </div>
                   <h3 className={`text-lg font-semibold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
@@ -320,7 +287,7 @@ const Services = () => {
               </RouterLink>
               <motion.a
                 href="tel:+33766980342"
-                className="px-8 py-4 bg-accent-600 text-white rounded-xl hover:bg-accent-700 transition-colors duration-200 font-semibold"
+                className="px-8 py-4 bg-accent-600 text-white rounded-xl hover:bg-accent-700 transition-colors durée-200 font-semibold"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -335,3 +302,5 @@ const Services = () => {
 }
 
 export default Services
+
+
