@@ -260,7 +260,7 @@ const Competences = () => {
             className="text-center max-w-4xl mx-auto"
           >
             <h1 className={`text-3xl md:text-4xl lg:text-5xl font-bold mb-4 ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
-              Nos <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-accent-600">Compétences</span>
+              Nos <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-accent-600">Compétences</span> - 8 CATÉGORIES
             </h1>
             <p className={`text-base md:text-lg ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'} mb-6 leading-relaxed`}>
               Une expertise technique solide et une veille technologique constante pour vous offrir les meilleures solutions
