@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet-async'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { Link } from 'react-router-dom'
+import { Link as RouterLink } from 'react-router-dom'
 import { 
   ArrowRight, 
   CheckCircle, 
@@ -143,7 +143,7 @@ const Home = () => {
                   {service.description}
                 </p>
                 
-                <Link
+                <RouterLink
                   to={service.href}
                   className={`inline-flex items-center text-sm font-semibold ${
                     service.color === 'primary' ? 'text-primary-600 hover:text-primary-700' :
@@ -153,7 +153,7 @@ const Home = () => {
                 >
                   En savoir plus
                   <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
+                </RouterLink>
               </motion.div>
             ))}
           </motion.div>
@@ -165,13 +165,13 @@ const Home = () => {
             viewport={{ once: true }}
             className="text-center"
           >
-            <Link
+            <RouterLink
               to="/services"
               className="inline-flex items-center px-8 py-4 bg-primary-600 text-white rounded-xl hover:bg-primary-700 transition-colors duration-200 font-semibold"
             >
               Voir tous nos services
               <ArrowRight className="ml-2 h-5 w-5" />
-            </Link>
+            </RouterLink>
           </motion.div>
         </div>
       </section>
@@ -225,18 +225,18 @@ const Home = () => {
               Contactez-nous pour discuter de vos besoins et obtenir un devis personnalisé
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
+              <RouterLink
                 to="/contact"
                 className="px-8 py-4 bg-primary-600 text-white rounded-xl hover:bg-primary-700 transition-colors duration-200 font-semibold"
               >
                 Demander un devis
-              </Link>
-              <Link
+              </RouterLink>
+              <RouterLink
                 to="/projets"
                 className="px-8 py-4 bg-accent-600 text-white rounded-xl hover:bg-accent-700 transition-colors duration-200 font-semibold"
               >
                 Voir nos réalisations
-              </Link>
+              </RouterLink>
             </div>
           </motion.div>
         </div>

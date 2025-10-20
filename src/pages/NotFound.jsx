@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link as RouterLink } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
 import { motion } from 'framer-motion'
 import { Home, ArrowLeft } from 'lucide-react'
@@ -55,13 +55,13 @@ const NotFound = () => {
             transition={{ duration: 0.6, delay: 0.6 }}
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
-            <Link
+            <RouterLink
               to="/"
               className="inline-flex items-center justify-center px-8 py-3 bg-gradient-to-r from-primary-600 to-accent-600 text-white rounded-lg font-semibold hover:from-primary-700 hover:to-accent-700 transition-all duration-200"
             >
               <Home className="h-5 w-5 mr-2" />
               Retour à l'accueil
-            </Link>
+            </RouterLink>
 
             <button
               onClick={() => window.history.back()}

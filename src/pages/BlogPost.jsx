@@ -1,4 +1,4 @@
-import { useParams, Link } from 'react-router-dom'
+import { useParams, Link as RouterLink } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
 import { motion } from 'framer-motion'
 import { ArrowLeft, Calendar, Clock, Share2, Mail, Lock, Eye, EyeOff } from 'lucide-react'
@@ -237,13 +237,13 @@ const BlogPost = () => {
           <p className="text-gray-600 dark:text-gray-300 mb-8">
             L'article que vous recherchez n'existe pas.
           </p>
-          <Link
+          <RouterLink
             to="/blog"
             className="inline-flex items-center text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300"
           >
             <ArrowLeft className="h-4 w-4 mr-2" />
             Retour au blog
-          </Link>
+          </RouterLink>
         </div>
       </div>
     )
@@ -271,13 +271,13 @@ const BlogPost = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="mb-8"
             >
-              <Link
+              <RouterLink
                 to="/blog"
                 className="inline-flex items-center text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 transition-colors duration-200"
               >
                 <ArrowLeft className="h-4 w-4 mr-2" />
                 Retour au blog
-              </Link>
+              </RouterLink>
             </motion.div>
 
             {/* Article Header */}
@@ -394,12 +394,12 @@ const BlogPost = () => {
                 <p className="text-lg mb-6 opacity-90">
                   Discutons de vos besoins et créons ensemble la solution parfaite pour votre entreprise.
                 </p>
-                <Link
+                <RouterLink
                   to="/#contact"
                   className="inline-block bg-white text-primary-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200"
                 >
                   Nous contacter
-                </Link>
+                </RouterLink>
               </div>
             </motion.div>
           </motion.div>

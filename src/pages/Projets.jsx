@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet-async'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { Link } from 'react-router-dom'
+import { Link as RouterLink } from 'react-router-dom'
 import { 
   ExternalLink, 
   Github, 
@@ -356,7 +356,7 @@ const Projets = () => {
 
                   {/* Action Buttons */}
                   <div className="pt-4">
-                    <Link
+                    <RouterLink
                       to="/contact"
                       className={`w-full flex items-center justify-center space-x-2 py-3 px-4 rounded-lg text-sm font-medium transition-colors duration-200 ${
                         theme === 'dark' 
@@ -371,7 +371,7 @@ const Projets = () => {
                       >
                         <span>Discuter de ce projet</span>
                       </motion.div>
-                    </Link>
+                    </RouterLink>
                   </div>
                 </div>
               </motion.div>

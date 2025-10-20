@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet-async'
 import { motion } from 'framer-motion'
 import { Phone, Mail, MapPin, Linkedin, Github, Globe, Share2, UserPlus, ArrowLeft } from 'lucide-react'
-import { Link } from 'react-router-dom'
+import { Link as RouterLink } from 'react-router-dom'
 import { useTheme } from '../contexts/ThemeContext'
 
 const Bam = () => {
@@ -75,13 +75,13 @@ END:VCARD`
           transition={{ duration: 0.6 }}
           className="absolute top-8 left-8 z-10"
         >
-          <Link
+          <RouterLink
             to="/"
             className="flex items-center space-x-2 bg-white/20 backdrop-blur-md text-white px-4 py-2 rounded-full hover:bg-white/30 transition-all duration-200"
           >
             <ArrowLeft className="h-4 w-4" />
             <span>Retour</span>
-          </Link>
+          </RouterLink>
         </motion.div>
 
         <motion.div

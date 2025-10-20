@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link as RouterLink } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { Mail, Phone, MapPin, Linkedin, Github } from 'lucide-react'
 import { useTheme } from '../contexts/ThemeContext'
@@ -46,13 +46,13 @@ const Footer = () => {
             viewport={{ once: true }}
             className="lg:col-span-1"
           >
-            <Link to="/" className="flex items-center space-x-3 mb-6">
+            <RouterLink to="/" className="flex items-center space-x-3 mb-6">
               <img 
                 src={theme === 'dark' ? '/logowhite.png' : '/logo.jpg'} 
                 alt="Klyon Logo" 
                 className={`h-36 w-auto lg:h-40 ${theme === 'dark' ? 'max-w-[200px]' : ''}`} 
               />
-            </Link>
+            </RouterLink>
             <p className="text-gray-300 mb-6 leading-relaxed">
               Votre partenaire informatique dans le Sud de la France. 
               De la maintenance à l'intelligence artificielle, nous accompagnons 
@@ -86,12 +86,12 @@ const Footer = () => {
             <ul className="space-y-3">
               {footerLinks.services.map((link) => (
                 <li key={link.name}>
-                  <Link
+                  <RouterLink
                     to={link.href}
                     className="text-gray-300 hover:text-primary-400 transition-colors duration-200"
                   >
                     {link.name}
-                  </Link>
+                  </RouterLink>
                 </li>
               ))}
             </ul>
@@ -108,12 +108,12 @@ const Footer = () => {
             <ul className="space-y-3">
               {footerLinks.company.map((link) => (
                 <li key={link.name}>
-                  <Link
+                  <RouterLink
                     to={link.href}
                     className="text-gray-300 hover:text-primary-400 transition-colors duration-200"
                   >
                     {link.name}
-                  </Link>
+                  </RouterLink>
                 </li>
               ))}
             </ul>
