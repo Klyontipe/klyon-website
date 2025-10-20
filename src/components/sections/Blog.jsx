@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { Link } from 'react-router-dom'
+import { Link as RouterLink } from 'react-router-dom'
 import { ArrowRight, Calendar, Clock, Bot, Code, Shield, ShoppingCart, Database, Wrench } from 'lucide-react'
 
 const Blog = () => {
@@ -156,13 +156,13 @@ const Blog = () => {
                     </div>
 
                     {/* Read More Link */}
-                    <Link
+                    <RouterLink
                       to={`/blog/${post.slug}`}
                       className="inline-flex items-center text-primary-600 dark:text-primary-400 font-semibold hover:text-primary-700 dark:hover:text-primary-300 transition-colors duration-200 group"
                     >
                       Lire l'article
                       <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-200" />
-                    </Link>
+                    </RouterLink>
                   </div>
                 </motion.div>
               </motion.article>

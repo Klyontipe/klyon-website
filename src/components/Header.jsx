@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link as RouterLink, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, Sun, Moon } from 'lucide-react'
 import { useTheme } from '../contexts/ThemeContext'
@@ -46,7 +46,7 @@ const Header = () => {
       <nav className="container-custom">
         <div className="flex items-center justify-between h-20 lg:h-24">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-3">
+          <RouterLink to="/" className="flex items-center space-x-3">
             <motion.img
               src={theme === 'dark' ? '/logowhite.png' : '/logo.jpg'}
               alt="Klyon Logo"
@@ -54,12 +54,12 @@ const Header = () => {
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.2 }}
             />
-          </Link>
+          </RouterLink>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-8">
             {navigation.map((item) => (
-              <Link
+              <RouterLink
                 key={item.name}
                 to={item.href}
                 className={`text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-colors duration-200 relative group ${
@@ -79,7 +79,7 @@ const Header = () => {
                     transition={{ duration: 0.3 }}
                   />
                 </motion.div>
-              </Link>
+              </RouterLink>
             ))}
           </div>
 
@@ -125,7 +125,7 @@ const Header = () => {
             >
               <div className="px-4 py-6 space-y-4">
                 {navigation.map((item, index) => (
-                  <Link
+                  <RouterLink
                     key={item.name}
                     to={item.href}
                     className={`block w-full text-left font-medium transition-colors duration-200 ${
@@ -142,7 +142,7 @@ const Header = () => {
                     >
                       {item.name}
                     </motion.div>
-                  </Link>
+                  </RouterLink>
                 ))}
               </div>
             </motion.div>
