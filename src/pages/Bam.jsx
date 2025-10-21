@@ -103,7 +103,7 @@ END:VCARD`
               className="text-center mb-8"
             >
               <motion.img
-                src="./photopro.jpg"
+                src="/assets/photopro.jpg"
                 alt="Lorenzo Fortini"
                 className="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-primary-500 shadow-lg"
                 whileHover={{ scale: 1.05 }}

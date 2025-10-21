@@ -48,7 +48,7 @@ const Header = () => {
           {/* Logo */}
           <RouterLink to="/" className="flex items-center space-x-3">
             <motion.img
-              src={theme === 'dark' ? './logowhite.png' : './logo.jpg'}
+              src={theme === 'dark' ? '/assets/logowhite.png' : '/assets/logo.jpg'}
               alt="Klyon Logo"
               className={`h-36 w-auto lg:h-40 ${theme === 'dark' ? 'max-w-[200px]' : ''}`}
               whileHover={{ scale: 1.05 }}
