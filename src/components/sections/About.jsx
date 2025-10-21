@@ -109,7 +109,7 @@ const About = () => {
             >
               <div className="absolute inset-0 bg-gradient-to-br from-primary-500 to-accent-500 rounded-2xl transform rotate-3"></div>
               <img
-                src="/photopro.jpg"
+                src="./photopro.jpg"
                 alt="Lorenzo Fortini - Fondateur de Klyon"
                 className="relative w-80 h-96 object-cover rounded-2xl shadow-2xl"
               />
