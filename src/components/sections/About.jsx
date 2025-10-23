@@ -48,10 +48,16 @@ const About = () => {
             </h2>
             
             <p className="text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
-              Je suis Lorenzo Fortini, entrepreneur passionné par la technologie et l'innovation. 
-              Développeur Full-Stack avec plusieurs années d'expérience, je combine expertise 
-              technique et vision entrepreneuriale pour accompagner entreprises et particuliers 
+              <strong>Klyon</strong> est une entreprise spécialisée dans les solutions informatiques innovantes, 
+              fondée par Lorenzo Fortini, ingénieur en fin de cursus à EPITECH. Nous combinons expertise 
+              technique avancée et vision entrepreneuriale pour accompagner entreprises et particuliers 
               dans leur transformation digitale dans le Sud de la France.
+            </p>
+
+            <p className="text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
+              Fort de plusieurs années d'expérience à travers des projets 
+              variés, notre équipe maîtrise les technologies les plus récentes : développement Full-Stack, 
+              intelligence artificielle, automatisation et support informatique professionnel.
             </p>
 
             <div className="space-y-6">
@@ -145,7 +151,7 @@ const About = () => {
               { number: '50+', label: 'Projets réalisés' },
               { number: '100%', label: 'Satisfaction client' },
               { number: '24/7', label: 'Support disponible' },
-              { number: '5+', label: 'Années d\'expérience' }
+              { number: '3+', label: 'Années d\'expérience' }
             ].map((stat, index) => (
               <motion.div
                 key={index}

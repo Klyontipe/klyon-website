@@ -11,35 +11,35 @@ const Services = () => {
   const services = [
     {
       icon: Wrench,
-      title: 'Support Informatique',
-      description: 'Installation, réparation et maintenance de vos équipements informatiques. Intervention sur site et à distance.',
+      title: 'Support Informatique Professionnel',
+      description: 'Maintenance, réparation et optimisation de vos équipements informatiques. Intervention sur site et à distance dans le Sud de la France.',
       features: [
-        'Installation PC et logiciels',
-        'Réparation matériel',
+        'Installation et configuration PC',
+        'Réparation matériel et logiciel',
         'Maintenance préventive',
-        'Support Office 365'
+        'Support Office 365 et G Suite'
       ]
     },
     {
       icon: Code,
-      title: 'Développement Sur-Mesure',
-      description: 'Création de programmes et applications adaptés à vos besoins spécifiques. Solutions Full-Stack et automatisation.',
+      title: 'Développement Full-Stack',
+      description: 'Création d\'applications web et mobiles sur-mesure. Expertise React, Python, C/C++ et bases de données.',
       features: [
-        'Programmes Python & Flask',
-        'Sites web professionnels',
-        'Automatisation de processus',
-        'Solutions Full-Stack'
+        'Applications React & React Native',
+        'Backend Python (Flask) & C#',
+        'Bases de données MySQL/PostgreSQL',
+        'APIs REST et intégrations'
       ]
     },
     {
       icon: Brain,
-      title: 'Intelligence Artificielle',
-      description: 'Intégration d\'IA et d\'automatisation pour optimiser vos processus et améliorer votre productivité.',
+      title: 'Solutions IA & Automatisation',
+      description: 'Intégration d\'intelligence artificielle et automatisation pour optimiser vos processus métier.',
       features: [
-        'Intégration ChatGPT',
-        'IA locale',
-        'Automatisation avancée',
-        'Conseils IA'
+        'Intégration ChatGPT & IA locale',
+        'Automatisation de processus',
+        'Solutions IA sur-mesure',
+        'Formation équipes aux outils IA'
       ]
     }
   ]
