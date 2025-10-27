@@ -148,7 +148,7 @@ const About = () => {
         >
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
-              { number: '50+', label: 'Projets réalisés' },
+              { number: '32+', label: 'Projets réalisés' },
               { number: '100%', label: 'Satisfaction client' },
               { number: '24/7', label: 'Support disponible' },
               { number: '3+', label: 'Années d\'expérience' }

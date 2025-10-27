@@ -24,12 +24,10 @@ const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    company: '',
     phone: '',
+    company: '',
     subject: '',
-    message: '',
-    budget: '',
-    timeline: ''
+    message: ''
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
 
@@ -74,30 +72,11 @@ const Contact = () => {
   ]
 
   const subjects = [
-    'Support informatique',
-    'Développement web',
-    'Application mobile',
-    'Intelligence artificielle',
-    'Base de données',
+    'Intelligence Artificielle',
+    'Développement Web',
+    'Réparation Informatique',
     'Formation',
     'Autre'
-  ]
-
-  const budgets = [
-    'Moins de 1000€',
-    '1000€ - 5000€',
-    '5000€ - 10000€',
-    '10000€ - 25000€',
-    'Plus de 25000€',
-    'À définir'
-  ]
-
-  const timelines = [
-    'Urgent (moins d\'1 mois)',
-    'Court terme (1-3 mois)',
-    'Moyen terme (3-6 mois)',
-    'Long terme (plus de 6 mois)',
-    'Flexible'
   ]
 
   const handleInputChange = (e) => {
@@ -118,15 +97,28 @@ const Contact = () => {
       const templateId = 'template_2af96ws'
       const publicKey = 'ZJMuCYNkzxGhqore6'
 
-      // Préparer les données pour EmailJS
+      // Préparer les données pour EmailJS avec formatage simplifié
       const fullMessage = `
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📝 NOUVEAU MESSAGE DE CONTACT - KLYON
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+👤 INFORMATIONS CLIENT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Nom         : ${formData.name}
+Email       : ${formData.email}
+Téléphone   : ${formData.phone || 'Non renseigné'}
+Entreprise  : ${formData.company || 'Particulier'}
+
+📋 DÉTAILS DE LA DEMANDE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Service     : ${formData.subject || 'Non précisé'}
+
+💬 MESSAGE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ${formData.message}
 
---- INFORMATIONS COMPLÉMENTAIRES ---
-Entreprise: ${formData.company || 'Non renseigné'}
-Sujet: ${formData.subject || 'Non renseigné'}
-Budget: ${formData.budget || 'Non renseigné'}
-Délai: ${formData.timeline || 'Non renseigné'}
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
       `.trim()
 
       const templateParams = {
@@ -185,12 +177,21 @@ Délai: ${formData.timeline || 'Non renseigné'}
   return (
     <>
       <Helmet>
-        <title>Contact - Klyon | Discutons de votre projet</title>
-        <meta name="description" content="Contactez Klyon pour vos projets informatiques. Support, développement, IA. Réponse rapide garantie dans les Bouches-du-Rhône." />
+        <title>Contact - Devis Gratuit | Klyon Expert IA & Développement</title>
+        <meta name="description" content="Contactez Klyon pour vos projets IA, développement web/mobile et réparation informatique dans les Bouches-du-Rhône. Devis gratuit, réponse sous 24h." />
+        <meta name="keywords" content="contact Klyon, devis gratuit, intelligence artificielle, développement web, réparation informatique, Bouches-du-Rhône" />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href="https://klyon.fr/contact" />
+        
+        {/* Open Graph */}
+        <meta property="og:title" content="Contact - Devis Gratuit | Klyon" />
+        <meta property="og:description" content="Contactez Klyon pour vos projets IA, développement et réparation informatique. Devis gratuit, réponse sous 24h." />
+        <meta property="og:url" content="https://klyon.fr/contact" />
+        <meta property="og:type" content="website" />
       </Helmet>
 
       {/* Hero Section */}
-      <section className={`py-20 lg:py-32 ${theme === 'dark' ? 'bg-gray-900' : 'bg-gray-50'}`}>
+      <section className="py-20 lg:py-32 bg-gray-900">
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -198,10 +199,10 @@ Délai: ${formData.timeline || 'Non renseigné'}
             transition={{ duration: 0.8 }}
             className="text-center max-w-4xl mx-auto"
           >
-            <h1 className={`text-4xl md:text-5xl lg:text-6xl font-bold mb-6 ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white">
               Contactez-<span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-accent-600">nous</span>
             </h1>
-            <p className={`text-lg md:text-xl ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'} mb-8 leading-relaxed`}>
+            <p className="text-lg md:text-xl text-gray-300 mb-8 leading-relaxed">
               Discutons de votre projet et trouvons ensemble la solution qui vous convient
             </p>
           </motion.div>
@@ -209,7 +210,7 @@ Délai: ${formData.timeline || 'Non renseigné'}
       </section>
 
       {/* Contact Info Cards */}
-      <section className={`py-20 ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'}`}>
+      <section className="py-20 bg-gray-800">
         <div className="container-custom">
           <motion.div
             variants={containerVariants}
@@ -222,7 +223,7 @@ Délai: ${formData.timeline || 'Non renseigné'}
               <motion.div
                 key={index}
                 variants={itemVariants}
-                className={`p-6 rounded-2xl ${theme === 'dark' ? 'bg-gray-900' : 'bg-gray-50'} shadow-lg hover:shadow-xl transition-all duration-300 text-center`}
+                className="p-6 rounded-2xl bg-gray-900 shadow-lg hover:shadow-xl transition-all duration-300 text-center"
                 whileHover={{ y: -5 }}
               >
                 <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 ${
@@ -239,7 +240,7 @@ Délai: ${formData.timeline || 'Non renseigné'}
                   }`} />
                 </div>
                 
-                <h3 className={`text-lg font-semibold mb-2 ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
+                <h3 className="text-lg font-semibold mb-2 text-white">
                   {info.title}
                 </h3>
                 
@@ -266,7 +267,7 @@ Délai: ${formData.timeline || 'Non renseigné'}
                   </p>
                 )}
                 
-                <p className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}>
+                <p className="text-sm text-gray-400">
                   {info.description}
                 </p>
               </motion.div>
@@ -276,7 +277,7 @@ Délai: ${formData.timeline || 'Non renseigné'}
       </section>
 
       {/* Contact Form */}
-      <section className={`py-20 ${theme === 'dark' ? 'bg-gray-900' : 'bg-gray-50'}`}>
+      <section className="py-20 bg-gray-900">
         <div className="container-custom">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             {/* Form */}
@@ -286,8 +287,8 @@ Délai: ${formData.timeline || 'Non renseigné'}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              <div className={`p-8 rounded-3xl ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'} shadow-xl`}>
-                <h2 className={`text-3xl font-bold mb-6 ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
+              <div className="p-8 rounded-3xl bg-gray-800 shadow-xl">
+                <h2 className="text-3xl font-bold mb-6 text-white">
                   Envoyez-nous un message
                 </h2>
                 
@@ -295,48 +296,36 @@ Délai: ${formData.timeline || 'Non renseigné'}
                   {/* Name and Email */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                      <label className={`block text-sm font-medium mb-2 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
+                      <label className="block text-sm font-medium mb-2 text-gray-300">
                         Nom complet *
                       </label>
                       <div className="relative">
-                        <User className={`absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 ${
-                          theme === 'dark' ? 'text-gray-400' : 'text-gray-500'
-                        }`} />
+                        <User className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
                         <input
                           type="text"
                           name="name"
                           value={formData.name}
                           onChange={handleInputChange}
                           required
-                          className={`w-full pl-10 pr-4 py-3 rounded-xl border ${
-                            theme === 'dark' 
-                              ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' 
-                              : 'bg-white border-gray-300 text-gray-900 placeholder-gray-500'
-                          } focus:outline-none focus:ring-2 focus:ring-primary-500`}
+                          className="w-full pl-10 pr-4 py-3 rounded-xl border bg-gray-700 border-gray-600 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500"
                           placeholder="Votre nom"
                         />
                       </div>
                     </div>
                     
                     <div>
-                      <label className={`block text-sm font-medium mb-2 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
+                      <label className="block text-sm font-medium mb-2 text-gray-300">
                         Email *
                       </label>
                       <div className="relative">
-                        <Mail className={`absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 ${
-                          theme === 'dark' ? 'text-gray-400' : 'text-gray-500'
-                        }`} />
+                        <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
                         <input
                           type="email"
                           name="email"
                           value={formData.email}
                           onChange={handleInputChange}
                           required
-                          className={`w-full pl-10 pr-4 py-3 rounded-xl border ${
-                            theme === 'dark' 
-                              ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' 
-                              : 'bg-white border-gray-300 text-gray-900 placeholder-gray-500'
-                          } focus:outline-none focus:ring-2 focus:ring-primary-500`}
+                          className="w-full pl-10 pr-4 py-3 rounded-xl border bg-gray-700 border-gray-600 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500"
                           placeholder="votre@email.com"
                         />
                       </div>
@@ -346,46 +335,34 @@ Délai: ${formData.timeline || 'Non renseigné'}
                   {/* Company and Phone */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                      <label className={`block text-sm font-medium mb-2 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
+                      <label className="block text-sm font-medium mb-2 text-gray-300">
                         Entreprise
                       </label>
                       <div className="relative">
-                        <Building className={`absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 ${
-                          theme === 'dark' ? 'text-gray-400' : 'text-gray-500'
-                        }`} />
+                        <Building className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
                         <input
                           type="text"
                           name="company"
                           value={formData.company}
                           onChange={handleInputChange}
-                          className={`w-full pl-10 pr-4 py-3 rounded-xl border ${
-                            theme === 'dark' 
-                              ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' 
-                              : 'bg-white border-gray-300 text-gray-900 placeholder-gray-500'
-                          } focus:outline-none focus:ring-2 focus:ring-primary-500`}
+                          className="w-full pl-10 pr-4 py-3 rounded-xl border bg-gray-700 border-gray-600 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500"
                           placeholder="Nom de l'entreprise"
                         />
                       </div>
                     </div>
                     
                     <div>
-                      <label className={`block text-sm font-medium mb-2 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
+                      <label className="block text-sm font-medium mb-2 text-gray-300">
                         Téléphone
                       </label>
                       <div className="relative">
-                        <Phone className={`absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 ${
-                          theme === 'dark' ? 'text-gray-400' : 'text-gray-500'
-                        }`} />
+                        <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
                         <input
                           type="tel"
                           name="phone"
                           value={formData.phone}
                           onChange={handleInputChange}
-                          className={`w-full pl-10 pr-4 py-3 rounded-xl border ${
-                            theme === 'dark' 
-                              ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' 
-                              : 'bg-white border-gray-300 text-gray-900 placeholder-gray-500'
-                          } focus:outline-none focus:ring-2 focus:ring-primary-500`}
+                          className="w-full pl-10 pr-4 py-3 rounded-xl border bg-gray-700 border-gray-600 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500"
                           placeholder="06 12 34 56 78"
                         />
                       </div>
@@ -394,7 +371,7 @@ Délai: ${formData.timeline || 'Non renseigné'}
 
                   {/* Subject */}
                   <div>
-                    <label className={`block text-sm font-medium mb-2 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
+                    <label className="block text-sm font-medium mb-2 text-gray-300">
                       Sujet *
                     </label>
                     <select
@@ -415,60 +392,14 @@ Délai: ${formData.timeline || 'Non renseigné'}
                     </select>
                   </div>
 
-                  {/* Budget and Timeline */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                      <label className={`block text-sm font-medium mb-2 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
-                        Budget estimé
-                      </label>
-                      <select
-                        name="budget"
-                        value={formData.budget}
-                        onChange={handleInputChange}
-                        className={`w-full px-4 py-3 rounded-xl border ${
-                          theme === 'dark' 
-                            ? 'bg-gray-700 border-gray-600 text-white' 
-                            : 'bg-white border-gray-300 text-gray-900'
-                        } focus:outline-none focus:ring-2 focus:ring-primary-500`}
-                      >
-                        <option value="">Sélectionnez un budget</option>
-                        {budgets.map((budget, index) => (
-                          <option key={index} value={budget}>{budget}</option>
-                        ))}
-                      </select>
-                    </div>
-                    
-                    <div>
-                      <label className={`block text-sm font-medium mb-2 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
-                        Délai souhaité
-                      </label>
-                      <select
-                        name="timeline"
-                        value={formData.timeline}
-                        onChange={handleInputChange}
-                        className={`w-full px-4 py-3 rounded-xl border ${
-                          theme === 'dark' 
-                            ? 'bg-gray-700 border-gray-600 text-white' 
-                            : 'bg-white border-gray-300 text-gray-900'
-                        } focus:outline-none focus:ring-2 focus:ring-primary-500`}
-                      >
-                        <option value="">Sélectionnez un délai</option>
-                        {timelines.map((timeline, index) => (
-                          <option key={index} value={timeline}>{timeline}</option>
-                        ))}
-                      </select>
-                    </div>
-                  </div>
 
                   {/* Message */}
                   <div>
-                    <label className={`block text-sm font-medium mb-2 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
+                    <label className="block text-sm font-medium mb-2 text-gray-300">
                       Message *
                     </label>
                     <div className="relative">
-                      <MessageSquare className={`absolute left-3 top-3 h-5 w-5 ${
-                        theme === 'dark' ? 'text-gray-400' : 'text-gray-500'
-                      }`} />
+                      <MessageSquare className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
                       <textarea
                         name="message"
                         value={formData.message}
@@ -521,8 +452,8 @@ Délai: ${formData.timeline || 'Non renseigné'}
               viewport={{ once: true }}
               className="space-y-8"
             >
-              <div className={`p-8 rounded-3xl ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'} shadow-xl`}>
-                <h3 className={`text-2xl font-bold mb-6 ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
+              <div className="p-8 rounded-3xl bg-gray-800 shadow-xl">
+                <h3 className="text-2xl font-bold mb-6 text-white">
                   Pourquoi nous choisir ?
                 </h3>
                 
@@ -536,7 +467,7 @@ Délai: ${formData.timeline || 'Non renseigné'}
                   ].map((item, index) => (
                     <div key={index} className="flex items-center">
                       <CheckCircle className="h-5 w-5 text-green-500 mr-3 flex-shrink-0" />
-                      <span className={`${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>
+                      <span className="text-gray-300">
                         {item}
                       </span>
                     </div>
@@ -544,12 +475,12 @@ Délai: ${formData.timeline || 'Non renseigné'}
                 </div>
               </div>
 
-              <div className={`p-8 rounded-3xl ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'} shadow-xl`}>
-                <h3 className={`text-2xl font-bold mb-6 ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
+              <div className="p-8 rounded-3xl bg-gray-800 shadow-xl">
+                <h3 className="text-2xl font-bold mb-6 text-white">
                   Besoin d'un rendez-vous ?
                 </h3>
                 
-                <p className={`mb-6 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>
+                <p className="mb-6 text-gray-300">
                   Préférez-vous échanger en direct ? Nous proposons des consultations gratuites pour évaluer vos besoins.
                 </p>
                 

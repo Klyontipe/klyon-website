@@ -5,13 +5,14 @@ import { ThemeProvider } from './contexts/ThemeContext'
 import { ContactProvider } from './contexts/ContactContext'
 import Layout from './components/Layout'
 import Home from './pages/Home'
-import Competences from './pages/Competences'
+import IA from './pages/IA'
+import Developpement from './pages/Developpement'
+import Reparation from './pages/Reparation'
 import Projets from './pages/Projets'
-import Services from './pages/Services'
-import Contact from './pages/Contact'
 import Blog from './pages/Blog'
 import BlogPost from './pages/BlogPost'
-import Bam from './pages/Bam'
+import Devis from './pages/Devis'
+import Contact from './pages/Contact'
 import NotFound from './pages/NotFound'
 
 // Composant pour gérer les redirections depuis les paramètres URL
@@ -20,7 +21,7 @@ function RouteRedirect() {
   const [searchParams] = useSearchParams()
   
   useEffect(() => {
-    const route = searchParams.get('/')
+    const route = searchParams.get('route')
     if (route && route !== '') {
       // Nettoyer l'URL et naviguer vers la route
       const cleanRoute = route.replace(/~and~/g, '&')
@@ -43,13 +44,14 @@ function App() {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<RouteRedirect />} />
-            <Route path="services" element={<Services />} />
-            <Route path="competences" element={<Competences />} />
+            <Route path="ia" element={<IA />} />
+            <Route path="developpement" element={<Developpement />} />
+            <Route path="reparation" element={<Reparation />} />
             <Route path="projets" element={<Projets />} />
-            <Route path="contact" element={<Contact />} />
             <Route path="blog" element={<Blog />} />
             <Route path="blog/:slug" element={<BlogPost />} />
-            <Route path="bam" element={<Bam />} />
+            <Route path="devis" element={<Devis />} />
+            <Route path="contact" element={<Contact />} />
             <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>

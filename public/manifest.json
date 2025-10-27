@@ -1,0 +1,27 @@
+{
+  "name": "Klyon - Expert IA & Développement",
+  "short_name": "Klyon",
+  "description": "Expert en Intelligence Artificielle, développement web/mobile et réparation informatique dans les Bouches-du-Rhône",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#111827",
+  "theme_color": "#3B82F6",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/assets/logowhite.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/logowhite.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["business", "productivity", "technology"],
+  "lang": "fr",
+  "dir": "ltr"
+}

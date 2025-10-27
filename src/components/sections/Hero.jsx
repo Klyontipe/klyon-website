@@ -1,8 +1,25 @@
 import { motion } from 'framer-motion'
-import { ArrowRight, Sparkles } from 'lucide-react'
+import { ArrowRight, Sparkles, Phone } from 'lucide-react'
 import FloatingElements from '../FloatingElements'
+import { useState, useEffect } from 'react'
 
 const Hero = () => {
+  const [projectCount, setProjectCount] = useState(0)
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      let count = 0
+      const interval = setInterval(() => {
+        count += 1
+        setProjectCount(count)
+        if (count >= 32) {
+          clearInterval(interval)
+        }
+      }, 50)
+    }, 1000)
+
+    return () => clearTimeout(timer)
+  }, [])
   const scrollToServices = () => {
     const element = document.querySelector('#services')
     if (element) {
@@ -43,6 +60,17 @@ const Hero = () => {
             >
               <Sparkles className="h-4 w-4 mr-2" />
               Solutions informatiques innovantes
+            </motion.div>
+
+            {/* Compteur de projets */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+              className="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-primary-500 to-accent-500 text-white text-sm font-semibold mb-6 shadow-lg"
+            >
+              <Sparkles className="h-4 w-4 mr-2" />
+              {projectCount}+ Projets Réalisés
             </motion.div>
 
             <motion.h1
@@ -101,7 +129,7 @@ const Hero = () => {
               className="grid grid-cols-3 gap-8 mt-12 pt-8 border-t border-gray-200 dark:border-gray-700"
             >
               {[
-                { number: '50+', label: 'Projets réalisés' },
+                { number: '32+', label: 'Projets réalisés' },
                 { number: '100%', label: 'Satisfaction client' },
                 { number: '24/7', label: 'Support disponible' },
               ].map((stat, index) => (
