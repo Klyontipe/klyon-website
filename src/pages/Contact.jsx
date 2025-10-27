@@ -1,6 +1,5 @@
 import { Helmet } from 'react-helmet-async'
 import { motion } from 'framer-motion'
-import { useInView } from 'react-intersection-observer'
 import { 
   Mail, 
   Phone, 
@@ -30,11 +29,6 @@ const Contact = () => {
     message: ''
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
-
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1
-  })
 
   const contactInfo = [
     {
@@ -283,7 +277,7 @@ ${formData.message}
             {/* Form */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
@@ -447,7 +441,7 @@ ${formData.message}
             {/* Info Sidebar */}
             <motion.div
               initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
               className="space-y-8"
