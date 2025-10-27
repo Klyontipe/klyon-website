@@ -1,6 +1,5 @@
 import { Helmet } from 'react-helmet-async'
 import { motion } from 'framer-motion'
-import { useInView } from 'react-intersection-observer'
 import { Link as RouterLink } from 'react-router-dom'
 import { 
   ArrowRight, 
@@ -19,10 +18,6 @@ import About from '../components/sections/About'
 
 const Home = () => {
   const { theme } = useTheme()
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1
-  })
 
   const quickServices = [
     {
@@ -187,7 +182,7 @@ const Home = () => {
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
             className="text-center mb-16"
@@ -262,7 +257,7 @@ const Home = () => {
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
             className="text-center"
@@ -412,7 +407,7 @@ const Home = () => {
         <div className="container-custom text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >

@@ -1,12 +1,7 @@
 import { motion } from 'framer-motion'
-import { useInView } from 'react-intersection-observer'
 import { MapPin, Clock, Users, Linkedin } from 'lucide-react'
 
 const About = () => {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1
-  })
 
   const features = [
     {
@@ -38,9 +33,8 @@ const About = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Content */}
           <motion.div
-            ref={ref}
             initial={{ opacity: 0, x: -50 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
+            animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
           >
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6">
@@ -68,7 +62,7 @@ const About = () => {
                     key={index}
                     className="flex items-start space-x-4"
                     initial={{ opacity: 0, y: 20 }}
-                    animate={inView ? { opacity: 1, y: 0 } : {}}
+                    animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
                   >
                     <div className="flex-shrink-0">
@@ -104,7 +98,7 @@ const About = () => {
           {/* Image */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
+            animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             className="flex justify-center"
           >
@@ -122,7 +116,7 @@ const About = () => {
               <motion.div
                 className="absolute -bottom-4 -right-4 bg-white dark:bg-gray-800 p-4 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700"
                 initial={{ opacity: 0, scale: 0.8 }}
-                animate={inView ? { opacity: 1, scale: 1 } : {}}
+                animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, delay: 0.8 }}
                 whileHover={{ scale: 1.05 }}
               >
@@ -157,7 +151,7 @@ const About = () => {
                 key={index}
                 className="text-center"
                 initial={{ opacity: 0, scale: 0.8 }}
-                animate={inView ? { opacity: 1, scale: 1 } : {}}
+                animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, delay: 0.8 + index * 0.1 }}
                 whileHover={{ scale: 1.05 }}
               >

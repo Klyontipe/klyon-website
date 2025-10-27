@@ -146,6 +146,23 @@ const Header = () => {
                     </motion.div>
                   </RouterLink>
                 ))}
+                
+                {/* Mobile CTA Button */}
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: navigation.length * 0.1 }}
+                  className="pt-4"
+                >
+                  <RouterLink
+                    to="/devis"
+                    className="block w-full text-center px-6 py-3 bg-gradient-to-r from-primary-500 to-accent-500 text-white text-sm font-semibold rounded-lg hover:from-primary-600 hover:to-accent-600 transition-all duration-200 shadow-lg"
+                    onClick={() => handleNavClick('/devis')}
+                  >
+                    <span className="mr-2">💬</span>
+                    Demande de Devis
+                  </RouterLink>
+                </motion.div>
               </div>
             </motion.div>
           )}

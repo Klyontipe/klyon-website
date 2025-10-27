@@ -1,6 +1,5 @@
 import { Helmet } from 'react-helmet-async'
 import { motion } from 'framer-motion'
-import { useInView } from 'react-intersection-observer'
 import { Link as RouterLink } from 'react-router-dom'
 import { 
   Code, 
@@ -23,10 +22,6 @@ import { useTheme } from '../contexts/ThemeContext'
 
 const Developpement = () => {
   const { theme } = useTheme()
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1
-  })
 
   const services = [
     {
