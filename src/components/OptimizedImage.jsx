@@ -5,7 +5,7 @@ const OptimizedImage = ({
   src, 
   alt, 
   className = '', 
-  loading = 'lazy',
+  loading = 'eager',
   ...props 
 }) => {
   const [isLoaded, setIsLoaded] = useState(false)
