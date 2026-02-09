@@ -102,11 +102,11 @@ ${formData.message}
       {/* Name and Email */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
-          <label htmlFor="name" className="block text-sm font-medium text-neutral-700 mb-2">
+          <label htmlFor="name" className="block text-sm font-medium text-neutral-300 mb-2">
             Nom complet *
           </label>
           <div className="relative">
-            <User className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-neutral-400" />
+            <User className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-neutral-500" />
             <input
               type="text"
               name="name"
@@ -114,18 +114,18 @@ ${formData.message}
               value={formData.name}
               onChange={handleInputChange}
               required
-              className="w-full pl-10 pr-4 py-3 rounded-xl border border-neutral-300 bg-white text-neutral-900 placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all glass-soft"
+              className="w-full pl-10 pr-4 py-3 rounded-xl border border-amber-400/30 bg-neutral-900 text-neutral-100 placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-amber-400 transition-all glass-soft"
               placeholder="Votre nom"
             />
           </div>
         </div>
 
         <div>
-          <label htmlFor="email" className="block text-sm font-medium text-neutral-700 mb-2">
+          <label htmlFor="email" className="block text-sm font-medium text-neutral-300 mb-2">
             Email *
           </label>
           <div className="relative">
-            <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-neutral-400" />
+            <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-neutral-500" />
             <input
               type="email"
               name="email"
@@ -133,7 +133,7 @@ ${formData.message}
               value={formData.email}
               onChange={handleInputChange}
               required
-              className="w-full pl-10 pr-4 py-3 rounded-xl border border-neutral-300 bg-white text-neutral-900 placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all glass-soft"
+              className="w-full pl-10 pr-4 py-3 rounded-xl border border-amber-400/30 bg-neutral-900 text-neutral-100 placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-amber-400 transition-all glass-soft"
               placeholder="votre@email.com"
             />
           </div>
@@ -143,36 +143,36 @@ ${formData.message}
       {/* Company and Phone */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
-          <label htmlFor="company" className="block text-sm font-medium text-neutral-700 mb-2">
+          <label htmlFor="company" className="block text-sm font-medium text-neutral-300 mb-2">
             Entreprise
           </label>
           <div className="relative">
-            <Building className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-neutral-400" />
+            <Building className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-neutral-500" />
             <input
               type="text"
               name="company"
               id="company"
               value={formData.company}
               onChange={handleInputChange}
-              className="w-full pl-10 pr-4 py-3 rounded-xl border border-neutral-300 bg-white text-neutral-900 placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all glass-soft"
+              className="w-full pl-10 pr-4 py-3 rounded-xl border border-amber-400/30 bg-neutral-900 text-neutral-100 placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-amber-400 transition-all glass-soft"
               placeholder="Nom de l'entreprise"
             />
           </div>
         </div>
 
         <div>
-          <label htmlFor="phone" className="block text-sm font-medium text-neutral-700 mb-2">
+          <label htmlFor="phone" className="block text-sm font-medium text-neutral-300 mb-2">
             Téléphone
           </label>
           <div className="relative">
-            <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-neutral-400" />
+            <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-neutral-500" />
             <input
               type="tel"
               name="phone"
               id="phone"
               value={formData.phone}
               onChange={handleInputChange}
-              className="w-full pl-10 pr-4 py-3 rounded-xl border border-neutral-300 bg-white text-neutral-900 placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all glass-soft"
+              className="w-full pl-10 pr-4 py-3 rounded-xl border border-amber-400/30 bg-neutral-900 text-neutral-100 placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-amber-400 transition-all glass-soft"
               placeholder="06 12 34 56 78"
             />
           </div>
@@ -181,7 +181,7 @@ ${formData.message}
 
       {/* Subject */}
       <div>
-        <label htmlFor="subject" className="block text-sm font-medium text-neutral-700 mb-2">
+        <label htmlFor="subject" className="block text-sm font-medium text-neutral-300 mb-2">
           Sujet *
         </label>
         <select
@@ -190,7 +190,7 @@ ${formData.message}
           value={formData.subject}
           onChange={handleInputChange}
           required
-          className="w-full px-4 py-3 rounded-xl border border-neutral-300 bg-white text-neutral-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all glass-soft"
+          className="w-full px-4 py-3 rounded-xl border border-amber-400/30 bg-neutral-900 text-neutral-100 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-amber-400 transition-all glass-soft"
         >
           <option value="">Sélectionnez un sujet</option>
           {subjects.map((subject, index) => (
@@ -201,11 +201,11 @@ ${formData.message}
 
       {/* Message */}
       <div>
-        <label htmlFor="message" className="block text-sm font-medium text-neutral-700 mb-2">
+        <label htmlFor="message" className="block text-sm font-medium text-neutral-300 mb-2">
           Message *
         </label>
         <div className="relative">
-          <MessageSquare className="absolute left-3 top-3 h-5 w-5 text-neutral-400" />
+          <MessageSquare className="absolute left-3 top-3 h-5 w-5 text-neutral-500" />
           <textarea
             name="message"
             id="message"
@@ -213,7 +213,7 @@ ${formData.message}
             onChange={handleInputChange}
             required
             rows={6}
-            className="w-full pl-10 pr-4 py-3 rounded-xl border border-neutral-300 bg-white text-neutral-900 placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all resize-none glass-soft"
+            className="w-full pl-10 pr-4 py-3 rounded-xl border border-amber-400/30 bg-neutral-900 text-neutral-100 placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-amber-400 transition-all resize-none glass-soft"
             placeholder="Décrivez votre projet en détail..."
           />
         </div>
@@ -225,10 +225,10 @@ ${formData.message}
         disabled={isSubmitting}
         whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
         whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
-        className={`w-full flex items-center justify-center gap-2 px-6 py-4 bg-neutral-900 text-white rounded-xl font-medium transition-all duration-200 shadow-soft-lg ${
+        className={`w-full flex items-center justify-center gap-2 px-6 py-4 bg-gradient-to-r from-amber-400 to-amber-500 text-black rounded-xl font-medium transition-all duration-200 shadow-soft-lg ${
           isSubmitting
             ? 'opacity-50 cursor-not-allowed'
-            : 'hover:bg-neutral-800 hover:shadow-soft-xl'
+            : 'hover:from-amber-500 hover:to-amber-600 hover:shadow-soft-xl'
         }`}
       >
         {isSubmitting ? (

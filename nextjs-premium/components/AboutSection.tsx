@@ -6,16 +6,16 @@ import CountUpNumber from './CountUpNumber'
 
 export default function AboutSection() {
   const stats = [
-    { number: 45, suffix: '+', label: 'Projets réalisés', color: 'from-blue-600/15 to-slate-500/10', accent: 'text-blue-600' },
+    { number: 45, suffix: '+', label: 'Projets réalisés', color: 'from-blue-600/15 to-slate-500/10', accent: 'text-amber-400' },
     { number: 100, suffix: '%', label: 'Clients satisfaits', color: 'from-emerald-600/15 to-teal-500/10', accent: 'text-emerald-600' },
     { number: 3, suffix: '', label: 'Ans d\'expérience IA', color: 'from-indigo-600/15 to-purple-500/10', accent: 'text-indigo-600' },
   ]
 
   return (
     <section className="relative py-32 px-4 sm:px-6 lg:px-8 overflow-hidden">
-      {/* Soft background */}
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-neutral-50/60 via-transparent to-neutral-100/40" />
+      {/* Dark background */}
+      <div className="absolute inset-0 -z-10" style={{ background: '#0f0f0f' }}>
+        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-[#0f0f0f] via-[#1a1a1a] to-[#0f0f0f]" />
       </div>
 
       <div className="max-w-6xl mx-auto relative">
@@ -33,43 +33,63 @@ export default function AboutSection() {
                 transition={{ duration: 2, repeat: Infinity }}
                 className="w-2.5 h-2.5 bg-blue-500 rounded-full"
               />
-              <span className="text-sm font-medium text-neutral-700 tracking-wide">Qui suis-je</span>
+              <span className="text-sm font-medium text-neutral-300 tracking-wide uppercase">Qui suis-je</span>
             </motion.div>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-extralight text-neutral-900 mb-6 tracking-tight" style={{ letterSpacing: '-0.02em', fontWeight: 200 }}>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-extralight text-neutral-100 mb-6 tracking-tight" style={{ letterSpacing: '-0.02em', fontWeight: 200 }}>
               À propos
             </h2>
             <div className="prose prose-neutral max-w-none space-y-6">
-              <p className="text-lg md:text-xl text-neutral-700 leading-relaxed font-light" style={{ letterSpacing: '0.01em' }}>
-                Je suis <strong className="text-blue-600">Lorenzo Fortini</strong>, ingénieur en fin de cursus à <strong>EPITECH</strong> et fondateur de <strong className="text-indigo-600">Klyon</strong>. 
+              <p className="text-lg md:text-xl text-neutral-300 leading-relaxed font-light" style={{ letterSpacing: '0.01em' }}>
+                Je suis <strong className="text-amber-400">Lorenzo Fortini</strong>, ingénieur en fin de cursus à <strong>EPITECH</strong> et fondateur de <strong className="text-indigo-600">Klyon</strong>. 
                 Passionné par l'informatique depuis toujours, je me spécialise dans les <strong>formations professionnelles premium</strong> (IA avancée, ChatGPT, Microsoft 365 expert), 
                 le développement Full-Stack moderne et l'automatisation intelligente. Basé dans les <strong>Bouches-du-Rhône</strong>, j'accompagne 
                 entreprises et particuliers dans leur transformation digitale avec une approche personnalisée et des résultats mesurables.
               </p>
-              <p className="text-lg md:text-xl text-neutral-700 leading-relaxed font-light" style={{ letterSpacing: '0.01em' }}>
+              <p className="text-lg md:text-xl text-neutral-300 leading-relaxed font-light" style={{ letterSpacing: '0.01em' }}>
                 Avec plus de <strong className="text-emerald-600">45 projets réalisés</strong> et <strong className="text-purple-600">3 ans d'expérience en intelligence artificielle</strong>, 
                 je combine expertise technique et pédagogie pour former vos équipes efficacement. Mon approche ? 
-                <strong className="text-neutral-900"> Écouter vos besoins</strong>, analyser vos processus, proposer des solutions sur mesure 
+                <strong className="text-neutral-100"> Écouter vos besoins</strong>, analyser vos processus, proposer des solutions sur mesure 
                 et livrer des résultats concrets avec un suivi post-formation personnalisé. Spécialisé en <strong>LLM</strong>, <strong>prompt engineering</strong>, 
                 <strong> RAG avancé</strong> et <strong>automatisation Power Platform</strong>.
               </p>
-              <div className="mt-8 p-6 rounded-2xl glass-soft border border-blue-200/30 bg-gradient-to-br from-blue-50/30 to-indigo-50/20">
-                <h3 className="text-lg font-semibold text-neutral-900 mb-3">Mon expertise en quelques mots :</h3>
-                <ul className="space-y-2 text-neutral-700">
-                  <li className="flex items-start gap-2">
-                    <span className="text-blue-600 mt-1">✓</span>
-                    <span><strong>Formations IA/ChatGPT</strong> : Ateliers pratiques avec cas d'usage réels et suivi personnalisé</span>
+              <div className="mt-8 p-6 rounded-2xl glass-soft border border-blue-200/30 bg-gradient-to-br from-amber-500/10 to-amber-400/5">
+                <h3 className="text-lg font-semibold text-neutral-100 mb-3">Mon expertise en quelques mots :</h3>
+                <ul className="space-y-2 text-neutral-300">
+                  <li className="flex items-start gap-3">
+                    <motion.div
+                      whileHover={{ scale: 1.2, rotate: 90 }}
+                      className="w-5 h-5 rounded-full bg-blue-500/20 flex items-center justify-center flex-shrink-0 mt-0.5"
+                    >
+                      <div className="w-2 h-2 rounded-full bg-blue-600" />
+                    </motion.div>
+                    <span><strong className="text-amber-400">Formations IA/ChatGPT</strong> : Ateliers pratiques avec cas d'usage réels et suivi personnalisé</span>
                   </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-indigo-600 mt-1">✓</span>
-                    <span><strong>Microsoft 365 Expert</strong> : SharePoint, Teams, Power Automate, Power Apps, administration avancée</span>
+                  <li className="flex items-start gap-3">
+                    <motion.div
+                      whileHover={{ scale: 1.2, rotate: 90 }}
+                      className="w-5 h-5 rounded-full bg-indigo-500/20 flex items-center justify-center flex-shrink-0 mt-0.5"
+                    >
+                      <div className="w-2 h-2 rounded-full bg-indigo-600" />
+                    </motion.div>
+                    <span><strong className="text-indigo-600">Microsoft 365 Expert</strong> : SharePoint, Teams, Power Automate, Power Apps, administration avancée</span>
                   </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-purple-600 mt-1">✓</span>
-                    <span><strong>Développement Full-Stack</strong> : React/Next.js, Python, APIs robustes, architecture cloud-native</span>
+                  <li className="flex items-start gap-3">
+                    <motion.div
+                      whileHover={{ scale: 1.2, rotate: 90 }}
+                      className="w-5 h-5 rounded-full bg-purple-500/20 flex items-center justify-center flex-shrink-0 mt-0.5"
+                    >
+                      <div className="w-2 h-2 rounded-full bg-purple-600" />
+                    </motion.div>
+                    <span><strong className="text-purple-600">Développement Full-Stack</strong> : React/Next.js, Python, APIs robustes, architecture cloud-native</span>
                   </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-emerald-600 mt-1">✓</span>
-                    <span><strong>Automatisation</strong> : Intégrations API, workflows complexes, RPA, gain de temps garanti</span>
+                  <li className="flex items-start gap-3">
+                    <motion.div
+                      whileHover={{ scale: 1.2, rotate: 90 }}
+                      className="w-5 h-5 rounded-full bg-emerald-500/20 flex items-center justify-center flex-shrink-0 mt-0.5"
+                    >
+                      <div className="w-2 h-2 rounded-full bg-emerald-600" />
+                    </motion.div>
+                    <span><strong className="text-emerald-600">Automatisation</strong> : Intégrations API, workflows complexes, RPA, gain de temps garanti</span>
                   </li>
                 </ul>
               </div>
@@ -77,29 +97,29 @@ export default function AboutSection() {
                 <div className="flex items-start gap-3">
                   <div className="w-2 h-2 rounded-full bg-neutral-400 mt-2 flex-shrink-0" />
                   <div>
-                    <p className="text-sm font-medium text-neutral-900 mb-1">Zone d'intervention</p>
-                    <p className="text-sm text-neutral-600">Bouches-du-Rhône et environs</p>
+                    <p className="text-sm font-medium text-neutral-100 mb-1">Zone d'intervention</p>
+                    <p className="text-sm text-neutral-400">Bouches-du-Rhône et environs</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <div className="w-2 h-2 rounded-full bg-neutral-400 mt-2 flex-shrink-0" />
                   <div>
-                    <p className="text-sm font-medium text-neutral-900 mb-1">Flexibilité</p>
-                    <p className="text-sm text-neutral-600">Intervention sur site ou à distance</p>
+                    <p className="text-sm font-medium text-neutral-100 mb-1">Flexibilité</p>
+                    <p className="text-sm text-neutral-400">Intervention sur site ou à distance</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <div className="w-2 h-2 rounded-full bg-neutral-400 mt-2 flex-shrink-0" />
                   <div>
-                    <p className="text-sm font-medium text-neutral-900 mb-1">Clientèle</p>
-                    <p className="text-sm text-neutral-600">Entreprises, particuliers, associations</p>
+                    <p className="text-sm font-medium text-neutral-100 mb-1">Clientèle</p>
+                    <p className="text-sm text-neutral-400">Entreprises, particuliers, associations</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <div className="w-2 h-2 rounded-full bg-neutral-400 mt-2 flex-shrink-0" />
                   <div>
-                    <p className="text-sm font-medium text-neutral-900 mb-1">Profil LinkedIn</p>
-                    <a href="https://linkedin.com/in/zl3/" target="_blank" rel="noopener noreferrer" className="text-sm text-neutral-600 hover:text-neutral-900 transition-colors">
+                    <p className="text-sm font-medium text-neutral-100 mb-1">Profil LinkedIn</p>
+                    <a href="https://linkedin.com/in/zl3/" target="_blank" rel="noopener noreferrer" className="text-sm text-neutral-400 hover:text-neutral-100 transition-colors">
                       Consulter mon profil professionnel
                     </a>
                   </div>
@@ -135,13 +155,13 @@ export default function AboutSection() {
                   scale: [1, 1.1, 1],
                 }}
                 transition={{ duration: 3, repeat: Infinity }}
-                className="absolute inset-0 bg-gradient-to-br from-blue-400/30 via-indigo-400/20 to-purple-400/30 rounded-3xl blur-2xl -z-10"
+                className="absolute inset-0 bg-gradient-to-br from-amber-400/30 via-amber-500/20 to-amber-600/30 rounded-3xl blur-2xl -z-10"
               />
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-200/40 via-indigo-200/30 to-slate-200/40 rounded-3xl transform rotate-3 opacity-40" />
+              <div className="absolute inset-0 bg-gradient-to-br from-amber-400/20 via-amber-500/15 to-amber-600/20 rounded-3xl transform rotate-3 opacity-40" />
               <motion.img
                 src="/photopro.jpg"
                 alt="Lorenzo Fortini - Fondateur de Klyon"
-                className="relative w-80 h-[500px] object-cover rounded-3xl shadow-2xl border-4 border-white/50"
+                className="relative w-80 h-[500px] object-cover rounded-3xl shadow-2xl border-4 border-amber-400/30"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
@@ -168,12 +188,12 @@ export default function AboutSection() {
                   <motion.div
                     animate={{ scale: [1, 1.1, 1] }}
                     transition={{ duration: 2, repeat: Infinity }}
-                    className="text-3xl font-light text-blue-600 mb-1" 
+                    className="text-3xl font-light text-amber-400 mb-1" 
                     style={{ fontWeight: 100 }}
                   >
                     5+
                   </motion.div>
-                  <div className="text-xs font-semibold text-neutral-700 tracking-wide">
+                  <div className="text-xs font-semibold text-neutral-300 tracking-wide">
                     Années d'expérience
                   </div>
                 </div>
@@ -188,7 +208,7 @@ export default function AboutSection() {
                 whileHover={{ scale: 1.05, rotateZ: -5 }}
               >
                 <div className="text-xs font-semibold text-neutral-800">EPITECH</div>
-                <div className="text-[10px] text-neutral-600">Ingénieur</div>
+                <div className="text-[10px] text-neutral-400">Ingénieur</div>
               </motion.div>
             </motion.div>
           </motion.div>
@@ -252,7 +272,7 @@ export default function AboutSection() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
-                    className="text-sm font-semibold text-neutral-700 tracking-wide"
+                    className="text-sm font-semibold text-neutral-300 tracking-wide"
                   >
                     {stat.label}
                   </motion.div>

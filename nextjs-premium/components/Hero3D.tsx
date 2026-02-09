@@ -73,11 +73,12 @@ export default function Hero3D() {
     <section 
       ref={sectionRef} 
       className="relative pt-20 pb-32 px-4 sm:px-6 lg:px-8 overflow-hidden min-h-screen flex items-center"
+      style={{ background: '#0f0f0f' }}
       style={{ perspective: '1000px' }}
     >
-      {/* 3D Background Layers */}
+      {/* 3D Background Layers - Dark Premium */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
-        {/* Animated 3D gradient orbs */}
+        {/* Animated 3D gradient orbs - Gold accents */}
         <motion.div
           animate={{
             scale: [1, 1.3, 1],
@@ -89,9 +90,9 @@ export default function Hero3D() {
             repeat: Infinity,
             ease: 'easeInOut',
           }}
-          className="absolute top-20 left-1/4 w-[300px] h-[300px] md:w-[400px] md:h-[400px] lg:w-[500px] lg:h-[500px] rounded-full blur-3xl opacity-40"
+          className="absolute top-20 left-1/4 w-[300px] h-[300px] md:w-[400px] md:h-[400px] lg:w-[500px] lg:h-[500px] rounded-full blur-3xl opacity-30"
           style={{
-            background: 'radial-gradient(circle, rgba(59, 130, 246, 0.4) 0%, rgba(99, 102, 241, 0.2) 50%, transparent 100%)',
+            background: 'radial-gradient(circle, rgba(234, 179, 8, 0.3) 0%, rgba(161, 98, 7, 0.15) 50%, transparent 100%)',
             transformStyle: 'preserve-3d',
           }}
         />
@@ -106,9 +107,9 @@ export default function Hero3D() {
             repeat: Infinity,
             ease: 'easeInOut',
           }}
-          className="absolute bottom-20 right-1/4 w-[350px] h-[350px] md:w-[450px] md:h-[450px] lg:w-[600px] lg:h-[600px] rounded-full blur-3xl opacity-30"
+          className="absolute bottom-20 right-1/4 w-[350px] h-[350px] md:w-[450px] md:h-[450px] lg:w-[600px] lg:h-[600px] rounded-full blur-3xl opacity-25"
           style={{
-            background: 'radial-gradient(circle, rgba(139, 92, 246, 0.4) 0%, rgba(236, 72, 153, 0.2) 50%, transparent 100%)',
+            background: 'radial-gradient(circle, rgba(234, 179, 8, 0.25) 0%, rgba(133, 77, 14, 0.1) 50%, transparent 100%)',
             transformStyle: 'preserve-3d',
           }}
         />
@@ -121,12 +122,12 @@ export default function Hero3D() {
             rotateY: gridRotateY,
             transformStyle: 'preserve-3d',
           }}
-          className="absolute inset-0 opacity-[0.03]"
+          className="absolute inset-0 opacity-[0.05]"
         >
           <div className="h-full w-full" style={{
             backgroundImage: `
-              linear-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(59, 130, 246, 0.1) 1px, transparent 1px)
+              linear-gradient(rgba(234, 179, 8, 0.15) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(234, 179, 8, 0.15) 1px, transparent 1px)
             `,
             backgroundSize: '80px 80px',
             transform: 'perspective(1000px) rotateX(60deg)',
@@ -162,8 +163,8 @@ export default function Hero3D() {
               }}
               className="absolute w-2 h-2 rounded-full"
               style={{
-                background: `rgba(${59 + i * 10}, ${130 + i * 5}, 246, ${opacity})`,
-                boxShadow: `0 0 ${shadowSize}px rgba(59, 130, 246, 0.5)`,
+                background: `rgba(${234 - i * 5}, ${179 - i * 3}, ${8 + i * 2}, ${opacity})`,
+                boxShadow: `0 0 ${shadowSize}px rgba(234, 179, 8, 0.4)`,
                 transformStyle: 'preserve-3d',
               }}
             />
@@ -191,7 +192,7 @@ export default function Hero3D() {
             y: isMounted ? badgeY : 0,
             transformStyle: 'preserve-3d',
           }}
-          className="inline-flex items-center gap-3 px-8 py-4 rounded-2xl mb-16 mt-8 glass-soft shadow-soft-xl backdrop-blur-xl border border-white/20"
+          className="inline-flex items-center gap-3 px-8 py-4 rounded-2xl mb-16 mt-8 glass-soft shadow-soft-xl backdrop-blur-xl border border-amber-400/30"
         >
           <motion.div
             animate={{ 
@@ -204,23 +205,23 @@ export default function Hero3D() {
             }}
             className="relative"
           >
-            <Sparkles className="w-5 h-5 text-blue-500" />
+            <Sparkles className="w-5 h-5 text-amber-400" />
             <motion.div
               animate={{ opacity: [0.5, 1, 0.5] }}
               transition={{ duration: 1.5, repeat: Infinity }}
               className="absolute inset-0 blur-md"
               style={{ filter: 'blur(8px)' }}
             >
-              <Sparkles className="w-5 h-5 text-blue-400" />
+              <Sparkles className="w-5 h-5 text-amber-500" />
             </motion.div>
           </motion.div>
-          <span className="text-sm font-semibold text-neutral-800 tracking-wide">
-            Lorenzo Fortini • Expert IA & Automatisation • Disponible
+          <span className="text-sm font-semibold text-neutral-100 tracking-wider uppercase">
+            Lorenzo Fortini <span className="text-amber-400/60">•</span> Expert IA & Automatisation <span className="text-amber-400/60">•</span> Disponible
           </span>
         </motion.div>
 
 
-        {/* Premium Subtitle */}
+        {/* Premium Subtitle avec typographie distinctive */}
           <motion.p
             initial={{ opacity: 0, y: 20, rotateX: -10 }}
             animate={{ opacity: 1, y: 0, rotateX: 0 }}
@@ -230,31 +231,45 @@ export default function Hero3D() {
               y: isMounted ? subtitleY : 0,
               transformStyle: 'preserve-3d',
             }}
-            className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-neutral-700 mb-6 sm:mb-8 font-light tracking-wide max-w-4xl mx-auto px-4"
+            className="text-xl sm:text-2xl md:text-3xl lg:text-4xl mb-6 sm:mb-8 font-light tracking-tight max-w-4xl mx-auto px-4"
           >
-          <span className="inline-block">Logiciels sur mesure</span>
+          <span className="inline-block text-neutral-100 font-medium">Logiciels sur mesure</span>
           <motion.span
-            animate={{ opacity: [0.5, 1, 0.5] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="mx-3"
+            animate={{ opacity: [0.4, 0.9, 0.4], scale: [1, 1.1, 1] }}
+            transition={{ duration: 2.5, repeat: Infinity }}
+            className="mx-4 text-amber-400 font-light"
+            style={{ fontWeight: 100 }}
           >
             &
           </motion.span>
-          <span className="inline-block">Automatisation intelligente</span>
+          <span className="inline-block text-neutral-100 font-medium">Automatisation intelligente</span>
         </motion.p>
 
-        {/* Rich Description */}
+        {/* Rich Description avec style plus marqué */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-base sm:text-lg md:text-xl text-neutral-600 mb-8 sm:mb-12 font-light max-w-3xl mx-auto leading-relaxed px-4"
+            className="text-base sm:text-lg md:text-xl text-neutral-300 mb-8 sm:mb-12 font-light max-w-3xl mx-auto leading-relaxed px-4"
+            style={{ letterSpacing: '0.01em' }}
           >
           Transformez votre entreprise avec des solutions sur mesure. Formations IA & ChatGPT, 
           Microsoft 365 avancé, développement full-stack et automatisation de processus. 
           <br className="hidden md:block" />
-          <span className="text-blue-600 font-medium">Expertise technique</span> et{' '}
-          <span className="text-indigo-600 font-medium">accompagnement personnalisé</span> dans le Sud de la France.
+          <motion.span 
+            className="text-amber-400 font-semibold relative"
+            whileHover={{ scale: 1.05 }}
+          >
+            Expertise technique
+          </motion.span>
+          {' '}et{' '}
+          <motion.span 
+            className="text-amber-500 font-semibold relative"
+            whileHover={{ scale: 1.05 }}
+          >
+            accompagnement personnalisé
+          </motion.span>
+          {' '}dans le Sud de la France.
         </motion.p>
 
         {/* Premium Value Props with 3D cards */}
@@ -293,12 +308,42 @@ export default function Hero3D() {
               >
                 <div className="absolute inset-0 rounded-2xl blur-xl opacity-50 group-hover:opacity-100 transition-opacity"
                   style={{
-                    background: `radial-gradient(circle, rgba(59, 130, 246, 0.3) 0%, transparent 70%)`,
+                    background: `radial-gradient(circle, rgba(234, 179, 8, 0.2) 0%, transparent 70%)`,
                   }}
                 />
-                <div className="relative px-6 py-5 rounded-2xl glass-soft border border-white/30 backdrop-blur-xl shadow-soft-xl group-hover:shadow-2xl transition-all">
-                  <Icon className={`w-6 h-6 mx-auto mb-2 ${item.colorClass}`} />
-                  <div className="text-sm font-semibold text-neutral-800">{item.text}</div>
+                <div className="relative px-6 py-5 rounded-2xl glass-dark border border-amber-400/20 backdrop-blur-xl shadow-soft-xl group-hover:shadow-2xl transition-all">
+                  <motion.div
+                    whileHover={{ rotate: [0, -10, 10, 0] }}
+                    transition={{ duration: 0.5 }}
+                    className="w-8 h-8 mx-auto mb-2 relative flex items-center justify-center"
+                  >
+                    {/* Formes géométriques abstraites uniques */}
+                    {index === 0 && (
+                      <>
+                        <div className="absolute w-6 h-1 bg-amber-400 rotate-45" />
+                        <div className="absolute w-6 h-1 bg-amber-400 -rotate-45" />
+                      </>
+                    )}
+                    {index === 1 && (
+                      <>
+                        <div className="absolute w-4 h-4 border-2 border-amber-400 rotate-45" />
+                        <div className="absolute w-2 h-2 bg-amber-400/50 rotate-45" />
+                      </>
+                    )}
+                    {index === 2 && (
+                      <>
+                        <div className="absolute w-5 h-5 border-2 border-amber-400 rounded-full" />
+                        <div className="absolute w-2 h-2 bg-amber-400 top-0 left-1/2 -translate-x-1/2" />
+                      </>
+                    )}
+                    {index === 3 && (
+                      <>
+                        <div className="absolute w-0 h-0 border-l-[6px] border-r-[6px] border-b-[10px] border-l-transparent border-r-transparent border-b-amber-400" />
+                        <div className="absolute top-2 w-4 h-1 bg-amber-400" />
+                      </>
+                    )}
+                  </motion.div>
+                  <div className="text-sm font-bold text-neutral-100 tracking-wide uppercase">{item.text}</div>
                 </div>
               </motion.div>
             )
@@ -327,10 +372,10 @@ export default function Hero3D() {
               x: isMounted ? button1X : 0,
               y: isMounted ? button1Y : 0,
               transformStyle: 'preserve-3d',
-              background: 'linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #6366f1 100%)',
-              boxShadow: '0 20px 60px rgba(59, 130, 246, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
+              background: 'linear-gradient(135deg, #a16207 0%, #eab308 50%, #fbbf24 100%)',
+              boxShadow: '0 20px 60px rgba(234, 179, 8, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
             }}
-            className="group relative px-6 sm:px-10 md:px-12 py-4 sm:py-5 rounded-2xl font-bold text-white text-base sm:text-lg overflow-hidden min-h-[44px] flex items-center justify-center"
+            className="group relative px-6 sm:px-10 md:px-12 py-4 sm:py-5 rounded-2xl font-bold text-black text-base sm:text-lg overflow-hidden min-h-[44px] flex items-center justify-center"
           >
             {/* Animated gradient overlay */}
             <motion.div
@@ -381,12 +426,12 @@ export default function Hero3D() {
               y: isMounted ? button2Y : 0,
               transformStyle: 'preserve-3d',
             }}
-            className="group relative px-6 sm:px-10 md:px-12 py-4 sm:py-5 rounded-2xl font-bold text-neutral-800 text-base sm:text-lg glass-soft border-2 border-white/40 backdrop-blur-xl shadow-soft-xl overflow-hidden min-h-[44px] flex items-center justify-center"
+            className="group relative px-6 sm:px-10 md:px-12 py-4 sm:py-5 rounded-2xl font-bold text-neutral-100 text-base sm:text-lg glass-soft border-2 border-amber-400/30 backdrop-blur-xl shadow-soft-xl overflow-hidden min-h-[44px] flex items-center justify-center"
           >
             <motion.div
               animate={{ x: ['-100%', '200%'] }}
               transition={{ duration: 2.5, repeat: Infinity, ease: 'linear', repeatDelay: 4 }}
-              className="absolute inset-0 bg-gradient-to-r from-transparent via-blue-100/40 to-transparent skew-x-12 opacity-0 group-hover:opacity-100"
+              className="absolute inset-0 bg-gradient-to-r from-transparent via-amber-400/20 to-transparent skew-x-12 opacity-0 group-hover:opacity-100"
             />
             <span className="relative z-10 flex items-center gap-3">
               Découvrir mes services
@@ -430,9 +475,9 @@ export default function Hero3D() {
                 <motion.div
                   animate={{
                     boxShadow: [
-                      `0 0 30px rgba(59, 130, 246, 0.3)`,
-                      `0 0 60px rgba(59, 130, 246, 0.5)`,
-                      `0 0 30px rgba(59, 130, 246, 0.3)`,
+                      `0 0 30px rgba(234, 179, 8, 0.3)`,
+                      `0 0 60px rgba(234, 179, 8, 0.5)`,
+                      `0 0 30px rgba(234, 179, 8, 0.3)`,
                     ],
                   }}
                   transition={{
@@ -442,12 +487,34 @@ export default function Hero3D() {
                   }}
                   className="absolute inset-0 rounded-2xl blur-2xl opacity-50 group-hover:opacity-100"
                 />
-                <div className="relative px-6 py-5 rounded-2xl glass-soft border border-white/30 backdrop-blur-xl">
-                  <Icon className={`w-8 h-8 mx-auto mb-3 ${stat.iconClass}`} />
-                  <div className={`text-4xl md:text-5xl font-light mb-2 ${stat.textClass}`} style={{ fontWeight: 100 }}>
+                <div className="relative px-6 py-5 rounded-2xl glass-dark border border-amber-400/20 backdrop-blur-xl">
+                  <div className="w-10 h-10 mx-auto mb-3 relative flex items-center justify-center">
+                    {/* Formes géométriques abstraites pour les stats */}
+                    {index === 0 && (
+                      <>
+                        <div className="absolute w-6 h-6 border-2 border-amber-400 rotate-45" />
+                        <div className="absolute w-3 h-3 bg-amber-400/50 rotate-45" />
+                      </>
+                    )}
+                    {index === 1 && (
+                      <>
+                        <div className="absolute w-7 h-7 border-2 border-amber-400 rounded-full" />
+                        <div className="absolute w-2 h-2 bg-amber-400 top-0 left-1/2 -translate-x-1/2" />
+                        <div className="absolute w-2 h-2 bg-amber-400 bottom-0 left-1/2 -translate-x-1/2" />
+                      </>
+                    )}
+                    {index === 2 && (
+                      <>
+                        <div className="absolute w-0 h-0 border-l-[8px] border-r-[8px] border-b-[12px] border-l-transparent border-r-transparent border-b-amber-400" />
+                        <div className="absolute top-3 w-5 h-1 bg-amber-400 rotate-45" />
+                        <div className="absolute top-3 w-5 h-1 bg-amber-400 -rotate-45" />
+                      </>
+                    )}
+                  </div>
+                  <div className={`text-4xl md:text-5xl font-light mb-2 text-amber-400`} style={{ fontWeight: 100 }}>
                     {stat.number}
                   </div>
-                  <div className="text-sm font-semibold text-neutral-700">{stat.label}</div>
+                  <div className="text-sm font-semibold text-neutral-300">{stat.label}</div>
                 </div>
               </motion.div>
             )
@@ -461,29 +528,27 @@ export default function Hero3D() {
           transition={{ duration: 0.8, delay: 1.2 }}
           className="flex flex-wrap justify-center gap-4"
         >
-          {[
-            'Mission courte ou longue',
-            'Autonome ou renfort équipe',
-            'Livraison production-ready',
-            'Support post-livraison',
-          ].map((text, index) => (
+              {[
+            { text: 'Mission courte ou longue', color: 'blue' },
+            { text: 'Autonome ou renfort équipe', color: 'emerald' },
+            { text: 'Livraison production-ready', color: 'indigo' },
+            { text: 'Support post-livraison', color: 'purple' },
+          ].map((item, index) => (
             <motion.div
-              key={text}
+              key={item.text}
               initial={{ opacity: 0, y: 10, rotateX: -10 }}
               animate={{ opacity: 1, y: 0, rotateX: 0 }}
               transition={{ duration: 0.5, delay: 1.3 + index * 0.1 }}
               whileHover={{ scale: 1.05, y: -3, rotateY: 5, z: 20 }}
               style={{ transformStyle: 'preserve-3d' }}
-              className="flex items-center gap-3 px-6 py-3 rounded-xl glass-soft border border-white/30 backdrop-blur-xl text-neutral-800 text-sm font-semibold shadow-soft"
+              className="flex items-center gap-3 px-6 py-3 rounded-xl glass-soft border border-amber-400/20 backdrop-blur-xl text-neutral-100 text-sm font-bold tracking-wide uppercase shadow-soft"
             >
               <motion.div
-                animate={{ scale: [1, 1.2, 1], opacity: [0.6, 1, 0.6] }}
+                animate={{ scale: [1, 1.3, 1], opacity: [0.7, 1, 0.7] }}
                 transition={{ duration: 2, repeat: Infinity, delay: index * 0.3 }}
-                className={`w-2 h-2 rounded-full ${
-                  index === 0 ? 'bg-blue-500' : index === 1 ? 'bg-emerald-500' : index === 2 ? 'bg-indigo-500' : 'bg-purple-500'
-                }`}
+                className={`w-2.5 h-2.5 rounded-full bg-amber-400`}
               />
-              {text}
+              {item.text}
             </motion.div>
           ))}
         </motion.div>

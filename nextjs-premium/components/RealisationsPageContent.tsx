@@ -1,8 +1,9 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion, useMotionValue, useSpring } from 'framer-motion'
 import { Building2, Users, Briefcase, CheckCircle, ArrowRight } from 'lucide-react'
 import Link from 'next/link'
+import { useState, useEffect } from 'react'
 
 const realisations = [
   {
@@ -137,13 +138,47 @@ const realisations = [
   },
 ]
 
-export default function RealisationsPageContent() {
+// Component for animated counter
+function AnimatedCounter({ value }: { value: string }) {
+  const numValue = parseInt(value.replace(/\D/g, ''))
+  const hasPlus = value.includes('+')
+  const hasPercent = value.includes('%')
+  
+  const motionValue = useMotionValue(0)
+  const spring = useSpring(motionValue, { damping: 60, stiffness: 100 })
+  const [display, setDisplay] = useState(0)
+
+  useEffect(() => {
+    const unsubscribe = spring.on('change', (latest) => {
+      setDisplay(Math.floor(latest))
+    })
+    motionValue.set(numValue)
+    return unsubscribe
+  }, [numValue, spring, motionValue])
+
   return (
-    <div className="min-h-screen pt-20">
+    <>
+      {display}
+      {hasPercent && '%'}
+      {hasPlus && '+'}
+    </>
+  )
+}
+
+export default function RealisationsPageContent() {
+  const [filter, setFilter] = useState<string>('Tous')
+  const types = ['Tous', 'Entreprise', 'TPE', 'PME', 'Association', 'Particulier']
+  
+  const filteredRealisations = filter === 'Tous' 
+    ? realisations 
+    : realisations.filter(r => r.type === filter)
+
+  return (
+    <div className="min-h-screen pt-20" style={{ background: '#0f0f0f' }}>
       {/* Hero Section */}
       <section className="relative py-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
-        <div className="absolute inset-0 -z-10">
-          <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-amber-50/50 via-transparent to-orange-50/50" />
+        <div className="absolute inset-0 -z-10" style={{ background: '#0f0f0f' }}>
+          <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-[#0f0f0f] via-[#1a1a1a] to-[#0f0f0f]" />
         </div>
 
         <div className="max-w-7xl mx-auto text-center">
@@ -151,17 +186,17 @@ export default function RealisationsPageContent() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full glass-soft mb-8 shadow-soft"
+            className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full glass-dark border border-amber-400/20 mb-8 shadow-soft"
           >
-            <Briefcase className="w-5 h-5 text-amber-600" />
-            <span className="text-sm font-medium text-neutral-700 tracking-wide">Réalisations</span>
+            <Briefcase className="w-5 h-5 text-amber-400" />
+            <span className="text-sm font-medium text-neutral-300 tracking-wide">Réalisations</span>
           </motion.div>
 
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-5xl md:text-6xl lg:text-7xl font-extralight text-neutral-900 mb-6 tracking-tight"
+            className="text-5xl md:text-6xl lg:text-7xl font-extralight text-neutral-100 mb-6 tracking-tight"
             style={{ fontWeight: 200 }}
           >
             Nos réalisations
@@ -171,7 +206,7 @@ export default function RealisationsPageContent() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-xl md:text-2xl text-neutral-600 mb-8 max-w-3xl mx-auto font-light"
+            className="text-xl md:text-2xl text-neutral-400 mb-8 max-w-3xl mx-auto font-light"
           >
             Collaborations réussies avec TPE, PME, associations et particuliers. 
             <br className="hidden md:block" />
@@ -180,11 +215,37 @@ export default function RealisationsPageContent() {
         </div>
       </section>
 
+      {/* Filters */}
+      <section className="px-4 sm:px-6 lg:px-8 pb-8">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="flex flex-wrap justify-center gap-3"
+          >
+            {types.map((type) => (
+              <button
+                key={type}
+                onClick={() => setFilter(type)}
+                className={`px-6 py-3 rounded-xl font-medium text-sm transition-all duration-300 ${
+                  filter === type
+                    ? 'bg-gradient-to-r from-amber-500 to-amber-400 text-neutral-900 shadow-lg shadow-amber-500/50'
+                    : 'glass-dark border border-amber-400/20 text-neutral-300 hover:border-amber-400/40 hover:text-amber-400'
+                }`}
+              >
+                {type}
+              </button>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
       {/* Réalisations Grid */}
       <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {realisations.map((realisation, index) => {
+            {filteredRealisations.map((realisation, index) => {
               const Icon = realisation.icon
               return (
                 <motion.div
@@ -193,40 +254,49 @@ export default function RealisationsPageContent() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className="p-8 rounded-3xl glass-soft border border-white/30 backdrop-blur-xl shadow-xl hover:shadow-2xl transition-all duration-300"
+                  className="p-8 rounded-3xl glass-dark border border-amber-400/20 backdrop-blur-xl shadow-xl hover:shadow-2xl hover:border-amber-400/40 transition-all duration-300"
                 >
                   <div className="flex items-start justify-between mb-6">
                     <div className="flex items-center gap-4">
-                      <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-amber-500/20 to-orange-500/20 flex items-center justify-center">
-                        <Icon className="w-7 h-7 text-amber-600" />
+                      <div className="relative w-14 h-14 rounded-2xl bg-gradient-to-br from-amber-500/20 to-amber-400/10 border border-amber-400/30 flex items-center justify-center overflow-hidden">
+                        {/* Forme géométrique abstraite */}
+                        <div className="absolute inset-0 bg-gradient-to-br from-amber-500/30 to-transparent opacity-50" />
+                        <div className="absolute top-0 left-0 w-full h-full">
+                          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 border-2 border-amber-400/40 rounded-full" />
+                          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-amber-400/20 rounded-full" />
+                        </div>
+                        {/* Numéro stylisé */}
+                        <span className="relative z-10 text-xs font-bold text-amber-400 tracking-tighter" style={{ fontFamily: 'monospace' }}>
+                          {(index + 1).toString().padStart(2, '0')}
+                        </span>
                       </div>
                       <div>
-                        <span className="text-xs font-semibold text-amber-600 uppercase tracking-wide">
+                        <span className="text-xs font-semibold text-amber-400 uppercase tracking-wide">
                           {realisation.type}
                         </span>
-                        <h2 className="text-2xl font-light text-neutral-900 mt-1" style={{ fontWeight: 300 }}>
+                        <h2 className="text-2xl font-light text-neutral-100 mt-1" style={{ fontWeight: 300 }}>
                           {realisation.title}
                         </h2>
                       </div>
                     </div>
                   </div>
 
-                  <p className="text-neutral-600 mb-4 leading-relaxed">{realisation.description}</p>
+                  <p className="text-neutral-400 mb-4 leading-relaxed">{realisation.description}</p>
                   
                   {realisation.solution && (
-                    <div className="mb-6 p-4 rounded-xl bg-neutral-50/50 border border-neutral-200/50">
-                      <p className="text-sm font-semibold text-neutral-900 mb-2">Solution :</p>
-                      <p className="text-sm text-neutral-700 leading-relaxed">{realisation.solution}</p>
+                    <div className="mb-6 p-4 rounded-xl glass-dark border border-amber-400/20">
+                      <p className="text-sm font-semibold text-neutral-100 mb-2">Solution :</p>
+                      <p className="text-sm text-neutral-300 leading-relaxed">{realisation.solution}</p>
                     </div>
                   )}
 
                   <div className="mb-6">
-                    <p className="text-sm font-semibold text-neutral-900 mb-3">Technologies :</p>
+                    <p className="text-sm font-semibold text-neutral-100 mb-3">Technologies :</p>
                     <div className="flex flex-wrap gap-2">
                       {realisation.services.map((service, idx) => (
                         <span
                           key={idx}
-                          className="px-3 py-1 rounded-full text-xs font-medium bg-amber-100 text-amber-700"
+                          className="px-3 py-1 rounded-full text-xs font-medium bg-amber-500/20 text-amber-400 border border-amber-400/30"
                         >
                           {service}
                         </span>
@@ -234,12 +304,12 @@ export default function RealisationsPageContent() {
                     </div>
                   </div>
 
-                  <div className="pt-6 border-t border-neutral-200/50">
-                    <p className="text-sm font-semibold text-neutral-900 mb-3">Résultats :</p>
+                  <div className="pt-6 border-t border-amber-400/20">
+                    <p className="text-sm font-semibold text-neutral-100 mb-3">Résultats :</p>
                     <ul className="space-y-2">
                       {realisation.resultats.map((resultat, idx) => (
-                        <li key={idx} className="flex items-start gap-2 text-sm text-neutral-700">
-                          <CheckCircle className="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5" />
+                        <li key={idx} className="flex items-start gap-2 text-sm text-neutral-300">
+                          <CheckCircle className="w-4 h-4 text-amber-400 flex-shrink-0 mt-0.5" />
                           <span>{resultat}</span>
                         </li>
                       ))}
@@ -253,13 +323,13 @@ export default function RealisationsPageContent() {
       </section>
 
       {/* Stats Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-neutral-50 to-amber-50/30">
+      <section className="py-20 px-4 sm:px-6 lg:px-8" style={{ background: '#0f0f0f' }}>
         <div className="max-w-7xl mx-auto">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-4xl font-light text-neutral-900 mb-12 text-center"
+            className="text-3xl md:text-4xl font-light text-neutral-100 mb-12 text-center"
             style={{ fontWeight: 200 }}
           >
             En chiffres
@@ -277,12 +347,12 @@ export default function RealisationsPageContent() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="text-center"
+                className="text-center p-6 rounded-2xl glass-dark border border-amber-400/20"
               >
-                <div className="text-4xl md:text-5xl font-light text-amber-600 mb-2" style={{ fontWeight: 100 }}>
-                  {stat.number}
+                <div className="text-4xl md:text-5xl font-light text-amber-400 mb-2" style={{ fontWeight: 100 }}>
+                  <AnimatedCounter value={stat.number} />
                 </div>
-                <div className="text-sm font-medium text-neutral-700">{stat.label}</div>
+                <div className="text-sm font-medium text-neutral-300">{stat.label}</div>
               </motion.div>
             ))}
           </div>
@@ -296,7 +366,7 @@ export default function RealisationsPageContent() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-4xl font-light text-neutral-900 mb-6"
+            className="text-3xl md:text-4xl font-light text-neutral-100 mb-6"
             style={{ fontWeight: 200 }}
           >
             Votre projet sera le prochain ?
@@ -306,7 +376,7 @@ export default function RealisationsPageContent() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-lg text-neutral-600 mb-8"
+            className="text-lg text-neutral-400 mb-8"
           >
             TPE, PME, association ou particulier, je m'adapte à vos besoins. 
             <br />
@@ -332,11 +402,7 @@ export default function RealisationsPageContent() {
             </Link>
             <Link
               href="/formations"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-semibold text-neutral-800 text-lg border border-neutral-300/60"
-              style={{
-                background: 'rgba(255, 255, 255, 0.8)',
-                backdropFilter: 'blur(10px)',
-              }}
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-semibold text-neutral-100 text-lg glass-dark border border-amber-400/30 hover:border-amber-400/50 transition-all duration-300"
             >
               Voir les formations
             </Link>

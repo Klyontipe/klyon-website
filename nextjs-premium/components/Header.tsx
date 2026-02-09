@@ -34,9 +34,12 @@ export default function Header() {
       transition={{ duration: 0.4, ease: 'easeOut' }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled
-          ? 'backdrop-blur-xl border-b border-neutral-300/30 bg-white/80 shadow-sm'
-          : 'bg-white/40 backdrop-blur-sm'
+          ? 'backdrop-blur-xl border-b border-amber-500/20 shadow-lg'
+          : 'backdrop-blur-sm border-b border-amber-500/10'
       }`}
+      style={{
+        background: isScrolled ? 'rgba(15, 15, 15, 0.95)' : 'rgba(15, 15, 15, 0.8)'
+      }}
     >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
@@ -45,10 +48,17 @@ export default function Header() {
             <motion.div
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.2 }}
-              className="relative"
+              className="relative flex flex-col"
             >
-              <span className="text-2xl font-light text-neutral-900 relative z-10 tracking-tight">
+              <motion.span 
+                className="text-2xl font-light text-amber-400 relative z-10 tracking-tight"
+                whileHover={{ letterSpacing: '0.1em' }}
+                transition={{ duration: 0.3 }}
+              >
                 KLYON
+              </motion.span>
+              <span className="text-[9px] font-light text-amber-400/60 tracking-widest uppercase mt-[-4px]">
+                software
               </span>
             </motion.div>
           </Link>
@@ -59,11 +69,11 @@ export default function Header() {
               <Link
                 key={item.name}
                 href={item.href}
-                className="relative text-neutral-700 hover:text-neutral-900 font-medium transition-all duration-200 text-sm group"
+                className="relative text-neutral-300 hover:text-amber-400 font-medium transition-all duration-200 text-sm group"
               >
                 {item.name}
                 <motion.span
-                  className="absolute bottom-0 left-0 h-0.5 bg-neutral-900"
+                  className="absolute bottom-0 left-0 h-0.5 bg-amber-400"
                   initial={{ width: 0 }}
                   whileHover={{ width: '100%' }}
                   transition={{ duration: 0.3 }}
@@ -82,7 +92,7 @@ export default function Header() {
               >
                 <Link
                   href="/contact"
-                  className="relative px-6 py-2.5 text-white text-sm font-semibold rounded-xl border border-neutral-800 bg-neutral-900 shadow-md hover:shadow-lg transition-all duration-300 block"
+                  className="relative px-6 py-2.5 text-black text-sm font-bold rounded-xl border border-amber-400/50 bg-gradient-to-r from-amber-400 to-amber-500 shadow-lg hover:shadow-xl hover:shadow-amber-500/50 transition-all duration-300 block uppercase tracking-wide"
                 >
                   <span className="relative z-10">Discuter d'une mission</span>
                 </Link>
@@ -93,7 +103,7 @@ export default function Header() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2 rounded-lg text-neutral-700 hover:text-neutral-900 hover:bg-neutral-100 transition-colors"
+            className="md:hidden p-2 rounded-lg text-neutral-300 hover:text-amber-400 hover:bg-neutral-800 transition-colors"
             aria-label="Menu"
           >
             {isMobileMenuOpen ? (
@@ -112,7 +122,8 @@ export default function Header() {
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.2 }}
-              className="md:hidden border-t border-neutral-300/30 py-4 bg-white/90 backdrop-blur-xl"
+              className="md:hidden border-t border-amber-500/20 py-4 backdrop-blur-xl"
+              style={{ background: 'rgba(15, 15, 15, 0.98)' }}
             >
               <div className="space-y-4">
                 {navigation.map((item) => (
@@ -120,7 +131,7 @@ export default function Header() {
                     key={item.name}
                     href={item.href}
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className="block text-neutral-700 hover:text-neutral-900 font-medium transition-colors duration-200"
+                    className="block text-neutral-300 hover:text-amber-400 font-medium transition-colors duration-200"
                   >
                     {item.name}
                   </Link>
@@ -128,7 +139,7 @@ export default function Header() {
                 <Link
                   href="/contact"
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="block w-full text-center px-6 py-2.5 bg-neutral-900 text-white text-sm font-medium rounded-lg hover:bg-neutral-800 transition-colors duration-200"
+                  className="block w-full text-center px-6 py-2.5 bg-gradient-to-r from-amber-400 to-amber-500 text-black text-sm font-bold rounded-lg hover:from-amber-500 hover:to-amber-600 transition-colors duration-200 uppercase tracking-wide"
                 >
                   Discuter d'une mission
                 </Link>
