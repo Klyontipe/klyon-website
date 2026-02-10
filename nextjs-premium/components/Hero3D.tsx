@@ -73,8 +73,7 @@ export default function Hero3D() {
     <section 
       ref={sectionRef} 
       className="relative pt-20 pb-32 px-4 sm:px-6 lg:px-8 overflow-hidden min-h-screen flex items-center"
-      style={{ background: '#0f0f0f' }}
-      style={{ perspective: '1000px' }}
+      style={{ background: '#0f0f0f', perspective: '1000px' }}
     >
       {/* 3D Background Layers - Dark Premium */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
