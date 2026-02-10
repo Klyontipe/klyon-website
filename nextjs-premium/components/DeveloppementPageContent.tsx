@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Code, Globe, Smartphone, Monitor, CheckCircle, Shield, Zap, Clock, HelpCircle, ArrowRight, TrendingUp, Layers } from 'lucide-react'
+import { Code, Globe, Smartphone, Monitor, CheckCircle, Shield, Zap, Clock, HelpCircle, ArrowRight, TrendingUp, Layers, Target } from 'lucide-react'
 import Link from 'next/link'
 
 const technologies = [

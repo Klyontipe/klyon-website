@@ -198,8 +198,8 @@ const Home = () => {
           <motion.div
             variants={containerVariants}
             initial="hidden"
-            animate={inView ? "visible" : "hidden"}
-            ref={ref}
+            animate="visible"
+            
             className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12"
           >
             {quickServices.map((service, index) => (
@@ -279,8 +279,8 @@ const Home = () => {
           <motion.div
             variants={containerVariants}
             initial="hidden"
-            animate={inView ? "visible" : "hidden"}
-            ref={ref}
+            animate="visible"
+            
             className="grid grid-cols-2 md:grid-cols-4 gap-8"
           >
             {stats.map((stat, index) => (

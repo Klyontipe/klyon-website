@@ -209,7 +209,7 @@ ${formData.message}
           <motion.div
             variants={containerVariants}
             initial="hidden"
-            animate={inView ? "visible" : "hidden"}
+            animate="visible"
             ref={ref}
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16"
           >
@@ -344,7 +344,6 @@ ${formData.message}
                         />
                       </div>
                     </div>
-                    
                     <div>
                       <label className="block text-sm font-medium mb-2 text-gray-300">
                         Téléphone

@@ -9,15 +9,15 @@ const Footer = () => {
 
   const footerLinks = {
     services: [
-      { name: 'Support Informatique', href: '/services' },
-      { name: 'Développement Sur-Mesure', href: '/services' },
-      { name: 'Intelligence Artificielle', href: '/services' },
+      { name: 'Intelligence Artificielle', href: '/ia' },
+      { name: 'Développement', href: '/developpement' },
+      { name: 'Réparation', href: '/reparation' },
     ],
     company: [
-      { name: 'Compétences', href: '/competences' },
       { name: 'Projets', href: '/projets' },
       { name: 'Blog', href: '/blog' },
       { name: 'Contact', href: '/contact' },
+      { name: 'Demande de Devis', href: '/devis' },
     ],
   }
 
@@ -41,16 +41,15 @@ const Footer = () => {
           {/* Company Info */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
             className="lg:col-span-1"
           >
             <RouterLink to="/" className="flex items-center space-x-3 mb-6">
               <img 
-                src={theme === 'dark' ? './assets/logowhite.png' : './assets/logo.jpg'} 
+                src={'./assets/logowhite.png'} 
                 alt="Klyon Logo" 
-                className={`h-36 w-auto lg:h-40 ${theme === 'dark' ? 'max-w-[200px]' : ''}`} 
+                className="h-36 w-auto lg:h-40 max-w-[200px]" 
               />
             </RouterLink>
             <p className="text-gray-300 mb-6 leading-relaxed">
@@ -78,9 +77,8 @@ const Footer = () => {
           {/* Services */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            viewport={{ once: true }}
           >
             <h3 className="text-lg font-semibold mb-6">Services</h3>
             <ul className="space-y-3">
@@ -100,9 +98,8 @@ const Footer = () => {
           {/* Company */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
           >
             <h3 className="text-lg font-semibold mb-6">Entreprise</h3>
             <ul className="space-y-3">
@@ -122,9 +119,8 @@ const Footer = () => {
           {/* Contact Info */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            viewport={{ once: true }}
           >
             <h3 className="text-lg font-semibold mb-6">Contact</h3>
             <div className="space-y-4">
@@ -159,9 +155,8 @@ const Footer = () => {
         {/* Bottom Bar */}
         <motion.div
           initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+          animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          viewport={{ once: true }}
           className="border-t border-gray-800 mt-12 pt-8 text-center"
         >
           <p className="text-gray-400">

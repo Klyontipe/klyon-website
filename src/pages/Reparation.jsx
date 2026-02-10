@@ -238,7 +238,7 @@ const Reparation = () => {
           <motion.div
             variants={containerVariants}
             initial="hidden"
-            animate={inView ? "visible" : "hidden"}
+            animate="visible"
             ref={ref}
             className="grid grid-cols-1 md:grid-cols-4 gap-8"
           >
