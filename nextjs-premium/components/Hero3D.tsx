@@ -496,7 +496,7 @@ export default function Hero3D() {
                   <div className="text-sm font-semibold text-neutral-300">{stat.label}</div>
                 </div>
               </motion.div>
-            ))
+            ))}
         </motion.div>
 
         {/* Premium badges */}
