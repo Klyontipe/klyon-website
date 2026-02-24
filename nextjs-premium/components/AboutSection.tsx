@@ -3,12 +3,13 @@
 import { motion } from 'framer-motion'
 import AnimatedSection from './AnimatedSection'
 import CountUpNumber from './CountUpNumber'
+import { useAnimation } from '@/contexts/AnimationContext'
 
 export default function AboutSection() {
+  const { startupComplete } = useAnimation()
+  
   const stats = [
-    { number: 45, suffix: '+', label: 'Projets réalisés', color: 'from-blue-600/15 to-slate-500/10', accent: 'text-amber-400' },
     { number: 100, suffix: '%', label: 'Clients satisfaits', color: 'from-emerald-600/15 to-teal-500/10', accent: 'text-emerald-600' },
-    { number: 3, suffix: '', label: 'Ans d\'expérience IA', color: 'from-indigo-600/15 to-purple-500/10', accent: 'text-indigo-600' },
   ]
 
   return (
@@ -24,8 +25,8 @@ export default function AboutSection() {
           <AnimatedSection className="text-left">
             <motion.div
               initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              animate={startupComplete ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
               className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full glass-soft mb-6 shadow-soft"
             >
               <motion.span
@@ -46,8 +47,7 @@ export default function AboutSection() {
                 entreprises et particuliers dans leur transformation digitale avec une approche personnalisée et des résultats mesurables.
               </p>
               <p className="text-lg md:text-xl text-neutral-300 leading-relaxed font-light" style={{ letterSpacing: '0.01em' }}>
-                Avec plus de <strong className="text-emerald-600">45 projets réalisés</strong> et <strong className="text-purple-600">3 ans d'expérience en intelligence artificielle</strong>, 
-                je combine expertise technique et pédagogie pour former vos équipes efficacement. Mon approche ? 
+                Je combine expertise technique et pédagogie pour former vos équipes efficacement. Mon approche ? 
                 <strong className="text-neutral-100"> Écouter vos besoins</strong>, analyser vos processus, proposer des solutions sur mesure 
                 et livrer des résultats concrets avec un suivi post-formation personnalisé. Spécialisé en <strong>LLM</strong>, <strong>prompt engineering</strong>, 
                 <strong> RAG avancé</strong> et <strong>automatisation Power Platform</strong>.
@@ -168,36 +168,6 @@ export default function AboutSection() {
                 transition={{ duration: 0.6, delay: 0.4 }}
                 style={{ transformStyle: 'preserve-3d' }}
               />
-              {/* Badge premium avec effet 3D */}
-              <motion.div
-                className="absolute -bottom-6 -right-6 glass-soft p-6 rounded-2xl shadow-2xl border-2 border-white/40 backdrop-blur-xl"
-                initial={{ opacity: 0, scale: 0.8, rotateZ: -10 }}
-                whileInView={{ opacity: 1, scale: 1, rotateZ: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.8 }}
-                whileHover={{ 
-                  scale: 1.1,
-                  rotateZ: 5,
-                  rotateY: 10,
-                  z: 40,
-                  transition: { duration: 0.3 }
-                }}
-                style={{ transformStyle: 'preserve-3d' }}
-              >
-                <div className="text-center">
-                  <motion.div
-                    animate={{ scale: [1, 1.1, 1] }}
-                    transition={{ duration: 2, repeat: Infinity }}
-                    className="text-3xl font-light text-amber-400 mb-1" 
-                    style={{ fontWeight: 100 }}
-                  >
-                    5+
-                  </motion.div>
-                  <div className="text-xs font-semibold text-neutral-300 tracking-wide">
-                    Années d'expérience
-                  </div>
-                </div>
-              </motion.div>
               {/* Badge supplémentaire */}
               <motion.div
                 className="absolute -top-6 -left-6 glass-soft px-4 py-2 rounded-xl shadow-xl border border-white/40 backdrop-blur-xl"
@@ -215,7 +185,7 @@ export default function AboutSection() {
         </div>
 
         {/* Stats Premium avec effet 3D */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-20" style={{ perspective: '1000px' }}>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-20 max-w-md mx-auto" style={{ perspective: '1000px' }}>
           {stats.map((stat, index) => (
             <motion.div
               key={index}
@@ -261,11 +231,7 @@ export default function AboutSection() {
                     className={`text-4xl md:text-5xl font-light mb-4 tracking-tight ${stat.accent}`}
                     style={{ fontWeight: 100 }}
                   >
-                    {index === 2 ? (
-                      <span>{stat.number}{stat.suffix}</span>
-                    ) : (
-                      <CountUpNumber value={stat.number} suffix={stat.suffix} />
-                    )}
+                    <CountUpNumber value={stat.number} suffix={stat.suffix} />
                   </motion.div>
                   <motion.div
                     initial={{ opacity: 0, y: 5 }}

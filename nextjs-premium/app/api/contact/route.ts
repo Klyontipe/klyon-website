@@ -13,28 +13,9 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Ici, vous pouvez intégrer votre service d'email (SendGrid, Resend, etc.)
-    // Pour l'instant, on simule un envoi réussi
-    
-    // Exemple avec un service d'email (à configurer selon vos besoins)
-    // const emailService = new EmailService()
-    // await emailService.send({
-    //   to: 'klyonme@gmail.com',
-    //   subject: `Nouveau message de contact : ${subject}`,
-    //   html: `
-    //     <h2>Nouveau message de contact</h2>
-    //     <p><strong>Nom:</strong> ${name}</p>
-    //     <p><strong>Email:</strong> ${email}</p>
-    //     <p><strong>Téléphone:</strong> ${phone || 'Non renseigné'}</p>
-    //     <p><strong>Entreprise:</strong> ${company || 'Non renseigné'}</p>
-    //     <p><strong>Sujet:</strong> ${subject}</p>
-    //     <p><strong>Message:</strong></p>
-    //     <p>${message}</p>
-    //   `,
-    // })
+    // TODO: brancher ici un vrai service d'envoi d'email (SendGrid, Resend, SMTP, etc.)
+    // En attendant, on se contente de valider les données et de répondre un succès.
 
-    // Pour l'instant, on retourne un succès
-    // En production, configurez votre service d'email ici
     return NextResponse.json(
       { message: 'Message envoyé avec succès' },
       { status: 200 }

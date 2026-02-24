@@ -3,6 +3,7 @@
 import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion'
 import { ArrowRight, Sparkles, Zap, Rocket } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
+import { useAnimation } from '@/contexts/AnimationContext'
 
 export default function Hero3D() {
   const sectionRef = useRef<HTMLElement>(null)
@@ -10,6 +11,7 @@ export default function Hero3D() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const [isHovering, setIsHovering] = useState(false)
   const [isMounted, setIsMounted] = useState(false)
+  const { startupComplete } = useAnimation()
   
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -179,8 +181,8 @@ export default function Hero3D() {
         {/* Premium Badge with 3D effect */}
         <motion.div
           initial={{ opacity: 0, y: 20, rotateX: -20 }}
-          animate={{ opacity: 1, y: 0, rotateX: 0 }}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          animate={startupComplete ? { opacity: 1, y: 0, rotateX: 0 } : { opacity: 0, y: 20, rotateX: -20 }}
+          transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
           whileHover={{ 
             scale: 1.05,
             rotateY: 5,
@@ -223,7 +225,7 @@ export default function Hero3D() {
         {/* Premium Subtitle avec typographie distinctive */}
           <motion.p
             initial={{ opacity: 0, y: 20, rotateX: -10 }}
-            animate={{ opacity: 1, y: 0, rotateX: 0 }}
+            animate={startupComplete ? { opacity: 1, y: 0, rotateX: 0 } : { opacity: 0, y: 20, rotateX: -10 }}
             transition={{ duration: 0.8, delay: 0.3 }}
             style={{
               x: isMounted ? subtitleX : 0,
@@ -247,7 +249,7 @@ export default function Hero3D() {
         {/* Rich Description avec style plus marqué */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            animate={startupComplete ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-base sm:text-lg md:text-xl text-neutral-300 mb-8 sm:mb-12 font-light max-w-3xl mx-auto leading-relaxed px-4"
             style={{ letterSpacing: '0.01em' }}
@@ -444,15 +446,11 @@ export default function Hero3D() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.9 }}
-          className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 mb-8 sm:mb-12 max-w-3xl mx-auto px-4"
+          className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 mb-8 sm:mb-12 max-w-xl mx-auto px-4"
         >
           {[
-            { number: '45+', label: 'Projets réalisés', color: 'blue', icon: Rocket, iconClass: 'text-blue-600', textClass: 'text-blue-600' },
-            { number: '100%', label: 'Satisfaction', color: 'emerald', icon: Sparkles, iconClass: 'text-emerald-600', textClass: 'text-emerald-600' },
-            { number: '3', label: 'Ans d\'IA', color: 'indigo', icon: Zap, iconClass: 'text-indigo-600', textClass: 'text-indigo-600' },
-          ].map((stat, index) => {
-            const Icon = stat.icon
-            return (
+            { number: '100%', label: 'Satisfaction', color: 'emerald', icon: Sparkles },
+          ].map((stat, index) => (
               <motion.div
                 key={stat.label}
                 initial={{ opacity: 0, y: 20, rotateX: -15 }}
@@ -488,36 +486,17 @@ export default function Hero3D() {
                 />
                 <div className="relative px-6 py-5 rounded-2xl glass-dark border border-amber-400/20 backdrop-blur-xl">
                   <div className="w-10 h-10 mx-auto mb-3 relative flex items-center justify-center">
-                    {/* Formes géométriques abstraites pour les stats */}
-                    {index === 0 && (
-                      <>
-                        <div className="absolute w-6 h-6 border-2 border-amber-400 rotate-45" />
-                        <div className="absolute w-3 h-3 bg-amber-400/50 rotate-45" />
-                      </>
-                    )}
-                    {index === 1 && (
-                      <>
-                        <div className="absolute w-7 h-7 border-2 border-amber-400 rounded-full" />
-                        <div className="absolute w-2 h-2 bg-amber-400 top-0 left-1/2 -translate-x-1/2" />
-                        <div className="absolute w-2 h-2 bg-amber-400 bottom-0 left-1/2 -translate-x-1/2" />
-                      </>
-                    )}
-                    {index === 2 && (
-                      <>
-                        <div className="absolute w-0 h-0 border-l-[8px] border-r-[8px] border-b-[12px] border-l-transparent border-r-transparent border-b-amber-400" />
-                        <div className="absolute top-3 w-5 h-1 bg-amber-400 rotate-45" />
-                        <div className="absolute top-3 w-5 h-1 bg-amber-400 -rotate-45" />
-                      </>
-                    )}
+                    <div className="absolute w-7 h-7 border-2 border-amber-400 rounded-full" />
+                    <div className="absolute w-2 h-2 bg-amber-400 top-0 left-1/2 -translate-x-1/2" />
+                    <div className="absolute w-2 h-2 bg-amber-400 bottom-0 left-1/2 -translate-x-1/2" />
                   </div>
-                  <div className={`text-4xl md:text-5xl font-light mb-2 text-amber-400`} style={{ fontWeight: 100 }}>
+                  <div className="text-4xl md:text-5xl font-light mb-2 text-amber-400" style={{ fontWeight: 100 }}>
                     {stat.number}
                   </div>
                   <div className="text-sm font-semibold text-neutral-300">{stat.label}</div>
                 </div>
               </motion.div>
-            )
-          })}
+            ))
         </motion.div>
 
         {/* Premium badges */}

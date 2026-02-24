@@ -3,6 +3,8 @@
 import { motion } from 'framer-motion'
 import { Monitor, Settings, Package, Wrench, HeadphonesIcon, CheckCircle, Shield, Zap, Clock, HelpCircle, ArrowRight, TrendingUp } from 'lucide-react'
 import Link from 'next/link'
+import PageBackground from '@/components/PageBackground'
+import PageHero from '@/components/PageHero'
 
 const services = [
   {
@@ -64,49 +66,18 @@ const services = [
 
 export default function ServicesInfoPageContent() {
   return (
-    <div className="min-h-screen pt-20" style={{ background: '#0f0f0f' }}>
-      {/* Hero Section */}
-      <section className="relative py-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
-        <div className="absolute inset-0 -z-10" style={{ background: '#0f0f0f' }}>
-          <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-[#0f0f0f] via-[#1a1a1a] to-[#0f0f0f]" />
-        </div>
-
-        <div className="max-w-7xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full glass-dark mb-8 shadow-soft"
-          >
-            <Monitor className="w-5 h-5 text-amber-400" />
-            <span className="text-sm font-medium text-neutral-300 tracking-wide">Services Informatiques</span>
-          </motion.div>
-
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-5xl md:text-6xl lg:text-7xl font-extralight text-neutral-100 mb-6 tracking-tight"
-            style={{ fontWeight: 200 }}
-          >
-            Services informatiques complets
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-xl md:text-2xl text-neutral-400 mb-8 max-w-3xl mx-auto font-light"
-          >
-            Montage PC sur mesure, installation de systèmes et logiciels, support technique. 
-            <br className="hidden md:block" />
-            Services adaptés à vos besoins dans les Bouches-du-Rhône et au-delà.
-          </motion.p>
-        </div>
-      </section>
+    <div className="min-h-screen relative" style={{ background: '#0f0f0f' }}>
+      <PageBackground />
+      <PageHero
+        title="Services informatiques complets"
+        subtitle="Montage PC sur mesure, installation de systèmes et logiciels, support technique. Bouches-du-Rhône et au-delà."
+        badge="Services informatiques"
+        ctaLabel="Demander un devis"
+        ctaHref="/contact"
+      />
 
       {/* Services Grid */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 relative">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service, index) => {
@@ -225,7 +196,7 @@ export default function ServicesInfoPageContent() {
             Comment ça se passe ?
           </motion.h2>
 
-          <div className="space-y-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {[
               {
                 step: '1',
@@ -250,20 +221,18 @@ export default function ServicesInfoPageContent() {
             ].map((item, index) => (
               <motion.div
                 key={item.step}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="flex gap-6"
+                className="p-6 rounded-2xl glass-dark border border-amber-400/20 flex gap-4"
               >
-                <div className="flex-shrink-0">
-                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-amber-500 to-amber-600 text-black flex items-center justify-center font-semibold text-lg">
-                    {item.step}
-                  </div>
+                <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-amber-500/30 to-amber-400/20 border border-amber-400/30 flex items-center justify-center font-semibold text-lg text-amber-400">
+                  {item.step}
                 </div>
-                <div className="flex-1">
+                <div className="flex-1 min-w-0">
                   <h3 className="text-xl font-semibold text-neutral-100 mb-2">{item.title}</h3>
-                  <p className="text-neutral-400 leading-relaxed">{item.description}</p>
+                  <p className="text-neutral-400 text-sm leading-relaxed">{item.description}</p>
                 </div>
               </motion.div>
             ))}
@@ -361,18 +330,14 @@ export default function ServicesInfoPageContent() {
           >
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-bold text-black text-lg uppercase tracking-wide"
-              style={{
-                background: 'linear-gradient(135deg, #a16207 0%, #eab308 50%, #fbbf24 100%)',
-                boxShadow: '0 10px 40px rgba(234, 179, 8, 0.3)',
-              }}
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r from-amber-400 to-amber-500 text-black text-base font-semibold tracking-wide shadow-soft-xl hover:shadow-soft-lg hover:-translate-y-0.5 transition-all duration-200"
             >
               Demander un devis gratuit
               <ArrowRight className="w-5 h-5" />
             </Link>
             <Link
               href="tel:+33766980342"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-semibold text-neutral-100 text-lg glass-dark border border-amber-400/30 hover:border-amber-400/50 transition-all duration-300"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl glass-dark border border-amber-400/30 text-neutral-100 font-medium hover:border-amber-400/50 hover:text-amber-300 transition-all duration-200"
             >
               <Clock className="w-5 h-5 text-amber-400" />
               Appeler maintenant

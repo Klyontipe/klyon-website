@@ -276,12 +276,10 @@ export default function HeroSectionSimple() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.8 }}
-          className="grid grid-cols-3 gap-6 mb-12 max-w-2xl mx-auto"
+          className="grid grid-cols-1 gap-6 mb-12 max-w-xs mx-auto"
         >
           {[
-            { number: '45+', label: 'Projets réalisés', color: 'text-blue-600', glowColor: 'rgba(59, 130, 246, 0.2)' },
             { number: '100%', label: 'Satisfaction', color: 'text-emerald-600', glowColor: 'rgba(16, 185, 129, 0.2)' },
-            { number: '3', label: 'Ans d\'IA', color: 'text-indigo-600', glowColor: 'rgba(99, 102, 241, 0.2)' },
           ].map((stat, index) => (
             <motion.div
               key={stat.label}

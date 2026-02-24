@@ -4,8 +4,11 @@ import { motion } from 'framer-motion'
 import { Phone, Mail, Linkedin, Send } from 'lucide-react'
 import AnimatedSection from './AnimatedSection'
 import ContactForm from './ContactForm'
+import { useAnimation } from '@/contexts/AnimationContext'
 
 export default function ContactSection() {
+  const { startupComplete } = useAnimation()
+  
   return (
     <section id="contact" className="relative py-32 px-4 sm:px-6 lg:px-8 overflow-hidden">
       {/* Background avec motifs géométriques dark premium */}
@@ -25,8 +28,8 @@ export default function ContactSection() {
         <AnimatedSection className="text-center mb-12">
           <motion.div
             initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            animate={startupComplete ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
             className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full glass-soft mb-10 shadow-soft"
           >
             <motion.span

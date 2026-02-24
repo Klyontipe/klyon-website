@@ -2,10 +2,20 @@ import type { Metadata } from 'next'
 import { Phone, Mail, Linkedin, MapPin } from 'lucide-react'
 import ContactForm from '@/components/ContactForm'
 import AnimatedSection from '@/components/AnimatedSection'
+import PageBackground from '@/components/PageBackground'
+import PageHero from '@/components/PageHero'
+import ScrollReveal from '@/components/ScrollReveal'
 
 export const metadata: Metadata = {
   title: 'Contact — KLYON',
   description: 'Contactez KLYON pour discuter de votre projet. Téléphone : 07 66 98 03 42, Email : klyonme@gmail.com. Zone d\'intervention : Bouches-du-Rhône.',
+  openGraph: {
+    title: 'Contact — KLYON',
+    description:
+      'Contactez KLYON pour discuter de votre projet. Téléphone : 07 66 98 03 42, Email : klyonme@gmail.com. Zone d\'intervention : Bouches-du-Rhône.',
+    url: 'https://klyon.fr/contact',
+    type: 'website',
+  },
 }
 
 const contactInfo = [
@@ -37,29 +47,27 @@ const contactInfo = [
 
 export default function ContactPage() {
   return (
-    <div className="pt-32 pb-20 px-4 sm:px-6 lg:px-8" style={{ background: '#0f0f0f', minHeight: '100vh' }}>
-      <div className="max-w-7xl mx-auto">
-        {/* Hero */}
-        <AnimatedSection className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-light text-neutral-100 mb-6" style={{ fontWeight: 200 }}>
-            Contact
-          </h1>
-          <p className="text-xl text-neutral-400 max-w-3xl mx-auto">
-            Discutons de votre projet et trouvons ensemble la solution qui vous convient
-          </p>
-        </AnimatedSection>
+    <div className="relative min-h-screen" style={{ background: '#0f0f0f' }}>
+      <PageBackground />
+      <PageHero
+        title="Contact"
+        subtitle="Discutons de votre projet et trouvons ensemble la solution qui vous convient."
+        badge="Contact"
+      />
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Contact Form */}
-          <AnimatedSection>
+      <div className="pb-20 px-4 sm:px-6 lg:px-8 relative">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            {/* Contact Form */}
+            <ScrollReveal>
             <h2 className="text-2xl font-light text-neutral-100 mb-6" style={{ fontWeight: 300 }}>
               Envoyez-nous un message
             </h2>
             <ContactForm />
-          </AnimatedSection>
+            </ScrollReveal>
 
-          {/* Contact Info */}
-          <AnimatedSection delay={0.1} className="space-y-8">
+            {/* Contact Info */}
+            <ScrollReveal delay={0.15} className="space-y-8">
             <div>
               <h2 className="text-2xl font-light text-neutral-100 mb-6" style={{ fontWeight: 300 }}>
                 Informations de contact
@@ -113,7 +121,8 @@ export default function ContactPage() {
                 ))}
               </ul>
             </div>
-          </AnimatedSection>
+            </ScrollReveal>
+          </div>
         </div>
       </div>
     </div>

@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import { Star } from 'lucide-react'
 import AnimatedSection from './AnimatedSection'
+import { useAnimation } from '@/contexts/AnimationContext'
 
 const testimonials = [
   {
@@ -20,6 +21,8 @@ const testimonials = [
 ]
 
 export default function TestimonialsSection() {
+  const { startupComplete } = useAnimation()
+  
   return (
     <section className="relative py-32 px-4 sm:px-6 lg:px-8 overflow-hidden">
       {/* Dark background */}
@@ -31,8 +34,8 @@ export default function TestimonialsSection() {
         <AnimatedSection className="text-center mb-16">
           <motion.div
             initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            animate={startupComplete ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
             className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full glass-dark border border-amber-400/20 mb-10 shadow-soft"
           >
             <motion.span

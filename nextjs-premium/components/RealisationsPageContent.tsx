@@ -4,6 +4,9 @@ import { motion, useMotionValue, useSpring } from 'framer-motion'
 import { Building2, Users, Briefcase, CheckCircle, ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
+import PageBackground from '@/components/PageBackground'
+import PageHero from '@/components/PageHero'
+import ScrollReveal from '@/components/ScrollReveal'
 
 const realisations = [
   {
@@ -174,46 +177,15 @@ export default function RealisationsPageContent() {
     : realisations.filter(r => r.type === filter)
 
   return (
-    <div className="min-h-screen pt-20" style={{ background: '#0f0f0f' }}>
-      {/* Hero Section */}
-      <section className="relative py-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
-        <div className="absolute inset-0 -z-10" style={{ background: '#0f0f0f' }}>
-          <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-[#0f0f0f] via-[#1a1a1a] to-[#0f0f0f]" />
-        </div>
-
-        <div className="max-w-7xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full glass-dark border border-amber-400/20 mb-8 shadow-soft"
-          >
-            <Briefcase className="w-5 h-5 text-amber-400" />
-            <span className="text-sm font-medium text-neutral-300 tracking-wide">Réalisations</span>
-          </motion.div>
-
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-5xl md:text-6xl lg:text-7xl font-extralight text-neutral-100 mb-6 tracking-tight"
-            style={{ fontWeight: 200 }}
-          >
-            Nos réalisations
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-xl md:text-2xl text-neutral-400 mb-8 max-w-3xl mx-auto font-light"
-          >
-            Collaborations réussies avec TPE, PME, associations et particuliers. 
-            <br className="hidden md:block" />
-            Des résultats concrets et mesurables.
-          </motion.p>
-        </div>
-      </section>
+    <div className="min-h-screen relative" style={{ background: '#0f0f0f' }}>
+      <PageBackground />
+      <PageHero
+        title="Nos réalisations"
+        subtitle="Collaborations réussies avec TPE, PME, associations et particuliers. Résultats concrets et mesurables."
+        badge="Réalisations"
+        ctaLabel="Discuter d'un projet"
+        ctaHref="/contact"
+      />
 
       {/* Filters */}
       <section className="px-4 sm:px-6 lg:px-8 pb-8">
@@ -335,11 +307,9 @@ export default function RealisationsPageContent() {
             En chiffres
           </motion.h2>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-2xl mx-auto">
             {[
-              { number: '45+', label: 'Projets réalisés' },
               { number: '100%', label: 'Satisfaction client' },
-              { number: '3', label: 'Ans d\'expérience IA' },
             ].map((stat, index) => (
               <motion.div
                 key={stat.label}
@@ -391,18 +361,14 @@ export default function RealisationsPageContent() {
           >
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-semibold text-white text-lg"
-              style={{
-                background: 'linear-gradient(135deg, #d97706 0%, #f59e0b 50%, #fbbf24 100%)',
-                boxShadow: '0 10px 40px rgba(245, 158, 11, 0.4)',
-              }}
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r from-amber-400 to-amber-500 text-black text-base font-semibold tracking-wide shadow-soft-xl hover:shadow-soft-lg hover:-translate-y-0.5 transition-all duration-200"
             >
               Discuter d'un projet
               <ArrowRight className="w-5 h-5" />
             </Link>
             <Link
               href="/formations"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-semibold text-neutral-100 text-lg glass-dark border border-amber-400/30 hover:border-amber-400/50 transition-all duration-300"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl glass-dark border border-amber-400/30 text-neutral-100 font-medium hover:border-amber-400/50 hover:text-amber-300 transition-all duration-200"
             >
               Voir les formations
             </Link>

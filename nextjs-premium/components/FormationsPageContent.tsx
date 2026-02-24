@@ -3,6 +3,9 @@
 import { motion } from 'framer-motion'
 import { BookOpen, Bot, FileText, Users, Clock, GraduationCap, CheckCircle, Target, Award, Zap, MessageSquare, HelpCircle, TrendingUp, Lightbulb, ArrowRight } from 'lucide-react'
 import Link from 'next/link'
+import PageBackground from '@/components/PageBackground'
+import PageHero from '@/components/PageHero'
+import ScrollReveal from '@/components/ScrollReveal'
 
 const formations = [
   {
@@ -105,83 +108,27 @@ const formations = [
 
 export default function FormationsPageContent() {
   return (
-    <div className="min-h-screen pt-20" style={{ background: '#0f0f0f' }}>
-      {/* Hero Section */}
-      <section className="relative py-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
-        <div className="absolute inset-0 -z-10" style={{ background: '#0f0f0f' }}>
-          <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-[#0f0f0f] via-[#1a1a1a] to-[#0f0f0f]" />
-        </div>
-
-        <div className="max-w-7xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full glass-dark mb-8 shadow-soft"
-          >
-            <BookOpen className="w-5 h-5 text-amber-400" />
-            <span className="text-sm font-medium text-neutral-300 tracking-wide uppercase">Formations Professionnelles</span>
-          </motion.div>
-
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-5xl md:text-6xl lg:text-7xl font-extralight text-neutral-100 mb-6 tracking-tight"
-            style={{ fontWeight: 200 }}
-          >
-            Formations sur mesure
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-xl md:text-2xl text-neutral-400 mb-8 max-w-3xl mx-auto font-light"
-          >
-            Formations professionnelles en IA, Microsoft 365 et automatisation. 
-            <br className="hidden md:block" />
-            Niveaux débutant, expérimenté et expert. Format hybride adapté à vos besoins.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="flex flex-wrap justify-center gap-4 text-sm text-neutral-400"
-          >
-            <div className="flex items-center gap-2">
-              <Clock className="w-4 h-4" />
-              <span>Durée moyenne : 2 jours</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Users className="w-4 h-4" />
-              <span>Entreprises & Particuliers</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <CheckCircle className="w-4 h-4" />
-              <span>Format hybride</span>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+    <div className="min-h-screen relative" style={{ background: '#0f0f0f' }}>
+      <PageBackground />
+      <PageHero
+        title="Formations sur mesure"
+        subtitle="IA, Microsoft 365 et automatisation. Niveaux débutant à expert. Format hybride adapté à vos besoins."
+        badge="Formations professionnelles"
+        ctaLabel="Nous contacter"
+        ctaHref="/contact"
+      />
 
       {/* Avantages Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8" style={{ background: '#0f0f0f' }}>
+      <section className="py-20 px-4 sm:px-6 lg:px-8 relative">
         <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
+          <ScrollReveal className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-extralight text-neutral-100 mb-6 tracking-tight" style={{ fontWeight: 200 }}>
               Pourquoi choisir nos formations ?
             </h2>
             <p className="text-lg text-neutral-400 max-w-2xl mx-auto">
               Une approche pédagogique adaptée à vos besoins avec des résultats concrets et mesurables
             </p>
-          </motion.div>
+          </ScrollReveal>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
@@ -208,14 +155,8 @@ export default function FormationsPageContent() {
             ].map((avantage, index) => {
               const Icon = avantage.icon
               return (
-                <motion.div
-                  key={avantage.title}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className="p-6 rounded-2xl glass-dark border border-amber-400/20 hover:border-amber-400/40 transition-all duration-300"
-                >
+                <ScrollReveal key={avantage.title} delay={index * 0.1}>
+                  <div className="p-6 rounded-2xl glass-dark border border-amber-400/20 hover:border-amber-400/40 transition-all duration-300 h-full">
                   <div className="relative w-12 h-12 rounded-xl bg-gradient-to-br from-amber-500/20 to-amber-400/10 flex items-center justify-center mb-4 border border-amber-400/30 overflow-hidden">
                     <div className="absolute inset-0">
                       <div className="absolute top-0 left-0 w-1/2 h-1/2 border-r border-b border-amber-400/30" />
@@ -227,7 +168,8 @@ export default function FormationsPageContent() {
                   </div>
                   <h3 className="text-xl font-semibold text-neutral-100 mb-3">{avantage.title}</h3>
                   <p className="text-sm text-neutral-400 leading-relaxed">{avantage.description}</p>
-                </motion.div>
+                  </div>
+                </ScrollReveal>
               )
             })}
           </div>
@@ -616,18 +558,14 @@ export default function FormationsPageContent() {
           >
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-bold text-black text-lg uppercase tracking-wide"
-              style={{
-                background: 'linear-gradient(135deg, #a16207 0%, #eab308 50%, #fbbf24 100%)',
-                boxShadow: '0 10px 40px rgba(234, 179, 8, 0.3)',
-              }}
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r from-amber-400 to-amber-500 text-black text-base font-semibold tracking-wide shadow-soft-xl hover:shadow-soft-lg hover:-translate-y-0.5 transition-all duration-200"
             >
               Demander un devis gratuit
               <ArrowRight className="w-5 h-5" />
             </Link>
             <Link
               href="tel:+33766980342"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-semibold text-neutral-100 text-lg glass-dark border border-amber-400/30 hover:border-amber-400/50 transition-all duration-300"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl glass-dark border border-amber-400/30 text-neutral-100 font-medium hover:border-amber-400/50 hover:text-amber-300 transition-all duration-200"
             >
               <Clock className="w-5 h-5 text-amber-400" />
               Réserver un appel

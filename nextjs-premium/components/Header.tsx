@@ -2,8 +2,10 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
+import { useAnimation } from '@/contexts/AnimationContext'
 
 const navigation = [
   { name: 'Accueil', href: '/' },
@@ -18,6 +20,7 @@ const navigation = [
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const { startupComplete } = useAnimation()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,9 +32,9 @@ export default function Header() {
 
   return (
     <motion.header
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.4, ease: 'easeOut' }}
+      initial={{ y: -100, opacity: 0 }}
+      animate={startupComplete ? { y: 0, opacity: 1 } : { y: -100, opacity: 0 }}
+      transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled
           ? 'backdrop-blur-xl border-b border-amber-500/20 shadow-lg'
@@ -48,18 +51,16 @@ export default function Header() {
             <motion.div
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.2 }}
-              className="relative flex flex-col"
+              className="relative logo-outline"
             >
-              <motion.span 
-                className="text-2xl font-light text-amber-400 relative z-10 tracking-tight"
-                whileHover={{ letterSpacing: '0.1em' }}
-                transition={{ duration: 0.3 }}
-              >
-                KLYON
-              </motion.span>
-              <span className="text-[9px] font-light text-amber-400/60 tracking-widest uppercase mt-[-4px]">
-                software
-              </span>
+              <Image
+                src="/logowhite.png"
+                alt="KLYON"
+                width={320}
+                height={100}
+                className="h-20 w-auto sm:h-24 md:h-28 object-contain object-left"
+                priority
+              />
             </motion.div>
           </Link>
 
@@ -104,7 +105,9 @@ export default function Header() {
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="md:hidden p-2 rounded-lg text-neutral-300 hover:text-amber-400 hover:bg-neutral-800 transition-colors"
-            aria-label="Menu"
+            aria-label="Ouvrir ou fermer le menu de navigation"
+            aria-expanded={isMobileMenuOpen}
+            aria-controls="mobile-menu"
           >
             {isMobileMenuOpen ? (
               <X className="h-6 w-6" />
@@ -123,6 +126,7 @@ export default function Header() {
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.2 }}
               className="md:hidden border-t border-amber-500/20 py-4 backdrop-blur-xl"
+              id="mobile-menu"
               style={{ background: 'rgba(15, 15, 15, 0.98)' }}
             >
               <div className="space-y-4">

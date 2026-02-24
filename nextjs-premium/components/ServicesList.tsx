@@ -1,8 +1,8 @@
 'use client'
 
 import { Code, ArrowRight, Square, BookOpen } from 'lucide-react'
-import CTA from './CTA'
-import AnimatedSection from './AnimatedSection'
+import Link from 'next/link'
+import { motion } from 'framer-motion'
 
 const services = [
   {
@@ -66,50 +66,52 @@ const services = [
 export default function ServicesList() {
   return (
     <>
-      {/* Services */}
-      <div className="space-y-24">
+      <div className="space-y-20">
         {services.map((service, index) => {
           const Icon = service.icon
           return (
-            <AnimatedSection
+            <motion.div
               key={service.id}
-              delay={index * 0.1}
-              className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start"
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: index * 0.08 }}
+              className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start"
             >
               <div id={service.id}>
-                <div className="w-16 h-16 rounded-xl bg-neutral-100 flex items-center justify-center mb-6">
-                  <Icon className="h-8 w-8 text-neutral-900" />
+                <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-amber-500/20 to-amber-400/10 border border-amber-400/30 flex items-center justify-center mb-6">
+                  <Icon className="h-7 w-7 text-amber-400" />
                 </div>
-                <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 mb-4">
+                <h2 className="text-2xl md:text-3xl font-light text-neutral-100 mb-4 tracking-tight" style={{ fontWeight: 300 }}>
                   {service.title}
                 </h2>
-                <p className="text-lg text-neutral-600 mb-8 leading-relaxed">
+                <p className="text-neutral-400 leading-relaxed mb-6">
                   {service.description}
                 </p>
               </div>
 
-              <div>
-                <h3 className="text-lg font-semibold text-neutral-900 mb-4">
+              <div className="p-6 rounded-2xl glass-dark border border-amber-400/20">
+                <h3 className="text-lg font-semibold text-neutral-100 mb-4">
                   Ce que je propose :
                 </h3>
-                <ul className="space-y-3 mb-8">
+                <ul className="space-y-3 mb-6">
                   {service.details.map((detail, detailIndex) => (
-                    <li key={detailIndex} className="flex items-start gap-3">
-                      <span className="text-neutral-900 mt-1">•</span>
-                      <span className="text-neutral-700">{detail}</span>
+                    <li key={detailIndex} className="flex items-start gap-3 text-neutral-300 text-sm leading-relaxed">
+                      <span className="text-amber-400 mt-1 flex-shrink-0">•</span>
+                      <span>{detail}</span>
                     </li>
                   ))}
                 </ul>
 
-                <div className="mb-8">
-                  <h3 className="text-lg font-semibold text-neutral-900 mb-4">
+                <div className="mb-6">
+                  <h3 className="text-lg font-semibold text-neutral-100 mb-3">
                     Technologies :
                   </h3>
                   <div className="flex flex-wrap gap-2">
                     {service.technologies.map((tech, techIndex) => (
                       <span
                         key={techIndex}
-                        className="px-3 py-1 bg-neutral-100 text-neutral-700 text-sm font-medium rounded-full"
+                        className="px-3 py-1 rounded-full text-xs font-medium bg-amber-500/20 text-amber-400 border border-amber-400/30"
                       >
                         {tech}
                       </span>
@@ -117,23 +119,39 @@ export default function ServicesList() {
                   </div>
                 </div>
 
-                <CTA href="/contact">Discuter de ce service</CTA>
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-amber-400 to-amber-500 text-black text-sm font-semibold tracking-wide shadow-soft-xl hover:shadow-soft-lg hover:-translate-y-0.5 transition-all duration-200"
+                >
+                  Discuter de ce service
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
               </div>
-            </AnimatedSection>
+            </motion.div>
           )
         })}
       </div>
 
-      {/* CTA Section */}
-      <AnimatedSection className="mt-32 text-center">
-        <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 mb-4">
+      <motion.section
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="mt-24 py-16 text-center p-8 rounded-2xl glass-dark border border-amber-400/20"
+      >
+        <h2 className="text-2xl md:text-3xl font-light text-neutral-100 mb-4 tracking-tight" style={{ fontWeight: 200 }}>
           Prêt à démarrer votre projet ?
         </h2>
-        <p className="text-lg text-neutral-600 mb-8">
+        <p className="text-neutral-400 mb-8 max-w-xl mx-auto">
           Contactez-moi pour discuter de vos besoins et obtenir un devis personnalisé
         </p>
-        <CTA href="/contact">Demander un devis</CTA>
-      </AnimatedSection>
+        <Link
+          href="/contact"
+          className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r from-amber-400 to-amber-500 text-black text-base font-semibold tracking-wide shadow-soft-xl hover:shadow-soft-lg hover:-translate-y-0.5 transition-all duration-200"
+        >
+          Demander un devis
+          <ArrowRight className="w-5 h-5" />
+        </Link>
+      </motion.section>
     </>
   )
 }

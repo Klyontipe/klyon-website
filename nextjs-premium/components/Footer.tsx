@@ -1,9 +1,21 @@
+'use client'
+
 import Link from 'next/link'
 import { Linkedin, Mail, Phone } from 'lucide-react'
+import { motion } from 'framer-motion'
+import { useAnimation } from '@/contexts/AnimationContext'
 
 export default function Footer() {
+  const { startupComplete } = useAnimation()
+  
   return (
-    <footer className="text-neutral-300 border-t border-amber-400/20" style={{ background: '#0f0f0f' }}>
+    <motion.footer
+      initial={{ opacity: 0, y: 20 }}
+      animate={startupComplete ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+      transition={{ duration: 0.8, delay: 1.2, ease: [0.16, 1, 0.3, 1] }}
+      className="text-neutral-300 border-t border-amber-400/20" 
+      style={{ background: '#0f0f0f' }}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand */}
@@ -22,8 +34,28 @@ export default function Footer() {
             <h4 className="text-amber-400 font-semibold mb-4 text-sm">Navigation</h4>
             <ul className="space-y-3">
               <li>
-                <Link href="/services" className="text-neutral-400 hover:text-amber-400 text-sm transition-colors duration-200">
-                  Services
+                <Link href="/" className="text-neutral-400 hover:text-amber-400 text-sm transition-colors duration-200">
+                  Accueil
+                </Link>
+              </li>
+              <li>
+                <Link href="/formations" className="text-neutral-400 hover:text-amber-400 text-sm transition-colors duration-200">
+                  Formations
+                </Link>
+              </li>
+              <li>
+                <Link href="/services-info" className="text-neutral-400 hover:text-amber-400 text-sm transition-colors duration-200">
+                  Services Info
+                </Link>
+              </li>
+              <li>
+                <Link href="/automatisations" className="text-neutral-400 hover:text-amber-400 text-sm transition-colors duration-200">
+                  Automatisations
+                </Link>
+              </li>
+              <li>
+                <Link href="/developpement" className="text-neutral-400 hover:text-amber-400 text-sm transition-colors duration-200">
+                  Développement
                 </Link>
               </li>
               <li>
@@ -91,6 +123,6 @@ export default function Footer() {
           </div>
         </div>
       </div>
-    </footer>
+    </motion.footer>
   )
 }

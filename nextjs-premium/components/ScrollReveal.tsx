@@ -1,30 +1,54 @@
 'use client'
 
-import { motion, useScroll, useTransform } from 'framer-motion'
-import { ReactNode, useRef } from 'react'
+import { motion, useInView } from 'framer-motion'
+import { useRef, ReactNode } from 'react'
 
 interface ScrollRevealProps {
   children: ReactNode
   className?: string
   delay?: number
+  direction?: 'up' | 'down' | 'left' | 'right'
+  once?: boolean
+  amount?: number
 }
 
-export default function ScrollReveal({ children, className = '', delay = 0 }: ScrollRevealProps) {
-  const ref = useRef<HTMLDivElement>(null)
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ['start end', 'center center'],
-  })
+const directionOffset = {
+  up: { y: 28, x: 0 },
+  down: { y: -28, x: 0 },
+  left: { y: 0, x: 28 },
+  right: { y: 0, x: -28 },
+}
 
-  const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0, 1, 1])
-  const y = useTransform(scrollYProgress, [0, 0.5, 1], [50, 0, -20])
-  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.9, 1, 1])
+export default function ScrollReveal({
+  children,
+  className = '',
+  delay = 0,
+  direction = 'up',
+  once = true,
+  amount = 0.15,
+}: ScrollRevealProps) {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once, amount })
+  const offset = directionOffset[direction]
 
   return (
     <motion.div
       ref={ref}
-      style={{ opacity, y, scale }}
-      transition={{ delay, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+      initial={{
+        opacity: 0,
+        x: offset.x,
+        y: offset.y,
+      }}
+      animate={
+        isInView
+          ? { opacity: 1, x: 0, y: 0 }
+          : { opacity: 0, x: offset.x, y: offset.y }
+      }
+      transition={{
+        duration: 0.7,
+        delay,
+        ease: [0.16, 1, 0.3, 1],
+      }}
       className={className}
     >
       {children}

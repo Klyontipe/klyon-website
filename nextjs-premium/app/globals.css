@@ -214,7 +214,7 @@
     background: linear-gradient(
       90deg,
       transparent,
-      rgba(30, 58, 95, 0.1),
+      rgba(234, 179, 8, 0.12),
       transparent
     );
     background-size: 200% 100%;
@@ -238,10 +238,10 @@
 
   @keyframes glow-pulse {
     0%, 100% {
-      box-shadow: 0 0 20px rgba(30, 58, 95, 0.1);
+      box-shadow: 0 0 20px rgba(234, 179, 8, 0.15);
     }
     50% {
-      box-shadow: 0 0 40px rgba(30, 58, 95, 0.2);
+      box-shadow: 0 0 40px rgba(234, 179, 8, 0.3);
     }
   }
 
@@ -280,5 +280,32 @@
 
   .text-reveal-up {
     animation: text-reveal-up 0.8s ease-out forwards;
+  }
+
+  @keyframes gridMove {
+    0% {
+      transform: translate(0, 0);
+    }
+    100% {
+      transform: translate(50px, 50px);
+    }
+  }
+
+  .grid-animated {
+    animation: gridMove 20s linear infinite;
+  }
+
+  /* Liseré fin et dynamique autour du logo */
+  @keyframes logo-outline {
+    0%, 100% {
+      filter: drop-shadow(0 0 1px rgba(250, 204, 21, 0.85));
+    }
+    50% {
+      filter: drop-shadow(0 0 1px rgba(250, 204, 21, 1)) drop-shadow(0 0 2px rgba(250, 204, 21, 0.4));
+    }
+  }
+
+  .logo-outline {
+    animation: logo-outline 2.5s ease-in-out infinite;
   }
 }

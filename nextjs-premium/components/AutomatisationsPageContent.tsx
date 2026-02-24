@@ -3,6 +3,8 @@
 import { motion } from 'framer-motion'
 import { Zap, GitBranch, Code, Rocket, CheckCircle, ArrowRight, Database, TrendingUp, Clock, HelpCircle, Target, Award } from 'lucide-react'
 import Link from 'next/link'
+import PageBackground from '@/components/PageBackground'
+import PageHero from '@/components/PageHero'
 
 const outils = [
   {
@@ -71,49 +73,18 @@ const exemples = [
 
 export default function AutomatisationsPageContent() {
   return (
-    <div className="min-h-screen pt-20" style={{ background: '#0f0f0f' }}>
-      {/* Hero Section */}
-      <section className="relative py-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
-        <div className="absolute inset-0 -z-10" style={{ background: '#0f0f0f' }}>
-          <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-[#0f0f0f] via-[#1a1a1a] to-[#0f0f0f]" />
-        </div>
-
-        <div className="max-w-7xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full glass-dark mb-8 shadow-soft"
-          >
-            <Zap className="w-5 h-5 text-amber-400" />
-            <span className="text-sm font-medium text-neutral-300 tracking-wide">Automatisation de processus</span>
-          </motion.div>
-
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extralight text-neutral-100 mb-4 sm:mb-6 tracking-tight px-4"
-            style={{ fontWeight: 200 }}
-          >
-            Automatisez vos processus
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-lg sm:text-xl md:text-2xl text-neutral-400 mb-6 sm:mb-8 max-w-3xl mx-auto font-light px-4"
-          >
-            Gain de temps garanti avec ROI mesurable. 
-            <br className="hidden md:block" />
-            Automatisation avec Zapier, N8N ou scripts sur mesure selon vos besoins.
-          </motion.p>
-        </div>
-      </section>
+    <div className="min-h-screen relative" style={{ background: '#0f0f0f' }}>
+      <PageBackground />
+      <PageHero
+        title="Automatisez vos processus"
+        subtitle="Gain de temps garanti avec ROI mesurable. Zapier, N8N ou scripts sur mesure selon vos besoins."
+        badge="Automatisation de processus"
+        ctaLabel="En discuter"
+        ctaHref="/contact"
+      />
 
       {/* Outils Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 relative">
         <div className="max-w-7xl mx-auto">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -171,13 +142,13 @@ export default function AutomatisationsPageContent() {
       </section>
 
       {/* Exemples Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 style={{ background: '#0f0f0f' }}">
+      <section className="py-20 px-4 sm:px-6 lg:px-8" style={{ background: '#0f0f0f' }}>
         <div className="max-w-7xl mx-auto">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-4xl font-light text-neutral-100 mb-12 text-center"
+            className="text-3xl md:text-4xl lg:text-5xl font-extralight text-neutral-100 mb-12 text-center tracking-tight"
             style={{ fontWeight: 200 }}
           >
             Exemples concrets
@@ -191,19 +162,15 @@ export default function AutomatisationsPageContent() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="p-6 md:p-8 rounded-2xl border"
-                style={{
-                  background: 'rgba(255, 255, 255, 0.6)',
-                  backdropFilter: 'blur(10px)',
-                  borderColor: 'rgba(229, 229, 229, 0.5)',
-                  boxShadow: '0 4px 16px rgba(0, 0, 0, 0.04)',
-                }}
+                className="p-6 md:p-8 rounded-2xl glass-dark border border-amber-400/20 hover:border-amber-400/40 transition-all duration-300"
               >
                 <div className="flex items-center gap-3 mb-4">
-                  <Rocket className="w-6 h-6 text-amber-400" />
+                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-500/20 to-amber-400/10 border border-amber-400/30 flex items-center justify-center">
+                    <Rocket className="w-5 h-5 text-amber-400" />
+                  </div>
                   <h3 className="text-xl font-semibold text-neutral-100">{exemple.title}</h3>
                 </div>
-                <p className="text-neutral-400 mb-4 leading-relaxed">{exemple.description}</p>
+                <p className="text-neutral-400 mb-4 leading-relaxed text-sm">{exemple.description}</p>
                 <div className="flex flex-wrap gap-2">
                   {exemple.outils.map((outil, idx) => (
                     <span
@@ -302,7 +269,7 @@ export default function AutomatisationsPageContent() {
             Processus de travail
           </motion.h2>
 
-          <div className="space-y-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {[
               {
                 step: '1',
@@ -327,20 +294,18 @@ export default function AutomatisationsPageContent() {
             ].map((item, index) => (
               <motion.div
                 key={item.step}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="flex gap-6"
+                className="p-6 rounded-2xl glass-dark border border-amber-400/20 flex gap-4"
               >
-                <div className="flex-shrink-0">
-                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-amber-500 to-amber-600 text-black flex items-center justify-center font-semibold text-lg">
-                    {item.step}
-                  </div>
+                <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-amber-500/30 to-amber-400/20 border border-amber-400/30 flex items-center justify-center font-semibold text-lg text-amber-400">
+                  {item.step}
                 </div>
-                <div className="flex-1">
+                <div className="flex-1 min-w-0">
                   <h3 className="text-xl font-semibold text-neutral-100 mb-2">{item.title}</h3>
-                  <p className="text-neutral-400 leading-relaxed">{item.description}</p>
+                  <p className="text-neutral-400 text-sm leading-relaxed">{item.description}</p>
                 </div>
               </motion.div>
             ))}
@@ -438,11 +403,7 @@ export default function AutomatisationsPageContent() {
           >
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-bold text-black text-lg uppercase tracking-wide"
-              style={{
-                background: 'linear-gradient(135deg, #a16207 0%, #eab308 50%, #fbbf24 100%)',
-                boxShadow: '0 10px 40px rgba(234, 179, 8, 0.3)',
-              }}
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r from-amber-400 to-amber-500 text-black text-base font-semibold tracking-wide shadow-soft-xl hover:shadow-soft-lg hover:-translate-y-0.5 transition-all duration-200"
             >
               Discuter d'un projet
               <ArrowRight className="w-5 h-5" />

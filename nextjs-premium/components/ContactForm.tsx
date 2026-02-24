@@ -3,7 +3,6 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Send, CheckCircle, AlertCircle, Loader2, User, Mail, Phone, Building, MessageSquare } from 'lucide-react'
-import emailjs from '@emailjs/browser'
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -39,46 +38,17 @@ export default function ContactForm() {
     setSubmitStatus(null)
 
     try {
-      // Configuration EmailJS
-      const serviceId = 'service_lb38ewo'
-      const templateId = 'template_2af96ws'
-      const publicKey = 'ZJMuCYNkzxGhqore6'
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
 
-      // Préparer les données pour EmailJS avec formatage simplifié
-      const fullMessage = `
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📝 NOUVEAU MESSAGE DE CONTACT - KLYON
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-👤 INFORMATIONS CLIENT
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Nom         : ${formData.name}
-Email       : ${formData.email}
-Téléphone   : ${formData.phone || 'Non renseigné'}
-Entreprise  : ${formData.company || 'Particulier'}
-
-📋 DÉTAILS DE LA DEMANDE
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Service     : ${formData.subject || 'Non précisé'}
-
-💬 MESSAGE
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-${formData.message}
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-      `.trim()
-
-      const templateParams = {
-        from_name: formData.name,
-        from_email: formData.email,
-        from_phone: formData.phone,
-        service_type: formData.subject,
-        message: fullMessage,
-        to_email: 'klyonme@gmail.com'
+      if (!response.ok) {
+        throw new Error('Erreur lors de l\'envoi')
       }
-
-      // Envoyer l'email via EmailJS
-      await emailjs.send(serviceId, templateId, templateParams, publicKey)
       
       setSubmitStatus('success')
       setFormData({

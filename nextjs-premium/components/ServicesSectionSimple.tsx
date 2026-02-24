@@ -3,39 +3,42 @@
 import { BookOpen, Monitor, Zap, Code, ArrowRight } from 'lucide-react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import { useAnimation } from '@/contexts/AnimationContext'
 
 const services = [
   {
     icon: BookOpen,
     title: 'Formations',
-    description: 'Formations IA/ChatGPT, Microsoft 365, SharePoint. Niveaux débutant, expérimenté et expert.',
+    description:
+      'Formations IA / ChatGPT et Microsoft 365 pour équipes et dirigeants. Orientées cas réels et ROI.',
     href: '/formations',
-    color: 'blue',
   },
   {
     icon: Monitor,
     title: 'Services Informatiques',
-    description: 'Montage PC sur mesure, installation systèmes d\'exploitation, suites Office, support technique.',
+    description:
+      'Audit, conseil et accompagnement sur votre parc informatique, environnement Microsoft et outils métiers.',
     href: '/services-info',
-    color: 'emerald',
   },
   {
     icon: Zap,
     title: 'Automatisations',
-    description: 'Automatisation avec Zapier, N8N ou scripts sur mesure. Gain de temps garanti avec ROI mesurable.',
+    description:
+      'Automatisations sur Zapier, n8n ou scripts custom pour supprimer les tâches manuelles répétitives.',
     href: '/automatisations',
-    color: 'purple',
   },
   {
     icon: Code,
     title: 'Développement',
-    description: 'Applications web, mobiles et desktop. Solutions fonctionnelles et élégantes.',
+    description:
+      'Applications web et outils internes sur mesure, pensés pour vos process, pas l’inverse.',
     href: '/developpement',
-    color: 'indigo',
   },
 ]
 
 export default function ServicesSectionSimple() {
+  const { startupComplete } = useAnimation()
+  
   return (
     <section className="relative py-32 px-4 sm:px-6 lg:px-8 overflow-hidden">
       {/* Background avec motifs géométriques dark */}
@@ -57,15 +60,13 @@ export default function ServicesSectionSimple() {
       <div className="max-w-7xl mx-auto relative">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          animate={startupComplete ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.8, delay: 0.1 }}
           className="text-center mb-16"
         >
           <motion.div
             initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            animate={startupComplete ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
             transition={{ duration: 0.6 }}
             className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full glass-soft mb-8 shadow-soft"
           >
@@ -88,21 +89,13 @@ export default function ServicesSectionSimple() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {services.map((service, index) => {
             const Icon = service.icon
-            const colorClasses = {
-              blue: 'from-blue-500/20 to-blue-400/10 text-blue-600 border-blue-200/50',
-              emerald: 'from-emerald-500/20 to-emerald-400/10 text-emerald-600 border-emerald-200/50',
-              purple: 'from-purple-500/20 to-purple-400/10 text-purple-600 border-purple-200/50',
-              indigo: 'from-indigo-500/20 to-indigo-400/10 text-indigo-600 border-indigo-200/50',
-            }
-            const colors = colorClasses[service.color as keyof typeof colorClasses] || colorClasses.blue
-            
+
             return (
               <motion.div
                 key={service.title}
                 initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
+                animate={startupComplete ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+                transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
                 whileHover={{ y: -8, transition: { duration: 0.3 } }}
               >
                 <Link href={service.href}>
@@ -141,8 +134,15 @@ export default function ServicesSectionSimple() {
                       </span>
                     </div>
                     
-                    <h3 className="text-xl font-bold text-neutral-100 mb-3 tracking-tight">{service.title}</h3>
-                    <p className="text-neutral-400 text-sm leading-relaxed mb-4" style={{ letterSpacing: '0.01em' }}>{service.description}</p>
+                    <h3 className="text-lg sm:text-xl font-semibold text-neutral-50 mb-2 tracking-tight">
+                      {service.title}
+                    </h3>
+                    <p
+                      className="text-neutral-400 text-sm leading-relaxed mb-4"
+                      style={{ letterSpacing: '0.01em' }}
+                    >
+                      {service.description}
+                    </p>
                     
                     <div className="flex items-center gap-2 text-sm font-bold text-neutral-300 group-hover:text-amber-400 transition-colors uppercase tracking-wide">
                       <span>En savoir plus</span>
