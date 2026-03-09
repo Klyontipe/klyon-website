@@ -441,64 +441,6 @@ export default function Hero3D() {
           </motion.a>
         </motion.div>
 
-        {/* Premium Stats with 3D effect */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.9 }}
-          className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 mb-8 sm:mb-12 max-w-xl mx-auto px-4"
-        >
-          {[
-            { number: '100%', label: 'Satisfaction', color: 'emerald', icon: Sparkles },
-          ].map((stat, index) => (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, y: 20, rotateX: -15 }}
-                animate={{ opacity: 1, y: 0, rotateX: 0 }}
-                transition={{ duration: 0.6, delay: 1 + index * 0.1 }}
-                whileHover={{ 
-                  scale: 1.1,
-                  y: -10,
-                  rotateY: 10,
-                  z: 40,
-                  transition: { duration: 0.3 }
-                }}
-                style={{
-                  transformStyle: 'preserve-3d',
-                  perspective: '1000px',
-                }}
-                className="relative text-center group"
-              >
-                <motion.div
-                  animate={{
-                    boxShadow: [
-                      `0 0 30px rgba(234, 179, 8, 0.3)`,
-                      `0 0 60px rgba(234, 179, 8, 0.5)`,
-                      `0 0 30px rgba(234, 179, 8, 0.3)`,
-                    ],
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: 'easeInOut',
-                  }}
-                  className="absolute inset-0 rounded-2xl blur-2xl opacity-50 group-hover:opacity-100"
-                />
-                <div className="relative px-6 py-5 rounded-2xl glass-dark border border-amber-400/20 backdrop-blur-xl">
-                  <div className="w-10 h-10 mx-auto mb-3 relative flex items-center justify-center">
-                    <div className="absolute w-7 h-7 border-2 border-amber-400 rounded-full" />
-                    <div className="absolute w-2 h-2 bg-amber-400 top-0 left-1/2 -translate-x-1/2" />
-                    <div className="absolute w-2 h-2 bg-amber-400 bottom-0 left-1/2 -translate-x-1/2" />
-                  </div>
-                  <div className="text-4xl md:text-5xl font-light mb-2 text-amber-400" style={{ fontWeight: 100 }}>
-                    {stat.number}
-                  </div>
-                  <div className="text-sm font-semibold text-neutral-300">{stat.label}</div>
-                </div>
-              </motion.div>
-            ))}
-        </motion.div>
-
         {/* Premium badges */}
         <motion.div
           initial={{ opacity: 0 }}

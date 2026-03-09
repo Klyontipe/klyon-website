@@ -24,7 +24,6 @@ export default function MentionsLegalesPage() {
             <p className="text-neutral-400 leading-relaxed">
               <strong className="text-neutral-200">KLYON</strong><br />
               Microentreprise<br />
-              SIRET : [À compléter]<br />
               Email : klyonme@gmail.com<br />
               Téléphone : 07 66 98 03 42
             </p>
@@ -34,13 +33,6 @@ export default function MentionsLegalesPage() {
             <h2 className="text-xl font-semibold text-neutral-100 mb-4">Directeur de publication</h2>
             <p className="text-neutral-400 leading-relaxed">
               Lorenzo Fortini
-            </p>
-          </section>
-
-          <section className="mb-10 p-6 rounded-2xl glass-dark border border-amber-400/20">
-            <h2 className="text-xl font-semibold text-neutral-100 mb-4">Hébergement</h2>
-            <p className="text-neutral-400 leading-relaxed">
-              [À compléter avec les informations de votre hébergeur]
             </p>
           </section>
 

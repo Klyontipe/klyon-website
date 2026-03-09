@@ -271,58 +271,6 @@ export default function HeroSectionSimple() {
           </motion.a>
         </motion.div>
 
-        {/* Stats rapides with 3D effect */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
-          className="grid grid-cols-1 gap-6 mb-12 max-w-xs mx-auto"
-        >
-          {[
-            { number: '100%', label: 'Satisfaction', color: 'text-emerald-600', glowColor: 'rgba(16, 185, 129, 0.2)' },
-          ].map((stat, index) => (
-            <motion.div
-              key={stat.label}
-              initial={{ opacity: 0, y: 10, rotateX: -15 }}
-              animate={{ opacity: 1, y: 0, rotateX: 0 }}
-              transition={{ duration: 0.6, delay: 0.9 + index * 0.1 }}
-              whileHover={{ 
-                scale: 1.05, 
-                y: -5,
-                rotateY: 5,
-                transition: { duration: 0.3 }
-              }}
-              className="text-center relative group"
-              style={{
-                perspective: '1000px',
-                transformStyle: 'preserve-3d',
-              }}
-            >
-              <motion.div
-                animate={{
-                  boxShadow: [
-                    `0 0 20px ${stat.glowColor}`,
-                    `0 0 40px ${stat.glowColor}`,
-                    `0 0 20px ${stat.glowColor}`,
-                  ],
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  ease: 'easeInOut',
-                }}
-                className="absolute inset-0 rounded-xl blur-xl opacity-50"
-              />
-              <div className={`text-2xl md:text-3xl font-light mb-1 ${stat.color} relative z-10`} style={{ fontWeight: 200 }}>
-                {stat.number}
-              </div>
-              <div className="text-xs text-neutral-600 font-medium relative z-10">
-                {stat.label}
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
-
         {/* Proof badges - soft grey */}
         <motion.div
           initial={{ opacity: 0 }}

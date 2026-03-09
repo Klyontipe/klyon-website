@@ -294,41 +294,6 @@ export default function RealisationsPageContent() {
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8" style={{ background: '#0f0f0f' }}>
-        <div className="max-w-7xl mx-auto">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-3xl md:text-4xl font-light text-neutral-100 mb-12 text-center"
-            style={{ fontWeight: 200 }}
-          >
-            En chiffres
-          </motion.h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-2xl mx-auto">
-            {[
-              { number: '100%', label: 'Satisfaction client' },
-            ].map((stat, index) => (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="text-center p-6 rounded-2xl glass-dark border border-amber-400/20"
-              >
-                <div className="text-4xl md:text-5xl font-light text-amber-400 mb-2" style={{ fontWeight: 100 }}>
-                  <AnimatedCounter value={stat.number} />
-                </div>
-                <div className="text-sm font-medium text-neutral-300">{stat.label}</div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* CTA Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center">
