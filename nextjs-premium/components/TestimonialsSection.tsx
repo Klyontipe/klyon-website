@@ -113,8 +113,41 @@ export default function TestimonialsSection() {
           </div>
         </AnimatedSection>
 
-        {/* Bandeau carrousel continu : 2–3 avis visibles qui défilent vers la gauche */}
-        <div className="mt-10 overflow-hidden max-w-5xl mx-auto">
+        {/* Mobile : liste légère sans animation continue */}
+        <div className="mt-8 space-y-4 md:hidden">
+          {testimonials.map((testimonial, index) => (
+            <div
+              key={index}
+              className="glass-dark rounded-2xl p-5 border border-amber-400/20 shadow-soft"
+            >
+              <div className="flex items-center gap-1 mb-3">
+                {[...Array(testimonial.rating)].map((_, i) => (
+                  <Star key={i} className="h-4 w-4 fill-amber-400 text-amber-400" />
+                ))}
+              </div>
+              <p className="text-neutral-300 mb-3 leading-relaxed font-light italic text-sm">
+                "{testimonial.quote}"
+              </p>
+              <div className="flex items-center justify-between gap-3">
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-full bg-amber-400/20 flex items-center justify-center text-amber-400 font-medium text-xs border border-amber-400/30">
+                    {testimonial.author.charAt(0)}
+                  </div>
+                  <div>
+                    <p className="text-xs font-medium text-neutral-100">{testimonial.author}</p>
+                    <p className="text-[11px] text-neutral-400">{testimonial.role}</p>
+                  </div>
+                </div>
+                <span className="text-[10px] px-2 py-1 rounded-full border border-amber-400/30 text-amber-300 uppercase tracking-[0.16em]">
+                  {testimonial.source}
+                </span>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Desktop : bandeau carrousel continu 2–3 avis visibles qui défilent vers la gauche */}
+        <div className="mt-10 overflow-hidden max-w-5xl mx-auto hidden md:block">
           <motion.div
             className="flex gap-6"
             animate={{ x: ['0%', '-50%'] }}
