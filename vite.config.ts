@@ -5,6 +5,11 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
+  build: {
+    rollupOptions: {
+      input: path.resolve(__dirname, "index.dev.html"),
+    },
+  },
   server: {
     host: "::",
     port: 8080,

@@ -4,8 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build && node scripts/generate-static-routes.mjs",
+    "dev": "cp index.dev.html index.html && vite",
+    "build": "cp index.dev.html index.html && vite build && mv dist/index.dev.html dist/index.html && node scripts/generate-static-routes.mjs",
+    "deploy:sync": "node scripts/sync-dist-to-root.mjs",
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
     "preview": "vite preview",
